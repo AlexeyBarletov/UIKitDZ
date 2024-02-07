@@ -60,8 +60,8 @@
 				73464AE22B72A97300149FBF /* SceneDelegate.swift */,
 				73464AE42B72A97300149FBF /* ViewController.swift */,
 				73464AE62B72A97300149FBF /* Main.storyboard */,
-				73464AE92B72A97400149FBF /* Assets.xcassets */,
 				73464AEB2B72A97400149FBF /* LaunchScreen.storyboard */,
+				73464AE92B72A97400149FBF /* Assets.xcassets */,
 				73464AEE2B72A97400149FBF /* Info.plist */,
 			);
 			path = UIKitDZ;
