@@ -32,12 +32,16 @@ class ViewController: UIViewController {
         setupAlertController()
     }
 
+    // MARK: method for setting up view
+
     func setupView() {
         exampleView = UIView(frame: CGRect(x: 0, y: 37, width: 375, height: 82))
         exampleView.backgroundColor = UIColor(red: 151 / 255, green: 203 / 255, blue: 229 / 255, alpha: 1)
         view.addSubview(exampleView)
         view.addSubview(exampleLabel)
     }
+
+    // MARK: method for setting label
 
     func setupLabel() {
         exampleLabel = UILabel(frame: CGRect(x: 50, y: 35, width: 275, height: 90))
@@ -50,6 +54,8 @@ class ViewController: UIViewController {
         view.addSubview(exampleLabel)
     }
 
+    // MARK: method for adding Alert
+
     func setupAlertController() {
         exampleAlertController = UIAlertController(
             title: "Пожалуйста,   представьтесь",
@@ -58,21 +64,24 @@ class ViewController: UIViewController {
         )
         let action = UIAlertAction(title: "Готово", style: .default) { _ in
             let text = self.exampleAlertController.textFields?.first
-            self.exampleLabel.text! += (text?.text)!
+            self.exampleLabel.text! += (text?.text)! + "!"
         }
         exampleAlertController.addAction(action)
         exampleAlertController.addTextField { textField in
             textField.placeholder = "введите ваше имя"
         }
-
         present(exampleAlertController, animated: true, completion: nil)
     }
+
+    // MARK: method for setting up our image
 
     func setupUIimageView() {
         exampleUIimageView = UIImageView(frame: CGRect(x: 0, y: 39, width: view.frame.width, height: 900))
         exampleUIimageView.image = exampleUIImage
         view.addSubview(exampleUIimageView)
     }
+
+    // MARK: button setting method
 
     func setupUIButton() {
         examplelButton = UIButton(frame: CGRect(x: 85, y: 301, width: 150, height: 150))
@@ -87,6 +96,8 @@ class ViewController: UIViewController {
         view.addSubview(examplelButton)
     }
 
+    // MARK: button setting methodTwo
+
     func setupUIButtonTwo() {
         exampleButtonTwo = UIButton(frame: CGRect(x: 152, y: 507, width: 200, height: 200))
         exampleButtonTwo.setTitle("Калькулятор", for: .normal)
@@ -99,6 +110,8 @@ class ViewController: UIViewController {
         exampleButtonTwo.addTarget(self, action: #selector(setupAlertControllTwo), for: .touchUpInside)
         view.addSubview(exampleButtonTwo)
     }
+
+    // MARK: a method that configures the alert controller and is called in the button
 
     @objc func setupAlertControllTwo() {
         exampleAlertControllerTwo = UIAlertController(
@@ -131,6 +144,8 @@ class ViewController: UIViewController {
         present(exampleAlertControllerTwo, animated: true, completion: nil)
     }
 
+    // MARK: alert setting method Three
+
     func setupAlertControllerThree() {
         exampleAlertControllerThree = UIAlertController(
             title: "Ваша сумма",
@@ -143,6 +158,8 @@ class ViewController: UIViewController {
         exampleAlertControllerThree.addAction(actionTwo)
     }
 
+    // MARK: a method that configures the alert controller and is called in the button number two
+
     @objc func setupAlertControllerFour() {
         exampleAlertControllerFour = UIAlertController(
             title: "Угадай число от 1 до 10",
@@ -154,7 +171,8 @@ class ViewController: UIViewController {
             if let randomText = self.exampleAlertControllerFour.textFields?.first?.text,
                let random = Int(randomText),
                random == Int.random(in: 1 ... 10)
-            { self.setupAlertControllerFive()
+            { 
+                self.setupAlertControllerFive()
             } else {
                 self.setupAlertControllerSix()
             }
@@ -169,6 +187,8 @@ class ViewController: UIViewController {
         }
     }
 
+    // MARK: alert setting method Five
+
     func setupAlertControllerFive() {
         exampleAlertControllerFive = UIAlertController(
             title: "Поздравляю",
@@ -181,6 +201,8 @@ class ViewController: UIViewController {
         exampleAlertControllerFive.addAction(actionTwo)
         present(exampleAlertControllerFive, animated: true)
     }
+
+    // MARK: alert setting method Six
 
     func setupAlertControllerSix() {
         exampleAlertControllerSix = UIAlertController(
