@@ -25,6 +25,7 @@ class ViewController: UIViewController {
         setupView()
         setupAlertControllerThree()
         setupUIButtonTwo()
+        view.backgroundColor = .white
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -168,10 +169,9 @@ class ViewController: UIViewController {
         )
 
         let action = UIAlertAction(title: "Ok", style: .default) { _ in
-            if let randomText = self.exampleAlertControllerFour.textFields?.first?.text,
-               let random = Int(randomText),
-               random == Int.random(in: 1 ... 10)
-            { 
+            let randomText = self.exampleAlertControllerFour.textFields?.first?.text
+            let random = Int(randomText!)
+            if random == Int.random(in: 1 ... 10) {
                 self.setupAlertControllerFive()
             } else {
                 self.setupAlertControllerSix()
