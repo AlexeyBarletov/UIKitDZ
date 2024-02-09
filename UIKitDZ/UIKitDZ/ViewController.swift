@@ -3,9 +3,13 @@
 
 import UIKit
 
+/// класс отвечающий за построение логики приложения
 final class ViewController: UIViewController {
+    /// экземпляр класса UIAlertController
     var exampleAlertController = UIAlertController()
+    ///  экземпляр класса UIAlertController
     var exampleAlertControllerTwo = UIAlertController()
+    ///
     var exampleAlertControllerThree = UIAlertController()
     var exampleAlertControllerFour = UIAlertController()
     var exampleAlertControllerFive = UIAlertController()
