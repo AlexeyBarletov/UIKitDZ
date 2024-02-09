@@ -3,7 +3,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     var exampleButton = UIButton()
     var copyLabel = UILabel()
     var copyLabelTwo = UILabel()
@@ -14,12 +14,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupButton()
-        setupLabel()
     }
 
     // MARK: method button
 
-    func setupButton() {
+    private func setupButton() {
         exampleButton = UIButton(frame: CGRect(x: 0, y: 0, width: 355, height: 44))
         exampleButton.center = view.center
         exampleButton.layer.cornerRadius = 12
@@ -30,15 +29,16 @@ class ViewController: UIViewController {
         view.addSubview(exampleButton)
     }
 
-    @objc func setupAlertController() {
+    @objc private func setupAlertController() {
         let alertController = UIAlertController(title: "Введите ваше слово", message: nil, preferredStyle: .alert)
         let action = UIAlertAction(title: "Отмена", style: .cancel)
         let actionTwo = UIAlertAction(title: "Ok", style: .default, handler: { _ in
             guard let textField = alertController.textFields?.first else { return }
             guard let text = textField.text else { return }
-
+            self.setupLabel()
             self.copyLabelThree.text = text
             self.copyLabelFour.text = String(text.reversed())
+
         })
         alertController.addAction(actionTwo)
         alertController.addAction(action)
@@ -50,9 +50,9 @@ class ViewController: UIViewController {
         present(alertController, animated: true)
     }
 
-    // MARK: method Label
+    // MARK: method private
 
-    func setupLabel() {
+    private func setupLabel() {
         copyLabel = UILabel(frame: CGRect(x: 50, y: 106, width: 275, height: 57))
         copyLabel.text = "Вы ввели слово"
         copyLabel.font = .boldSystemFont(ofSize: 16)
