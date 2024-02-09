@@ -3,7 +3,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     var exampleAlertController = UIAlertController()
     var exampleAlertControllerTwo = UIAlertController()
     var exampleAlertControllerThree = UIAlertController()
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
 
     // MARK: method for setting up view
 
-    func setupView() {
+    private func setupView() {
         exampleView = UIView(frame: CGRect(x: 0, y: 37, width: 375, height: 82))
         exampleView.backgroundColor = UIColor(red: 151 / 255, green: 203 / 255, blue: 229 / 255, alpha: 1)
         view.addSubview(exampleView)
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
 
     // MARK: method for setting label
 
-    func setupLabel() {
+    private func setupLabel() {
         exampleLabel = UILabel(frame: CGRect(x: 50, y: 35, width: 275, height: 90))
         exampleLabel.text = "Приветсвую, "
         exampleLabel.textColor = .white
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
 
     // MARK: method for adding Alert
 
-    func setupAlertController() {
+    private func setupAlertController() {
         exampleAlertController = UIAlertController(
             title: "Пожалуйста,   представьтесь",
             message: nil,
@@ -76,7 +76,7 @@ class ViewController: UIViewController {
 
     // MARK: method for setting up our image
 
-    func setupUIimageView() {
+    private func setupUIimageView() {
         exampleUIimageView = UIImageView(frame: CGRect(x: 0, y: 39, width: view.frame.width, height: 900))
         exampleUIimageView.image = exampleUIImage
         view.addSubview(exampleUIimageView)
@@ -84,7 +84,7 @@ class ViewController: UIViewController {
 
     // MARK: button setting method
 
-    func setupUIButton() {
+    private func setupUIButton() {
         examplelButton = UIButton(frame: CGRect(x: 85, y: 301, width: 150, height: 150))
         examplelButton.setTitle("Угадай число", for: .normal)
         examplelButton.backgroundColor = UIColor(red: 155 / 255, green: 127 / 255, blue: 181 / 255, alpha: 1)
@@ -99,7 +99,7 @@ class ViewController: UIViewController {
 
     // MARK: button setting methodTwo
 
-    func setupUIButtonTwo() {
+    private func setupUIButtonTwo() {
         exampleButtonTwo = UIButton(frame: CGRect(x: 152, y: 507, width: 200, height: 200))
         exampleButtonTwo.setTitle("Калькулятор", for: .normal)
         exampleButtonTwo.backgroundColor = UIColor(red: 100 / 255, green: 181 / 255, blue: 130 / 255, alpha: 1)
@@ -147,7 +147,7 @@ class ViewController: UIViewController {
 
     // MARK: alert setting method Three
 
-    func setupAlertControllerThree() {
+    private func setupAlertControllerThree() {
         exampleAlertControllerThree = UIAlertController(
             title: "Ваша сумма",
             message: nil,
@@ -189,7 +189,7 @@ class ViewController: UIViewController {
 
     // MARK: alert setting method Five
 
-    func setupAlertControllerFive() {
+    private func setupAlertControllerFive() {
         exampleAlertControllerFive = UIAlertController(
             title: "Поздравляю",
             message: "Вы угадали",
@@ -204,7 +204,7 @@ class ViewController: UIViewController {
 
     // MARK: alert setting method Six
 
-    func setupAlertControllerSix() {
+    private func setupAlertControllerSix() {
         exampleAlertControllerSix = UIAlertController(
             title: "Упс",
             message: "Это не верный ответ",
