@@ -8,8 +8,8 @@ class ThreeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
     }
-    
-    //MARK: method setup button
+
+    // MARK: IBAction
 
     @IBAction func setupActionButton(_ sender: Any) {
         let alertActionController = UIAlertController(

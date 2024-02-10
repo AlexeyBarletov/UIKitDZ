@@ -3,15 +3,15 @@
 
 import UIKit
 
-class FirsViewController: UIViewController {
+final class FirsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
     }
-    
-    //MARK: method setup Button
 
-    @IBAction func setupButton(_ sender: Any) {
+    // MARK: IBAction
+
+    @IBAction private func setupButton(_ sender: Any) {
         let alertController = UIAlertController(title: "Выставить Счет", message: nil, preferredStyle: .alert)
         let action = UIAlertAction(title: "Отмена", style: .cancel)
         let actionTwo = UIAlertAction(title: "Чек", style: .default) { _ in
