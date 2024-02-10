@@ -4,9 +4,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    //MARK: IBOutlet
-    
+    // MARK: IBOutlet
+
     @IBOutlet private var showButtonOutlet: UIButton!
     @IBOutlet private var textField: UITextField!
 
@@ -15,5 +14,10 @@ class ViewController: UIViewController {
     @IBAction private func showTextButton(_ sender: Any) {
         textField.isSecureTextEntry = !showButtonOutlet.isSelected
         showButtonOutlet.isSelected = !showButtonOutlet.isSelected
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        textField.isSecureTextEntry = true
     }
 }
