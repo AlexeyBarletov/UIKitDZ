@@ -75,14 +75,14 @@ final class ViewController: UIViewController {
         copyLabelThree = UILabel(frame: CGRect(x: 50, y: 157, width: 275, height: 57))
         copyLabelThree.text = ""
         copyLabelThree.font = .boldSystemFont(ofSize: 16)
-        copyLabelThree.textColor = UIColor(red: 17 / 255, green: 17 / 255, blue: 17 / 255, alpha: 1)
+        copyLabelThree.textColor = UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 0.2)
         copyLabelThree.textAlignment = .center
         view.addSubview(copyLabelThree)
 
         copyLabelFour = UILabel(frame: CGRect(x: 50, y: 295, width: 275, height: 57))
         copyLabelFour.text = ""
         copyLabelFour.font = .boldSystemFont(ofSize: 16)
-        copyLabelFour.textColor = UIColor(red: 17 / 255, green: 17 / 255, blue: 17 / 255, alpha: 1)
+        copyLabelFour.textColor = UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 0.2)
         copyLabelFour.textAlignment = .center
         view.addSubview(copyLabelFour)
     }
