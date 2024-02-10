@@ -1,9 +1,9 @@
-// FirsViewController.swift
+// FirstViewController.swift
 // Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
-final class FirsViewController: UIViewController {
+final class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -13,8 +13,8 @@ final class FirsViewController: UIViewController {
 
     @IBAction private func setupButton(_ sender: Any) {
         let alertController = UIAlertController(title: "Выставить Счет", message: nil, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Отмена", style: .cancel)
-        let actionTwo = UIAlertAction(title: "Чек", style: .default) { _ in
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        let yesAction = UIAlertAction(title: "Чек", style: .default) { _ in
 
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let viewControllerThree = storyboard
@@ -22,8 +22,8 @@ final class FirsViewController: UIViewController {
 
             self.navigationController?.pushViewController(viewControllerThree, animated: true)
         }
-        alertController.addAction(action)
-        alertController.addAction(actionTwo)
+        alertController.addAction(cancelAction)
+        alertController.addAction(yesAction)
         present(alertController, animated: true)
     }
 }

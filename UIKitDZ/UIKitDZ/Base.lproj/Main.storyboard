@@ -139,7 +139,7 @@
         <!--Кафе Алиса-->
         <scene sceneID="Oay-Ta-32s">
             <objects>
-                <viewController id="PMM-ZA-Ku0" customClass="FirsViewController" customModule="UIKitDZ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="PMM-ZA-Ku0" customClass="FirstViewController" customModule="UIKitDZ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zaI-Jr-4MQ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
