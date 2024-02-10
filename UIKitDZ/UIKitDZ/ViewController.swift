@@ -10,13 +10,15 @@ final class ViewController: UIViewController {
     var copyLabelThree = UILabel()
     var copyLabelFour = UILabel()
 
+    // MARK: Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupButton()
     }
 
-    // MARK: method button
+    // MARK: Method Private
 
     private func setupButton() {
         exampleButton = UIButton(frame: CGRect(x: 0, y: 0, width: 355, height: 44))
@@ -28,6 +30,8 @@ final class ViewController: UIViewController {
         exampleButton.addTarget(self, action: #selector(setupAlertController), for: .touchUpInside)
         view.addSubview(exampleButton)
     }
+
+    // MARK: Method Private
 
     @objc private func setupAlertController() {
         let alertController = UIAlertController(title: "Введите ваше слово", message: nil, preferredStyle: .alert)
@@ -50,7 +54,7 @@ final class ViewController: UIViewController {
         present(alertController, animated: true)
     }
 
-    // MARK: method private
+    // MARK: Method Private
 
     private func setupLabel() {
         copyLabel = UILabel(frame: CGRect(x: 50, y: 106, width: 275, height: 57))
