@@ -199,10 +199,10 @@ final class ViewController: UIViewController {
             message: "Вы угадали",
             preferredStyle: .alert
         )
-        let action = UIAlertAction(title: "Ok", style: .default)
-        let actionTwo = UIAlertAction(title: "Отмена", style: .default)
-        exampleAlertControllerFive.addAction(action)
-        exampleAlertControllerFive.addAction(actionTwo)
+        let OkAction = UIAlertAction(title: "Ok", style: .default)
+        let cancelAction = UIAlertAction(title: "Отмена", style: .default)
+        exampleAlertControllerFive.addAction(OkAction)
+        exampleAlertControllerFive.addAction(cancelAction)
         present(exampleAlertControllerFive, animated: true)
     }
 
