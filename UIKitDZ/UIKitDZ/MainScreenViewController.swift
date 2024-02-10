@@ -1,9 +1,9 @@
-// ViewController.swift
+// MainScreenViewController.swift
 // Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class MainScreenViewController: UIViewController, UITextFieldDelegate {
     var copyImageView = UIImageView()
     var copyLabel = UILabel()
     var copyLabelEmail = UILabel()
@@ -17,6 +17,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var copyViewlineTextPassword = UIView()
     var copyButtonEveHide = UIButton()
     var copyButtonLogin = UIButton()
+    var labelUserFaiceId = UILabel()
+    var copySwitch = UISwitch()
 
     // MARK: Life Cycle
 
@@ -37,6 +39,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         setupView()
         setupButton()
         setupTextFieldPassword()
+        setupSwitch()
     }
 
     // MARK: Method Private
@@ -87,10 +90,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     if let customFontPassword = UIFont(name: fontName, size: 16) {
                         copyLabelPassword.font = customFontPassword
                         view.addSubview(copyLabelPassword)
+
+                        labelUserFaiceId = UILabel(frame: CGRect(x: 86, y: 544, width: 150, height: 35))
+                        labelUserFaiceId.text = "Use FaiceID"
+                        view.addSubview(labelUserFaiceId)
                     }
                 }
             }
         }
+    }
+
+    // MARK: Method Private
+
+    private func setupSwitch() {
+        copySwitch = UISwitch(frame: CGRect(x: 270, y: 546, width: 0, height: 0))
+        copySwitch.addTarget(self, action: #selector(putDataIntoSwitch), for: .touchUpInside)
+        view.addSubview(copySwitch)
     }
 
     // MARK: Method Private
@@ -105,46 +120,55 @@ class ViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(copyViewlineTextPassword)
     }
 
-    // MARK: Method Private
-
     private func setupButton() {
         copyButtonEveHide = UIButton(frame: CGRect(x: 332, y: 419, width: 22, height: 19))
         copyButtonEveHide.setImage(UIImage(named: "vector"), for: .normal)
-        copyButtonEveHide.addTarget(self, action: #selector(setupTextFieldIsHiddenPassword), for: .touchUpInside)
         view.addSubview(copyButtonEveHide)
 
         copyButtonLogin = UIButton(frame: CGRect(x: 20, y: 671, width: 335, height: 44))
-        copyButtonLogin.backgroundColor = UIColor(red: 233 / 255, green: 70 / 255, blue: 94 / 255, alpha: 1)
-        copyButtonLogin.isEnabled = false
-        // copyButtonLogin.isHidden =
+        copyButtonLogin.backgroundColor = UIColor(red: 233 / 255, green: 70 / 255, blue: 94 / 255, alpha: 0.4)
         copyButtonLogin.setTitle("Login", for: .normal)
         copyButtonLogin.layer.cornerRadius = 12
+        copyButtonLogin.addTarget(self, action: #selector(goToNewScreen), for: .touchUpInside)
         view.addSubview(copyButtonLogin)
     }
 
-    // MARK: Method Private
+    @objc private func putDataIntoSwitch() {
+        let data = Data()
+        textFieldEmail.text = data.email
+        copyTextFieldPassword.text = data.password
 
-    @objc private func setupTextFieldIsHiddenPassword() {
-        copyTextFieldPassword.isHidden = false
+        if let email = textFieldEmail.text, let password = copyTextFieldPassword.text, !email.isEmpty,
+           !password.isEmpty
+        {
+            copyButtonLogin.alpha = 1.0
+            copyButtonLogin.isEnabled = true
+            copyButtonLogin.backgroundColor = UIColor(red: 233 / 255, green: 70 / 255, blue: 94 / 255, alpha: 1.0)
+        } else {
+            copyButtonLogin.alpha = 0.4
+            copyButtonLogin.isEnabled = false
+            copyButtonLogin.backgroundColor = UIColor(red: 233 / 255, green: 70 / 255, blue: 94 / 255, alpha: 0.4)
+        }
     }
-
-    // MARK: Method Private
 
     private func setupTextFieldEmail() {
         textFieldEmail = UITextField(frame: CGRect(x: 20, y: 347, width: 175, height: 17))
         textFieldEmail.placeholder = "Typing email"
         textFieldEmail.font = UIFont.systemFont(ofSize: 16)
-
+        textFieldEmail.addTarget(self, action: #selector(putDataIntoSwitch), for: .editingChanged)
         view.addSubview(textFieldEmail)
     }
-
-    // MARK: Method Private
 
     private func setupTextFieldPassword() {
         copyTextFieldPassword = UITextField(frame: CGRect(x: 20, y: 422, width: 129, height: 17))
         copyTextFieldPassword.placeholder = "Typing password"
-        copyTextFieldPassword.isSecureTextEntry = true
         copyTextFieldPassword.font = UIFont.systemFont(ofSize: 16)
+        copyTextFieldPassword.addTarget(self, action: #selector(putDataIntoSwitch), for: .editingChanged)
         view.addSubview(copyTextFieldPassword)
+    }
+
+    @objc private func goToNewScreen() {
+        let copyBirthdayInformation = BirthdayInformation()
+        navigationController?.pushViewController(copyBirthdayInformation, animated: true)
     }
 }
