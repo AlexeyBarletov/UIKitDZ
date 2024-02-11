@@ -3,9 +3,15 @@
 
 import UIKit
 
-class InformationScreen: UIViewController {
+protocol DataDelegate: AnyObject {
+    func tranlition(name: String, dataDay: String, image: UIImage)
+}
+
+class InformationScreen:
+    UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate
+{
     var copyImageView = UIImageView()
-    var copyImage = UIImage(named: "ellipse")
+    var copyImage = UIImage(named: "my")
     var copyLabel = UILabel()
     let nameFont = "Verdana"
     var copyLabelName = UILabel()
@@ -29,6 +35,13 @@ class InformationScreen: UIViewController {
     var buttonCancel = UIButton(type: .custom)
     var buttonAdd = UIButton(type: .custom)
 
+    var dataDelegate: DataDelegate?
+
+    var pikerViewBrithday = UIDatePicker()
+    var pikerViewAge = UIPickerView()
+    var pikerViewGender = UIPickerView()
+    var genders = ["Male", "Female"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -39,6 +52,9 @@ class InformationScreen: UIViewController {
         setupView()
         setupView()
         setupButton()
+        setupPikerView()
+        setupPikerViewGender()
+        settupPikerViewAge()
     }
 
     func setupImageView() {
@@ -64,44 +80,44 @@ class InformationScreen: UIViewController {
         copyLabelName.shadowOffset = CGSize(width: 1, height: 1)
         if let customFont = UIFont(name: nameFont, size: 16) {
             copyLabelName.font = customFont
-            view.addSubview(copyLabelName)
-
-            copyLabelBrithday = UILabel(frame: CGRect(x: 20, y: 314, width: 175, height: 19))
-            copyLabelBrithday.text = "Brithday"
-            copyLabelBrithday.shadowColor = .black
-            copyLabelBrithday.shadowOffset = CGSize(width: 1, height: 1)
-            if let customFont = UIFont(name: nameFont, size: 16) {
-                copyLabelBrithday.font = customFont
-                view.addSubview(copyLabelBrithday)
-
-                copyLabelAge = UILabel(frame: CGRect(x: 20, y: 389, width: 175, height: 19))
-                copyLabelAge.text = "Age"
-                copyLabelAge.shadowColor = .black
-                copyLabelAge.shadowOffset = CGSize(width: 1, height: 1)
-                if let customFont = UIFont(name: nameFont, size: 16) {
-                    copyLabelAge.font = customFont
-                    view.addSubview(copyLabelAge)
-
-                    copyLabelGender = UILabel(frame: CGRect(x: 20, y: 462, width: 175, height: 19))
-                    copyLabelGender.text = "Gender"
-                    copyLabelGender.shadowColor = .black
-                    copyLabelGender.shadowOffset = CGSize(width: 1, height: 1)
-                    if let customFont = UIFont(name: nameFont, size: 16) {
-                        copyLabelGender.font = customFont
-                        view.addSubview(copyLabelGender)
-
-                        copylabelTelegramm = UILabel(frame: CGRect(x: 20, y: 537, width: 175, height: 19))
-                        copylabelTelegramm.text = "Telegramm"
-                        copylabelTelegramm.shadowColor = .black
-                        copylabelTelegramm.shadowOffset = CGSize(width: 1, height: 1)
-                        if let customFont = UIFont(name: nameFont, size: 16) {
-                            copylabelTelegramm.font = customFont
-                            view.addSubview(copylabelTelegramm)
-                        }
-                    }
-                }
-            }
         }
+        view.addSubview(copyLabelName)
+
+        copyLabelBrithday = UILabel(frame: CGRect(x: 20, y: 314, width: 175, height: 19))
+        copyLabelBrithday.text = "Brithday"
+        copyLabelBrithday.shadowColor = .black
+        copyLabelBrithday.shadowOffset = CGSize(width: 1, height: 1)
+        if let customFont = UIFont(name: nameFont, size: 16) {
+            copyLabelBrithday.font = customFont
+        }
+        view.addSubview(copyLabelBrithday)
+
+        copyLabelAge = UILabel(frame: CGRect(x: 20, y: 389, width: 175, height: 19))
+        copyLabelAge.text = "Age"
+        copyLabelAge.shadowColor = .black
+        copyLabelAge.shadowOffset = CGSize(width: 1, height: 1)
+        if let customFont = UIFont(name: nameFont, size: 16) {
+            copyLabelAge.font = customFont
+        }
+        view.addSubview(copyLabelAge)
+
+        copyLabelGender = UILabel(frame: CGRect(x: 20, y: 462, width: 175, height: 19))
+        copyLabelGender.text = "Gender"
+        copyLabelGender.shadowColor = .black
+        copyLabelGender.shadowOffset = CGSize(width: 1, height: 1)
+        if let customFont = UIFont(name: nameFont, size: 16) {
+            copyLabelGender.font = customFont
+        }
+        view.addSubview(copyLabelGender)
+
+        copylabelTelegramm = UILabel(frame: CGRect(x: 20, y: 537, width: 175, height: 19))
+        copylabelTelegramm.text = "Telegramm"
+        copylabelTelegramm.shadowColor = .black
+        copylabelTelegramm.shadowOffset = CGSize(width: 1, height: 1)
+        if let customFont = UIFont(name: nameFont, size: 16) {
+            copylabelTelegramm.font = customFont
+        }
+        view.addSubview(copylabelTelegramm)
     }
 
     func setupTextField() {
@@ -152,11 +168,151 @@ class InformationScreen: UIViewController {
         buttonAdd = UIButton(frame: CGRect(x: 325, y: 15, width: 30, height: 20))
         buttonAdd.setImage(UIImage(named: "add"), for: .normal)
         buttonAdd.imageView?.contentMode = .scaleAspectFit
+        buttonAdd.addTarget(self, action: #selector(transferInfo), for: .touchUpInside)
         view.addSubview(buttonAdd)
 
         buttonCancel = UIButton(frame: CGRect(x: 15, y: 20, width: 50, height: 20))
         buttonCancel.setImage(UIImage(named: "cancel"), for: .normal)
         buttonCancel.imageView?.contentMode = .scaleAspectFit
         view.addSubview(buttonCancel)
+    }
+
+    @objc func transferInfo() {
+        dataDelegate?.tranlition(
+            name: copyTextFieldBrithday.text ?? "",
+            dataDay: copyTextFieldName.text ?? "", image: copyImageView.image ?? UIImage()
+        )
+        dismiss(animated: true, completion: nil)
+    }
+
+    func setupPikerView() {
+        pikerViewBrithday = UIDatePicker(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        pikerViewBrithday.preferredDatePickerStyle = .wheels
+        pikerViewBrithday.datePickerMode = .date
+        copyTextFieldBrithday.inputView = pikerViewBrithday
+
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 44))
+        let tabBarItemOne = UIBarButtonItem(
+            title: "сохранить",
+            style: .done,
+            target: nil,
+            action: #selector(textFieldSetting)
+        )
+
+        let tabBarItemSisytem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolBar.setItems([tabBarItemOne, tabBarItemSisytem], animated: true)
+
+        copyTextFieldBrithday.inputAccessoryView = toolBar
+        copyTextFieldBrithday.delegate = self
+    }
+
+    @objc func textFieldSetting() {
+        copyTextFieldBrithday.resignFirstResponder()
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == copyTextFieldBrithday {
+            let dateFormater = DateFormatter()
+            dateFormater.dateFormat = "dd.MM.yyyy"
+            textField.text = dateFormater.string(from: pikerViewBrithday.date)
+        }
+    }
+
+    func settupPikerViewAge() {
+        pikerViewAge = UIPickerView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        pikerViewAge.center = view.center
+        pikerViewAge.delegate = self
+        pikerViewAge.dataSource = self
+        copyTextFieldAge.inputView = pikerViewAge
+        pikerViewAge.tag = 0
+
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 44))
+        let tabBarItemOne = UIBarButtonItem(
+            title: "сохранить",
+            style: .done,
+            target: nil,
+            action: #selector(textFieldAge)
+        )
+
+        let tabBarItemSisytem = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil
+        )
+        toolBar.setItems([tabBarItemOne, tabBarItemSisytem], animated: true)
+
+        copyTextFieldAge.inputAccessoryView = toolBar
+        copyTextFieldAge.delegate = self
+    }
+
+    @objc func textFieldAge() {
+        copyTextFieldAge.resignFirstResponder()
+    }
+
+    func setupPikerViewGender() {
+        pikerViewGender = UIPickerView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        pikerViewGender.center = view.center
+        pikerViewGender.delegate = self
+        pikerViewGender.dataSource = self
+        copyTextFieldGender.inputView = pikerViewGender
+        pikerViewGender.tag = 1
+
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 44))
+        let tabBarItemOne = UIBarButtonItem(
+            title: "сохранить",
+            style: .done,
+            target: nil,
+            action: #selector(setupTextFieldGender)
+        )
+
+        let tabBarItemSisytem = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil
+        )
+        toolBar.setItems([tabBarItemOne, tabBarItemSisytem], animated: true)
+
+        copyTextFieldGender.inputAccessoryView = toolBar
+        copyTextFieldGender.delegate = self
+    }
+
+    @objc func setupTextFieldGender() {
+        copyTextFieldGender.resignFirstResponder()
+    }
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        switch pickerView.tag {
+        case 0:
+            return 50
+        case 1:
+            return genders.count
+        default:
+            return 1
+        }
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        switch pikerViewAge.tag {
+        case 0:
+            return "\(row)"
+        default:
+            break
+        }
+        return ""
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch pickerView.tag {
+        case 0:
+            copyTextFieldAge.text = "\(row)"
+        case 1:
+            copyTextFieldGender.text = genders[row]
+        default:
+            return
+        }
     }
 }

@@ -13,7 +13,6 @@
 		73464AE82B72A97300149FBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73464AE62B72A97300149FBF /* Main.storyboard */; };
 		73464AEA2B72A97400149FBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73464AE92B72A97400149FBF /* Assets.xcassets */; };
 		73464AED2B72A97400149FBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73464AEB2B72A97400149FBF /* LaunchScreen.storyboard */; };
-		73C9B1862B77EBC200D37499 /* DataPasswordEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C9B1852B77EBC200D37499 /* DataPasswordEmail.swift */; };
 		73C9B1882B78037900D37499 /* BirthdayInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C9B1872B78037900D37499 /* BirthdayInformation.swift */; };
 		73C9B18A2B7819FC00D37499 /* InformationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C9B1892B7819FC00D37499 /* InformationScreen.swift */; };
 /* End PBXBuildFile section */
@@ -27,7 +26,6 @@
 		73464AE92B72A97400149FBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73464AEC2B72A97400149FBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		73464AEE2B72A97400149FBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		73C9B1852B77EBC200D37499 /* DataPasswordEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPasswordEmail.swift; sourceTree = "<group>"; };
 		73C9B1872B78037900D37499 /* BirthdayInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayInformation.swift; sourceTree = "<group>"; };
 		73C9B1892B7819FC00D37499 /* InformationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,7 +65,6 @@
 				73464AE42B72A97300149FBF /* MainScreenViewController.swift */,
 				73C9B1872B78037900D37499 /* BirthdayInformation.swift */,
 				73C9B1892B7819FC00D37499 /* InformationScreen.swift */,
-				73C9B1852B77EBC200D37499 /* DataPasswordEmail.swift */,
 				73464AE62B72A97300149FBF /* Main.storyboard */,
 				73464AE92B72A97400149FBF /* Assets.xcassets */,
 				73464AEB2B72A97400149FBF /* LaunchScreen.storyboard */,
@@ -197,7 +194,6 @@
 				73C9B18A2B7819FC00D37499 /* InformationScreen.swift in Sources */,
 				73C9B1882B78037900D37499 /* BirthdayInformation.swift in Sources */,
 				73464AE32B72A97300149FBF /* SceneDelegate.swift in Sources */,
-				73C9B1862B77EBC200D37499 /* DataPasswordEmail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

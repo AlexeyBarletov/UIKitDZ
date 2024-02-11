@@ -9,9 +9,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo _: UISceneSession, options _: UIScene.ConnectionOptions) {
         // guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        let vc = MainScreenViewController()
+        let vcMainScreen = MainScreenViewController()
         let navigationController = UINavigationController()
-        navigationController.pushViewController(vc, animated: true)
+        navigationController.pushViewController(vcMainScreen, animated: true)
 
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
