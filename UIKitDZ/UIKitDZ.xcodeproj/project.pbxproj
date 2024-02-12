@@ -8,20 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		733C89382B7A488D002FC382 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733C89372B7A488D002FC382 /* Player.swift */; };
-		733C89432B7A84D7002FC382 /* Битлз - Let It Be.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 733C89422B7A84D7002FC382 /* Битлз - Let It Be.mp3 */; };
-		733C89452B7A8529002FC382 /* Queen - The Show Must Go On (Remastered 2011).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 733C89442B7A8528002FC382 /* Queen - The Show Must Go On (Remastered 2011).mp3 */; };
 		73464AE12B72A97300149FBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73464AE02B72A97300149FBF /* AppDelegate.swift */; };
 		73464AE32B72A97300149FBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73464AE22B72A97300149FBF /* SceneDelegate.swift */; };
 		73464AE52B72A97300149FBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73464AE42B72A97300149FBF /* ViewController.swift */; };
 		73464AE82B72A97300149FBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73464AE62B72A97300149FBF /* Main.storyboard */; };
 		73464AEA2B72A97400149FBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73464AE92B72A97400149FBF /* Assets.xcassets */; };
 		73464AED2B72A97400149FBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73464AEB2B72A97400149FBF /* LaunchScreen.storyboard */; };
+		73B337E72B7A9DF10002E29F /* The Show Must Go On.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 73B337E62B7A9DF10002E29F /* The Show Must Go On.mp3 */; };
+		73B337E92B7AA65F0002E29F /* Let it be.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 73B337E82B7AA65F0002E29F /* Let it be.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		733C89372B7A488D002FC382 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Player.swift; path = track/Player.swift; sourceTree = "<group>"; };
-		733C89422B7A84D7002FC382 /* Битлз - Let It Be.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Битлз - Let It Be.mp3"; sourceTree = "<group>"; };
-		733C89442B7A8528002FC382 /* Queen - The Show Must Go On (Remastered 2011).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Queen - The Show Must Go On (Remastered 2011).mp3"; sourceTree = "<group>"; };
 		73464ADD2B72A97300149FBF /* UIKitDZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitDZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73464AE02B72A97300149FBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73464AE22B72A97300149FBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +28,8 @@
 		73464AE92B72A97400149FBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73464AEC2B72A97400149FBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		73464AEE2B72A97400149FBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73B337E62B7A9DF10002E29F /* The Show Must Go On.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "The Show Must Go On.mp3"; sourceTree = "<group>"; };
+		73B337E82B7AA65F0002E29F /* Let it be.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Let it be.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,8 +46,8 @@
 		733C89392B7A4D17002FC382 /* track */ = {
 			isa = PBXGroup;
 			children = (
-				733C89442B7A8528002FC382 /* Queen - The Show Must Go On (Remastered 2011).mp3 */,
-				733C89422B7A84D7002FC382 /* Битлз - Let It Be.mp3 */,
+				73B337E82B7AA65F0002E29F /* Let it be.mp3 */,
+				73B337E62B7A9DF10002E29F /* The Show Must Go On.mp3 */,
 			);
 			path = track;
 			sourceTree = "<group>";
@@ -145,10 +145,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				73464AED2B72A97400149FBF /* LaunchScreen.storyboard in Resources */,
+				73B337E92B7AA65F0002E29F /* Let it be.mp3 in Resources */,
+				73B337E72B7A9DF10002E29F /* The Show Must Go On.mp3 in Resources */,
 				73464AEA2B72A97400149FBF /* Assets.xcassets in Resources */,
-				733C89432B7A84D7002FC382 /* Битлз - Let It Be.mp3 in Resources */,
 				73464AE82B72A97300149FBF /* Main.storyboard in Resources */,
-				733C89452B7A8529002FC382 /* Queen - The Show Must Go On (Remastered 2011).mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

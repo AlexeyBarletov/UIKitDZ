@@ -15,15 +15,15 @@ class Player: UIViewController {
     var buttomPlay = UIButton()
     var buttomRewindRight = UIButton()
     var buttomRewindLeft = UIButton()
-
+    var currentTrackIndex = 0
     var slider = UISlider()
     var sliderVolum: UISlider!
-
     var listTrack = [InfoTrack]()
-
     var nameTrackLabel = UILabel()
     var namePerformer = UILabel()
     var labelTimeTrack = UILabel()
+    var buttonClose = UIButton()
+    var buttonAiroplane = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,15 +47,15 @@ class Player: UIViewController {
     }
 
     func setupLabel() {
-        nameTrackLabel = UILabel(frame: CGRect(x: 115, y: 26, width: 250, height: 29))
-        nameTrackLabel.text = ""
+        nameTrackLabel.frame = CGRect(x: 115, y: 26, width: 250, height: 29)
         nameTrackLabel.textColor = UIColor(red: 255 / 255, green: 253 / 255, blue: 253 / 255, alpha: 1)
         nameTrackLabel.font = UIFont(name: "Verdana", size: 24)
         viewBackground.addSubview(nameTrackLabel)
 
-        namePerformer = UILabel(frame: CGRect(x: 115, y: 58, width: 250, height: 19))
+        namePerformer.frame = CGRect(x: 115, y: 58, width: 250, height: 19)
         namePerformer.textColor = UIColor(red: 255 / 255, green: 253 / 255, blue: 253 / 255, alpha: 1)
-        namePerformer.text = "aaa"
+        namePerformer.textAlignment = .left
+
         viewBackground.addSubview(namePerformer)
 
         labelTimeTrack = UILabel(frame: CGRect(x: 303, y: 128, width: 61, height: 21))
@@ -69,8 +69,11 @@ class Player: UIViewController {
     func setupSlider() {
         slider = UISlider(frame: CGRect(x: 20, y: 108, width: 265, height: 20))
         slider.minimumTrackTintColor = UIColor(red: 255 / 255, green: 253 / 255, blue: 253 / 255, alpha: 0.6)
+        slider.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        slider.layer.cornerRadius = 10
         slider.maximumValue = 0
         slider.maximumValue = 100
+
         timer = Timer.scheduledTimer(
             timeInterval: 1,
             target: self,
@@ -83,10 +86,14 @@ class Player: UIViewController {
         viewBackground.addSubview(slider)
 
         sliderVolum = UISlider(frame: CGRect(x: 14, y: 210, width: 100, height: 8))
+        sliderVolum.tintColor = UIColor(red: 255 / 255, green: 253 / 255, blue: 253 / 255, alpha: 0.6)
         sliderVolum.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi / 2.0))
         sliderVolum.minimumValue = 0
         sliderVolum.maximumValue = 100
         sliderVolum.value = 50
+        sliderVolum.layer.cornerRadius = 10
+        sliderVolum.clipsToBounds = true
+
         sliderVolum.addTarget(self, action: #selector(volumeChanged), for: .valueChanged)
         view.addSubview(sliderVolum)
     }
@@ -110,11 +117,51 @@ class Player: UIViewController {
 
         buttomRewindRight = UIButton(frame: CGRect(x: 231, y: 162, width: 24, height: 24))
         buttomRewindRight.setImage(UIImage(named: "right"), for: .normal)
+        buttomRewindRight.addTarget(self, action: #selector(nextTrack), for: .touchUpInside)
         viewBackground.addSubview(buttomRewindRight)
 
         buttomRewindLeft = UIButton(frame: CGRect(x: 120, y: 162, width: 24, height: 24))
         buttomRewindLeft.setImage(UIImage(named: "left"), for: .normal)
+        buttomRewindLeft.addTarget(self, action: #selector(previousTrack), for: .touchUpInside)
         viewBackground.addSubview(buttomRewindLeft)
+
+        buttonClose = UIButton(frame: CGRect(x: 24, y: 24, width: 14, height: 14))
+        buttonClose.setImage(UIImage(named: "close"), for: .normal)
+        buttonClose.addTarget(self, action: #selector(closeWindow), for: .touchUpInside)
+        view.addSubview(buttonClose)
+
+        buttonAiroplane = UIButton(frame: CGRect(x: 338, y: 22, width: 21, height: 18))
+        buttonAiroplane.setImage(UIImage(named: "airoplane"), for: .normal)
+        view.addSubview(buttonAiroplane)
+    }
+
+    @objc func closeWindow() {
+        dismiss(animated: true)
+    }
+
+    @objc func nextTrack() {
+        currentTrackIndex += 1
+        if currentTrackIndex >= listTrack.count {
+            currentTrackIndex = 0
+        }
+        setupPlayer()
+    }
+
+    @objc func previousTrack() {
+        currentTrackIndex -= 1
+        if currentTrackIndex < 0 {
+            currentTrackIndex = listTrack.count - 1
+        }
+        updateTrackInfo()
+        setupPlayer()
+    }
+
+    func updateTrackInfo() {
+        let currentTrack = listTrack[currentTrackIndex]
+        nameTrackLabel.text = currentTrack.nameTrack
+        namePerformer.text = currentTrack.nameExecutor
+        imageAlbum = UIImage(named: currentTrack.nameImage)
+        imageViewAlbum.image = imageAlbum
     }
 
     @objc func setupPlay(sender: UIButton) {
@@ -142,19 +189,23 @@ class Player: UIViewController {
 
     func setupPlayer() {
         do {
-            if let audio = Bundle.main.path(forResource: listTrack[0].nameTrack, ofType: "mp3") {
+            let currentTrack = listTrack[currentTrackIndex]
+            if let audio = Bundle.main.path(forResource: currentTrack.nameTrack, ofType: "mp3") {
                 try audioPlayerOne = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audio))
                 slider.maximumValue = Float(audioPlayerOne.duration)
             }
         } catch {
-            printContent("Error")
+            print("Error")
         }
+        updateTrackInfo()
         audioPlayerOne.play()
     }
 
     func configCell(albom: [InfoTrack]) {
         listTrack = albom
         imageAlbum = UIImage(named: albom[0].nameImage)
-        namePerformer.text = albom[0].nameTrack
+        nameTrackLabel.text = albom[0].nameTrack
+        namePerformer.text = albom[0].nameExecutor
+        currentTrackIndex = 0
     }
 }
