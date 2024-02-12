@@ -55,6 +55,7 @@ class InformationScreen:
         setupPikerView()
         setupPikerViewGender()
         settupPikerViewAge()
+        setupCopyTextFieldTelegram()
     }
 
     func setupImageView() {
@@ -136,10 +137,31 @@ class InformationScreen:
         copyTextFieldGender = UITextField(frame: CGRect(x: 20, y: 491, width: 250, height: 17))
         copyTextFieldGender.placeholder = "Indicate Gender"
         view.addSubview(copyTextFieldGender)
+    }
 
+    func setupCopyTextFieldTelegram() {
         copyTextFieldTelegram = UITextField(frame: CGRect(x: 20, y: 566, width: 250, height: 17))
         copyTextFieldTelegram.placeholder = "Typing Telegram"
+        copyTextFieldTelegram.delegate = self
         view.addSubview(copyTextFieldTelegram)
+    }
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == copyTextFieldTelegram {
+            let alertController = UIAlertController(
+                title: "Please enter Telegram",
+                message: nil,
+                preferredStyle: .alert
+            )
+            let actionCancel = UIAlertAction(title: "Cancel", style: .cancel)
+            let actionOk = UIAlertAction(title: "OK", style: .default)
+            alertController.addAction(actionCancel)
+            alertController.addAction(actionOk)
+            alertController.addTextField { textField in
+                textField.placeholder = "Typing Telegram"
+            }
+            present(alertController, animated: true)
+        }
     }
 
     func setupView() {
