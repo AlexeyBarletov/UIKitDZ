@@ -1,9 +1,10 @@
-// ViewController.swift
+// Tracklist.swift
 // Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
-class ViewController: UIViewController {
+/// класс
+class Tracklist: UIViewController {
     var labelPlayList = UILabel()
     var nameLabelTheBeatles = UILabel()
     var nameTraсkLabel = UILabel()
@@ -11,20 +12,18 @@ class ViewController: UIViewController {
     var nameLabelTheQueen = UILabel()
     var nameTrackQueen = UILabel()
     var labelTimeTrackQueen = UILabel()
-
     var imageViewCoverOne = UIImageView()
     var imageCoverOne = UIImage(named: "image")
-
     var imageViewCoverNumberTwo = UIImageView()
     var imageCoverNumberTwo = UIImage(named: "image2")
-
     var viewLine = UIView()
     var viewLineThree = UIView()
-
     var buttonTranslitionOne = UIButton()
     var buttonTranslitionTwo = UIButton()
-
     var nameFont = "Verdana"
+
+    // MARK: Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -33,9 +32,9 @@ class ViewController: UIViewController {
         translitionScreenPlayerOne()
     }
 
-    // MARK: Private Func
+    // MARK: Privates Methods
 
-    func setupView() {
+    private func setupView() {
         view.backgroundColor = UIColor(red: 72 / 255, green: 57 / 255, blue: 113 / 255, alpha: 1)
 
         viewLine = UIView(frame: CGRect(x: 20, y: 183, width: 335, height: 1))
@@ -47,9 +46,9 @@ class ViewController: UIViewController {
         view.addSubview(viewLineThree)
     }
 
-    // MARK: Private Func
+    // MARK: Privates Methods
 
-    func setupLabel() {
+    private func setupLabel() {
         labelPlayList = UILabel(frame: CGRect(x: 100, y: 47, width: 175, height: 22))
         labelPlayList.text = "Playlist"
         labelPlayList.font = UIFont(name: nameFont, size: 18)
@@ -100,9 +99,9 @@ class ViewController: UIViewController {
         view.addSubview(labelTimeTrackQueen)
     }
 
-    // MARK: Private Method
+    // MARK: Privates Methods
 
-    func setupImageCover() {
+    private func setupImageCover() {
         imageViewCoverOne = UIImageView(frame: CGRect(x: 20, y: 100, width: 75, height: 75))
         imageViewCoverOne.image = imageCoverOne
         view.addSubview(imageViewCoverOne)
@@ -112,9 +111,9 @@ class ViewController: UIViewController {
         view.addSubview(imageViewCoverNumberTwo)
     }
 
-    // MARK: Переход на след экран с плеером
+    // MARK: Privates Methods
 
-    func translitionScreenPlayerOne() {
+    private func translitionScreenPlayerOne() {
         buttonTranslitionOne = UIButton(frame: CGRect(x: 20, y: 90, width: 350, height: 85))
         buttonTranslitionOne.addTarget(self, action: #selector(goScreenOne), for: .touchUpInside)
         view.addSubview(buttonTranslitionOne)
@@ -124,7 +123,9 @@ class ViewController: UIViewController {
         view.addSubview(buttonTranslitionTwo)
     }
 
-    @objc func goScreenOne() {
+    // MARK: Privates Methods
+
+    @objc private func goScreenOne() {
         let storyBoardOne = UIStoryboard(name: "Main", bundle: nil)
         guard let player = storyBoardOne.instantiateViewController(identifier: "Player") as? Player else { return }
         player.configCell(albom: [
@@ -134,7 +135,9 @@ class ViewController: UIViewController {
         present(player, animated: true)
     }
 
-    @objc func storyBoardTwo() {
+    // MARK: Privates Methods
+
+    @objc private func storyBoardTwo() {
         let storyBoardTwo = UIStoryboard(name: "Main", bundle: nil)
         guard let player = storyBoardTwo.instantiateViewController(identifier: "Player") as? Player else { return }
         player.configCell(albom: [
@@ -145,6 +148,7 @@ class ViewController: UIViewController {
     }
 }
 
+/// для передачи информации
 struct InfoTrack {
     var nameTrack: String
     var nameImage: String

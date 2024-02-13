@@ -4,6 +4,7 @@
 import AVFoundation
 import UIKit
 
+/// класс
 class Player: UIViewController {
     var imageViewBackground = UIImageView()
     var imageBackground = UIImage(named: "image4")
@@ -25,6 +26,8 @@ class Player: UIViewController {
     var buttonClose = UIButton()
     var buttonAiroplane = UIButton()
 
+    // MARK: Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -37,7 +40,19 @@ class Player: UIViewController {
         setupImage()
     }
 
-    func setupImage() {
+    // MARK: Public Methods
+
+    public func configCell(albom: [InfoTrack]) {
+        listTrack = albom
+        imageAlbum = UIImage(named: albom[0].nameImage)
+        nameTrackLabel.text = albom[0].nameTrack
+        namePerformer.text = albom[0].nameExecutor
+        currentTrackIndex = 0
+    }
+
+    // MARK: Privates Methods
+
+    private func setupImage() {
         imageViewAlbum = UIImageView(frame: CGRect(x: 20, y: 14, width: 75, height: 75))
         imageViewAlbum.image = imageAlbum
         imageViewAlbum.layer.cornerRadius = imageViewAlbum.frame.size.width / 2
@@ -46,7 +61,9 @@ class Player: UIViewController {
         viewBackground.addSubview(imageViewAlbum)
     }
 
-    func setupLabel() {
+    // MARK: Privates Methods
+
+    private func setupLabel() {
         nameTrackLabel.frame = CGRect(x: 115, y: 26, width: 250, height: 29)
         nameTrackLabel.textColor = UIColor(red: 255 / 255, green: 253 / 255, blue: 253 / 255, alpha: 1)
         nameTrackLabel.font = UIFont(name: "Verdana", size: 24)
@@ -66,7 +83,9 @@ class Player: UIViewController {
         viewBackground.addSubview(labelTimeTrack)
     }
 
-    func setupSlider() {
+    // MARK: Privates Methods
+
+    private func setupSlider() {
         slider = UISlider(frame: CGRect(x: 20, y: 108, width: 265, height: 20))
         slider.minimumTrackTintColor = UIColor(red: 255 / 255, green: 253 / 255, blue: 253 / 255, alpha: 0.6)
         slider.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
@@ -98,18 +117,24 @@ class Player: UIViewController {
         view.addSubview(sliderVolum)
     }
 
-    @objc func settupSlaiderTimer() {
+    // MARK: Privates Methods
+
+    @objc private func settupSlaiderTimer() {
         slider.value = Float(audioPlayerOne.currentTime)
         let minutes = Int(audioPlayerOne.currentTime) / 60
         let second = Int(audioPlayerOne.currentTime) % 60
         labelTimeTrack.text = String(format: "%02d:%02d", minutes, second)
     }
 
-    @objc func volumeChanged() {
+    // MARK: Privates Methods
+
+    @objc private func volumeChanged() {
         audioPlayerOne.volume = sliderVolum.value
     }
 
-    func setupButton() {
+    // MARK: Privates Methods
+
+    private func setupButton() {
         buttomPlay = UIButton(frame: CGRect(x: 164, y: 150, width: 45, height: 45))
         buttomPlay.setImage(UIImage(named: "play"), for: .normal)
         buttomPlay.addTarget(self, action: #selector(setupPlay), for: .touchUpInside)
@@ -135,11 +160,15 @@ class Player: UIViewController {
         view.addSubview(buttonAiroplane)
     }
 
-    @objc func closeWindow() {
+    // MARK: Privates Methods
+
+    @objc private func closeWindow() {
         dismiss(animated: true)
     }
 
-    @objc func nextTrack() {
+    // MARK: Privates Methods
+
+    @objc private func nextTrack() {
         currentTrackIndex += 1
         if currentTrackIndex >= listTrack.count {
             currentTrackIndex = 0
@@ -147,7 +176,9 @@ class Player: UIViewController {
         setupPlayer()
     }
 
-    @objc func previousTrack() {
+    // MARK: Privates Methods
+
+    @objc private func previousTrack() {
         currentTrackIndex -= 1
         if currentTrackIndex < 0 {
             currentTrackIndex = listTrack.count - 1
@@ -156,7 +187,9 @@ class Player: UIViewController {
         setupPlayer()
     }
 
-    func updateTrackInfo() {
+    // MARK: Privates Methods
+
+    private func updateTrackInfo() {
         let currentTrack = listTrack[currentTrackIndex]
         nameTrackLabel.text = currentTrack.nameTrack
         namePerformer.text = currentTrack.nameExecutor
@@ -164,7 +197,9 @@ class Player: UIViewController {
         imageViewAlbum.image = imageAlbum
     }
 
-    @objc func setupPlay(sender: UIButton) {
+    // MARK: Privates Methods
+
+    @objc private func setupPlay(sender: UIButton) {
         if audioPlayerOne.isPlaying == true {
             audioPlayerOne.pause()
             buttomPlay.setImage(UIImage(named: "play"), for: .normal)
@@ -174,20 +209,26 @@ class Player: UIViewController {
         }
     }
 
-    func setupImageBackground() {
+    // MARK: Privates Methods
+
+    private func setupImageBackground() {
         imageViewBackground = UIImageView(frame: view.bounds)
         imageViewBackground.image = imageBackground
         imageViewBackground.contentMode = .scaleAspectFill
         view.addSubview(imageViewBackground)
     }
 
-    func setupView() {
+    // MARK: Privates Methods
+
+    private func setupView() {
         viewBackground = UIView(frame: CGRect(x: 0, y: 500, width: 389, height: 291))
         viewBackground.backgroundColor = UIColor(red: 104 / 255, green: 51 / 255, blue: 201 / 255, alpha: 0.7)
         view.addSubview(viewBackground)
     }
 
-    func setupPlayer() {
+    // MARK: Privates Methods
+
+    private func setupPlayer() {
         do {
             let currentTrack = listTrack[currentTrackIndex]
             if let audio = Bundle.main.path(forResource: currentTrack.nameTrack, ofType: "mp3") {
@@ -199,13 +240,5 @@ class Player: UIViewController {
         }
         updateTrackInfo()
         audioPlayerOne.play()
-    }
-
-    func configCell(albom: [InfoTrack]) {
-        listTrack = albom
-        imageAlbum = UIImage(named: albom[0].nameImage)
-        nameTrackLabel.text = albom[0].nameTrack
-        namePerformer.text = albom[0].nameExecutor
-        currentTrackIndex = 0
     }
 }
