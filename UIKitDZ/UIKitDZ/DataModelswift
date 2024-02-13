@@ -1,0 +1,13 @@
+//
+//  data.swift
+//  UIKitDZ
+//
+//  Created by Алексей Барлетов on 10.02.2024.
+//
+
+import Foundation
+
+struct Data {
+    var email: String
+    var password: String
+}
