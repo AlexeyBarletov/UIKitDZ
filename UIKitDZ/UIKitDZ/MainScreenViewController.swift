@@ -32,6 +32,19 @@ final class MainScreenViewController: UIViewController, UITextFieldDelegate {
         setupButton()
         setupTextFieldPassword()
         setupSwitch()
+        setupLineView()
+    }
+
+    // MARK: Private Methods
+
+    private func setupLineView() {
+        copyViewlineTextField = UIView(frame: CGRect(x: 20, y: 372, width: 335, height: 1))
+        copyViewlineTextField.backgroundColor = UIColor(red: 208 / 255, green: 214 / 255, blue: 220 / 255, alpha: 1)
+        view.addSubview(copyViewlineTextField)
+
+        copyViewlineTextPassword = UIView(frame: CGRect(x: 20, y: 448, width: 335, height: 1))
+        copyViewlineTextPassword.backgroundColor = UIColor(red: 208 / 255, green: 214 / 255, blue: 220 / 255, alpha: 1)
+        view.addSubview(copyViewlineTextPassword)
     }
 
     // MARK: Private Methods
@@ -101,7 +114,7 @@ final class MainScreenViewController: UIViewController, UITextFieldDelegate {
     }
 
     // MARK: Private Methods
-    
+
     @objc private func switchChanged(_ sender: UISwitch) {
         copyButtonLogin.isEnabled = sender.isOn
         if sender.isOn {
@@ -170,5 +183,3 @@ final class MainScreenViewController: UIViewController, UITextFieldDelegate {
         copyTextFieldPassword.isSecureTextEntry = !sender.isSelected
     }
 }
-
-
