@@ -56,7 +56,7 @@ class Tracklist: UIViewController {
         labelPlayList.textColor = UIColor(red: 255 / 255, green: 253 / 255, blue: 253 / 255, alpha: 1)
         view.addSubview(labelPlayList)
 
-        nameLabelTheBeatles = UILabel(frame: CGRect(x: 103, y: 112, width: 175, height: 19))
+        nameLabelTheBeatles = UILabel(frame: CGRect(x: 102, y: 112, width: 175, height: 19))
         nameLabelTheBeatles.text = "The Beatles"
         nameLabelTheBeatles.font = UIFont(name: nameFont, size: 18)
         nameLabelTheBeatles.textAlignment = .left
