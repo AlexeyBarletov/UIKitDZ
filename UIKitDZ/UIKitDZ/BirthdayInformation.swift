@@ -4,7 +4,7 @@
 import UIKit
 
 /// класс
-class BirthdayInformation: UIViewController {
+final class BirthdayInformation: UIViewController {
     var copyLabel = UILabel()
 
     var copyImageViewHelena = UIImageView()
@@ -39,6 +39,8 @@ class BirthdayInformation: UIViewController {
     var labelBirthDayAlex = UILabel()
     var labelBirthDayTomas = UILabel()
 
+    // MARK: Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -50,7 +52,20 @@ class BirthdayInformation: UIViewController {
         settingLabelDateOfBirth()
     }
 
-    func settingLabelDateOfBirth() {
+    // MARK: Visual Components
+
+    func setupBarButtonItem() {
+        navigationItem.title = copyLabel.text
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(moveForvard)
+        )
+    }
+
+    // MARK: Private Methods
+
+    private func settingLabelDateOfBirth() {
         labelBirthDayHelena = UILabel(frame: CGRect(x: 102, y: 147, width: 209, height: 20))
         labelBirthDayHelena.text = "10.03 - turns 25"
         if let customFont = UIFont(name: fontName, size: 14) {
@@ -77,7 +92,9 @@ class BirthdayInformation: UIViewController {
         }
     }
 
-    func setupMyInfo() {
+    // MARK: Private Methods
+
+    private func setupMyInfo() {
         myName = UILabel(frame: CGRect(x: 105, y: 499, width: 209, height: 20))
         myName.text = ""
         myName.shadowColor = .black
@@ -99,23 +116,18 @@ class BirthdayInformation: UIViewController {
         }
     }
 
-    func setupBarButtonItem() {
-        navigationItem.title = copyLabel.text
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(moveForvard)
-        )
-    }
+    // MARK: Private Methods
 
-    @objc func moveForvard() {
+    @objc private func moveForvard() {
         let modalViewController = InformationScreen()
         modalViewController.dataDelegate = self
         modalViewController.modalPresentationStyle = .automatic
         present(modalViewController, animated: true, completion: nil)
     }
 
-    func setupLabelNameLastName() {
+    // MARK: Private Methods
+
+    private func setupLabelNameLastName() {
         nameLabelVerona = UILabel(frame: CGRect(x: 102, y: 119, width: 209, height: 20))
         nameLabelVerona.text = "Helena Link"
         nameLabelVerona.shadowColor = .black
@@ -152,6 +164,8 @@ class BirthdayInformation: UIViewController {
         }
         view.addSubview(nameLabelTom)
     }
+
+    // MARK: Private Methods
 
     private func setuplLabel() {
         copyLabel.text = "Brithday Reminder"
@@ -194,7 +208,9 @@ class BirthdayInformation: UIViewController {
         view.addSubview(labelAgeAlex)
     }
 
-    func setupImageView() {
+    // MARK: Private Methods
+
+    private func setupImageView() {
         copyImageViewHelena = UIImageView(frame: CGRect(x: 19, y: 105, width: 75, height: 75))
         copyImageViewHelena.image = imageHelena
         view.addSubview(copyImageViewHelena)
@@ -217,6 +233,7 @@ class BirthdayInformation: UIViewController {
     }
 }
 
+/// расширение для передачи информации
 extension BirthdayInformation: DataDelegate {
     func tranlition(name: String, dataDay: String, image: UIImage) {
         nameLabelAlexey.text = name

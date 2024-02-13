@@ -3,7 +3,8 @@
 
 import UIKit
 
-class MainScreenViewController: UIViewController, UITextFieldDelegate {
+/// классс
+final class MainScreenViewController: UIViewController, UITextFieldDelegate {
     var copyImageView = UIImageView()
     var copyLabel = UILabel()
     var copyLabelEmail = UILabel()
@@ -25,14 +26,6 @@ class MainScreenViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        addViewDidLoad()
-        textFieldEmail.delegate = self
-        copyTextFieldPassword.delegate = self
-    }
-
-    // MARK: Method Private
-
-    private func addViewDidLoad() {
         setupImageView()
         setupILabelView()
         setupTextFieldEmail()
@@ -41,7 +34,7 @@ class MainScreenViewController: UIViewController, UITextFieldDelegate {
         setupSwitch()
     }
 
-    // MARK: Method Private
+    // MARK: Private Methods
 
     private func setupImageView() {
         copyImageView = UIImageView(frame: CGRect(x: 125, y: 70, width: 125, height: 125))
@@ -49,7 +42,7 @@ class MainScreenViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(copyImageView)
     }
 
-    // MARK: Method Private
+    // MARK: Private Methods
 
     private func setupILabelView() {
         copyLabel = UILabel(frame: CGRect(x: 100, y: 200, width: 175, height: 44))
@@ -99,7 +92,7 @@ class MainScreenViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(labelUserFaiceId)
     }
 
-    // MARK: Method Private
+    // MARK: Private Methods
 
     private func setupSwitch() {
         copySwitch = UISwitch(frame: CGRect(x: 270, y: 546, width: 0, height: 0))
@@ -107,7 +100,9 @@ class MainScreenViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(copySwitch)
     }
 
-    @objc func switchChanged(_ sender: UISwitch) {
+    // MARK: Private Methods
+    
+    @objc private func switchChanged(_ sender: UISwitch) {
         copyButtonLogin.isEnabled = sender.isOn
         if sender.isOn {
             copyButtonLogin.backgroundColor = UIColor(red: 233 / 255, green: 70 / 255, blue: 94 / 255, alpha: 1)
@@ -115,6 +110,8 @@ class MainScreenViewController: UIViewController, UITextFieldDelegate {
             copyButtonLogin.backgroundColor = UIColor(red: 233 / 255, green: 70 / 255, blue: 94 / 255, alpha: 0.4)
         }
     }
+
+    // MARK: Private Methods
 
     private func setupButton() {
         copyButtonEveHide = UIButton(frame: CGRect(x: 332, y: 419, width: 22, height: 19))
@@ -131,33 +128,47 @@ class MainScreenViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(copyButtonLogin)
     }
 
+    // MARK: Private Methods
+
     private func setupTextFieldEmail() {
         textFieldEmail = UITextField(frame: CGRect(x: 20, y: 347, width: 175, height: 17))
         textFieldEmail.placeholder = "Typing email"
         textFieldEmail.font = UIFont.systemFont(ofSize: 16)
+        textFieldEmail.delegate = self
         view.addSubview(textFieldEmail)
     }
+
+    // MARK: Private Methods
 
     private func setupTextFieldPassword() {
         copyTextFieldPassword = UITextField(frame: CGRect(x: 20, y: 422, width: 129, height: 17))
         copyTextFieldPassword.placeholder = "Typing password"
         copyTextFieldPassword.font = UIFont.systemFont(ofSize: 16)
         copyTextFieldPassword.isSecureTextEntry = true
+        copyTextFieldPassword.delegate = self
         copyTextFieldPassword.addTarget(self, action: #selector(hideKeyboard), for: .editingDidEndOnExit)
         view.addSubview(copyTextFieldPassword)
     }
 
+    // MARK: Private Methods
+
     @objc private func hideKeyboard() {
         copyTextFieldPassword.resignFirstResponder()
     }
+
+    // MARK: Private Methods
 
     @objc private func goToNewScreen() {
         let copyBirthdayInformation = BirthdayInformation()
         navigationController?.pushViewController(copyBirthdayInformation, animated: true)
     }
 
+    // MARK: Private Methods
+
     @objc private func settingMyButton(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         copyTextFieldPassword.isSecureTextEntry = !sender.isSelected
     }
 }
+
+

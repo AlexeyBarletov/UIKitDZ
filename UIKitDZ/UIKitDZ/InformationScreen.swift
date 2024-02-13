@@ -7,9 +7,8 @@ protocol DataDelegate: AnyObject {
     func tranlition(name: String, dataDay: String, image: UIImage)
 }
 
-class InformationScreen:
-    UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate
-{
+/// класс
+final class InformationScreen: UIViewController {
     var copyImageView = UIImageView()
     var copyImage = UIImage(named: "my")
     var copyLabel = UILabel()
@@ -31,16 +30,15 @@ class InformationScreen:
     var copyViewAge = UIView()
     var copyViewGender = UIView()
     var copyViewTelegram = UIView()
-
     var buttonCancel = UIButton(type: .custom)
     var buttonAdd = UIButton(type: .custom)
-
     var dataDelegate: DataDelegate?
-
     var pikerViewBrithday = UIDatePicker()
     var pikerViewAge = UIPickerView()
     var pikerViewGender = UIPickerView()
     var genders = ["Male", "Female"]
+
+    // MARK: Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,13 +56,17 @@ class InformationScreen:
         setupCopyTextFieldTelegram()
     }
 
-    func setupImageView() {
+    // MARK: Private Methods
+
+    private func setupImageView() {
         copyImageView = UIImageView(frame: CGRect(x: 125, y: 66, width: 125, height: 125))
         copyImageView.image = copyImage
         view.addSubview(copyImageView)
     }
 
-    func setupLabelNameFoto() {
+    // MARK: Private Methods
+
+    private func setupLabelNameFoto() {
         copyLabel = UILabel(frame: CGRect(x: 125, y: 199, width: 125, height: 20))
         copyLabel.text = "Change photo"
         copyLabel.textColor = UIColor(red: 0 / 122, green: 122 / 255, blue: 255 / 255, alpha: 1)
@@ -74,7 +76,9 @@ class InformationScreen:
         }
     }
 
-    func setupLabel() {
+    // MARK: Private Methods
+
+    private func setupLabel() {
         copyLabelName = UILabel(frame: CGRect(x: 20, y: 239, width: 175, height: 19))
         copyLabelName.text = "Name Surname"
         copyLabelName.shadowColor = .black
@@ -121,7 +125,9 @@ class InformationScreen:
         view.addSubview(copylabelTelegramm)
     }
 
-    func setupTextField() {
+    // MARK: Private Methods
+
+    private func setupTextField() {
         copyTextFieldName = UITextField(frame: CGRect(x: 20, y: 268, width: 250, height: 17))
         copyTextFieldName.placeholder = "Typing Name Surname"
         view.addSubview(copyTextFieldName)
@@ -139,32 +145,18 @@ class InformationScreen:
         view.addSubview(copyTextFieldGender)
     }
 
-    func setupCopyTextFieldTelegram() {
+    // MARK: Private Methods
+
+    private func setupCopyTextFieldTelegram() {
         copyTextFieldTelegram = UITextField(frame: CGRect(x: 20, y: 566, width: 250, height: 17))
         copyTextFieldTelegram.placeholder = "Typing Telegram"
         copyTextFieldTelegram.delegate = self
         view.addSubview(copyTextFieldTelegram)
     }
 
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == copyTextFieldTelegram {
-            let alertController = UIAlertController(
-                title: "Please enter Telegram",
-                message: nil,
-                preferredStyle: .alert
-            )
-            let actionCancel = UIAlertAction(title: "Cancel", style: .cancel)
-            let actionOk = UIAlertAction(title: "OK", style: .default)
-            alertController.addAction(actionCancel)
-            alertController.addAction(actionOk)
-            alertController.addTextField { textField in
-                textField.placeholder = "Typing Telegram"
-            }
-            present(alertController, animated: true)
-        }
-    }
+    // MARK: Private Methods
 
-    func setupView() {
+    private func setupView() {
         copyViewName = UIView(frame: CGRect(x: 20, y: 293, width: 335, height: 1))
         copyViewName.backgroundColor = UIColor(red: 208 / 255, green: 214 / 255, blue: 220 / 255, alpha: 1)
         view.addSubview(copyViewName)
@@ -186,7 +178,9 @@ class InformationScreen:
         view.addSubview(copyViewTelegram)
     }
 
-    func setupButton() {
+    // MARK: Private Methods
+
+    private func setupButton() {
         buttonAdd = UIButton(frame: CGRect(x: 325, y: 15, width: 30, height: 20))
         buttonAdd.setImage(UIImage(named: "add"), for: .normal)
         buttonAdd.imageView?.contentMode = .scaleAspectFit
@@ -199,7 +193,9 @@ class InformationScreen:
         view.addSubview(buttonCancel)
     }
 
-    @objc func transferInfo() {
+    // MARK: Private Methods
+
+    @objc private func transferInfo() {
         dataDelegate?.tranlition(
             name: copyTextFieldBrithday.text ?? "",
             dataDay: copyTextFieldName.text ?? "", image: copyImageView.image ?? UIImage()
@@ -207,7 +203,9 @@ class InformationScreen:
         dismiss(animated: true, completion: nil)
     }
 
-    func setupPikerView() {
+    // MARK: Private Methods
+
+    private func setupPikerView() {
         pikerViewBrithday = UIDatePicker(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         pikerViewBrithday.preferredDatePickerStyle = .wheels
         pikerViewBrithday.datePickerMode = .date
@@ -228,19 +226,15 @@ class InformationScreen:
         copyTextFieldBrithday.delegate = self
     }
 
-    @objc func textFieldSetting() {
+    // MARK: Private Methods
+
+    @objc private func textFieldSetting() {
         copyTextFieldBrithday.resignFirstResponder()
     }
 
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == copyTextFieldBrithday {
-            let dateFormater = DateFormatter()
-            dateFormater.dateFormat = "dd.MM.yyyy"
-            textField.text = dateFormater.string(from: pikerViewBrithday.date)
-        }
-    }
+    // MARK: Private Methods
 
-    func settupPikerViewAge() {
+    private func settupPikerViewAge() {
         pikerViewAge = UIPickerView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         pikerViewAge.center = view.center
         pikerViewAge.delegate = self
@@ -255,7 +249,6 @@ class InformationScreen:
             target: nil,
             action: #selector(textFieldAge)
         )
-
         let tabBarItemSisytem = UIBarButtonItem(
             barButtonSystemItem: .flexibleSpace,
             target: nil,
@@ -267,11 +260,15 @@ class InformationScreen:
         copyTextFieldAge.delegate = self
     }
 
-    @objc func textFieldAge() {
+    // MARK: Private Methods
+
+    @objc private func textFieldAge() {
         copyTextFieldAge.resignFirstResponder()
     }
 
-    func setupPikerViewGender() {
+    // MARK: Private Methods
+
+    private func setupPikerViewGender() {
         pikerViewGender = UIPickerView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         pikerViewGender.center = view.center
         pikerViewGender.delegate = self
@@ -298,10 +295,13 @@ class InformationScreen:
         copyTextFieldGender.delegate = self
     }
 
-    @objc func setupTextFieldGender() {
+    @objc private func setupTextFieldGender() {
         copyTextFieldGender.resignFirstResponder()
     }
+}
 
+/// расширение для настрйоки методов, протоколов
+extension InformationScreen: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }
@@ -335,6 +335,35 @@ class InformationScreen:
             copyTextFieldGender.text = genders[row]
         default:
             return
+        }
+    }
+}
+
+/// расширение для настройки DateFormatter и AlertController
+extension InformationScreen: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == copyTextFieldBrithday {
+            let dateFormater = DateFormatter()
+            dateFormater.dateFormat = "dd.MM.yyyy"
+            textField.text = dateFormater.string(from: pikerViewBrithday.date)
+        }
+    }
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == copyTextFieldTelegram {
+            let alertController = UIAlertController(
+                title: "Please enter Telegram",
+                message: nil,
+                preferredStyle: .alert
+            )
+            let actionCancel = UIAlertAction(title: "Cancel", style: .cancel)
+            let actionOk = UIAlertAction(title: "OK", style: .default)
+            alertController.addAction(actionCancel)
+            alertController.addAction(actionOk)
+            alertController.addTextField { textField in
+                textField.placeholder = "Typing Telegram"
+            }
+            present(alertController, animated: true)
         }
     }
 }
