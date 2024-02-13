@@ -35,7 +35,7 @@ class Tracklist: UIViewController {
     // MARK: Privates Methods
 
     private func setupView() {
-        view.backgroundColor = UIColor(red: 72 / 255, green: 57 / 255, blue: 113 / 255, alpha: 1)
+        view.backgroundColor = UIColor(red: 72 / 255, green: 56 / 255, blue: 113 / 255, alpha: 1)
 
         viewLine = UIView(frame: CGRect(x: 20, y: 183, width: 335, height: 1))
         viewLine.backgroundColor = UIColor(red: 255 / 255, green: 253 / 255, blue: 253 / 255, alpha: 1)
