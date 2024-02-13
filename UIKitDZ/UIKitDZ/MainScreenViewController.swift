@@ -33,6 +33,7 @@ final class MainScreenViewController: UIViewController, UITextFieldDelegate {
         setupTextFieldPassword()
         setupSwitch()
         setupLineView()
+        tapRecognizerTvo()
     }
 
     // MARK: Private Methods
@@ -135,7 +136,7 @@ final class MainScreenViewController: UIViewController, UITextFieldDelegate {
         copyButtonLogin = UIButton(frame: CGRect(x: 20, y: 671, width: 335, height: 44))
         copyButtonLogin.backgroundColor = UIColor(red: 233 / 255, green: 70 / 255, blue: 94 / 255, alpha: 0.4)
         copyButtonLogin.setTitle("Login", for: .normal)
-        copyButtonLogin.isEnabled = false
+        copyButtonLogin.isEnabled = true
         copyButtonLogin.layer.cornerRadius = 12
         copyButtonLogin.addTarget(self, action: #selector(goToNewScreen), for: .touchUpInside)
         view.addSubview(copyButtonLogin)
@@ -181,5 +182,14 @@ final class MainScreenViewController: UIViewController, UITextFieldDelegate {
     @objc private func settingMyButton(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         copyTextFieldPassword.isSecureTextEntry = !sender.isSelected
+    }
+
+    func tapRecognizerTvo() {
+        let tapTvo = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tapTvo)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
