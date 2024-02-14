@@ -3,6 +3,8 @@
 
 import UIKit
 
+// MARK: - Public Properties
+
 /// класс
 final class BirthdayInformation: UIViewController {
     var copyLabel = UILabel()
@@ -46,7 +48,7 @@ final class BirthdayInformation: UIViewController {
         view.backgroundColor = .white
         setupBarButtonItem()
         setupLabelNameLastName()
-        setuplLabel()
+        setupLabel()
         setupImageView()
         setupMyInfo()
         settingLabelDateOfBirth()
@@ -92,8 +94,6 @@ final class BirthdayInformation: UIViewController {
         }
     }
 
-    // MARK: Private Methods
-
     private func setupMyInfo() {
         myName = UILabel(frame: CGRect(x: 105, y: 499, width: 209, height: 20))
         myName.text = ""
@@ -116,16 +116,12 @@ final class BirthdayInformation: UIViewController {
         }
     }
 
-    // MARK: Private Methods
-
     @objc private func moveForvard() {
         let modalViewController = InformationScreen()
         modalViewController.dataDelegate = self
         modalViewController.modalPresentationStyle = .automatic
         present(modalViewController, animated: true, completion: nil)
     }
-
-    // MARK: Private Methods
 
     private func setupLabelNameLastName() {
         nameLabelVerona = UILabel(frame: CGRect(x: 102, y: 119, width: 209, height: 20))
@@ -165,9 +161,7 @@ final class BirthdayInformation: UIViewController {
         view.addSubview(nameLabelTom)
     }
 
-    // MARK: Private Methods
-
-    private func setuplLabel() {
+    private func setupLabel() {
         copyLabel.text = "Brithday Reminder"
         view.addSubview(copyLabel)
 
@@ -208,8 +202,6 @@ final class BirthdayInformation: UIViewController {
         view.addSubview(labelAgeAlex)
     }
 
-    // MARK: Private Methods
-
     private func setupImageView() {
         copyImageViewHelena = UIImageView(frame: CGRect(x: 19, y: 105, width: 75, height: 75))
         copyImageViewHelena.image = imageHelena
@@ -235,7 +227,7 @@ final class BirthdayInformation: UIViewController {
 
 /// расширение для передачи информации
 extension BirthdayInformation: DataDelegate {
-    func tranlition(name: String, dataDay: String, image: UIImage) {
+    func translition(name: String, dataDay: String, image: UIImage) {
         nameLabelAlexey.text = name
         myName.text = dataDay
         myFotosImageView.image = image

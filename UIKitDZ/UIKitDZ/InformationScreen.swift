@@ -4,7 +4,7 @@
 import UIKit
 
 protocol DataDelegate: AnyObject {
-    func tranlition(name: String, dataDay: String, image: UIImage)
+    func translition(name: String, dataDay: String, image: UIImage)
 }
 
 /// класс
@@ -196,7 +196,7 @@ final class InformationScreen: UIViewController {
     // MARK: Private Methods
 
     @objc private func transferInfo() {
-        dataDelegate?.tranlition(
+        dataDelegate?.translition(
             name: copyTextFieldBrithday.text ?? "",
             dataDay: copyTextFieldName.text ?? "", image: copyImageView.image ?? UIImage()
         )
