@@ -1,6 +1,8 @@
 // Player.swift
 // Copyright © RoadMap. All rights reserved.
 
+// MARK: - Visual Components
+
 import AVFoundation
 import UIKit
 

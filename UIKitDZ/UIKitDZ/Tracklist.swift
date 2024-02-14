@@ -1,6 +1,8 @@
 // Tracklist.swift
 // Copyright © RoadMap. All rights reserved.
 
+// MARK: - Visual Components
+
 import UIKit
 
 /// класс
@@ -45,8 +47,6 @@ class Tracklist: UIViewController {
         viewLineThree.backgroundColor = UIColor(red: 255 / 255, green: 253 / 255, blue: 253 / 255, alpha: 1)
         view.addSubview(viewLineThree)
     }
-
-    // MARK: Privates Methods
 
     private func setupLabel() {
         labelPlayList = UILabel(frame: CGRect(x: 100, y: 47, width: 175, height: 22))
@@ -99,8 +99,6 @@ class Tracklist: UIViewController {
         view.addSubview(labelTimeTrackQueen)
     }
 
-    // MARK: Privates Methods
-
     private func setupImageCover() {
         imageViewCoverOne = UIImageView(frame: CGRect(x: 20, y: 100, width: 75, height: 75))
         imageViewCoverOne.image = imageCoverOne
@@ -110,8 +108,6 @@ class Tracklist: UIViewController {
         imageViewCoverNumberTwo.image = imageCoverNumberTwo
         view.addSubview(imageViewCoverNumberTwo)
     }
-
-    // MARK: Privates Methods
 
     private func translitionScreenPlayerOne() {
         buttonTranslitionOne = UIButton(frame: CGRect(x: 20, y: 90, width: 350, height: 85))
@@ -123,8 +119,6 @@ class Tracklist: UIViewController {
         view.addSubview(buttonTranslitionTwo)
     }
 
-    // MARK: Privates Methods
-
     @objc private func goScreenOne() {
         let storyBoardOne = UIStoryboard(name: "Main", bundle: nil)
         guard let player = storyBoardOne.instantiateViewController(identifier: "Player") as? Player else { return }
@@ -134,8 +128,6 @@ class Tracklist: UIViewController {
         ])
         present(player, animated: true)
     }
-
-    // MARK: Privates Methods
 
     @objc private func storyBoardTwo() {
         let storyBoardTwo = UIStoryboard(name: "Main", bundle: nil)
