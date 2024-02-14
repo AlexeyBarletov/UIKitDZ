@@ -167,7 +167,7 @@ final class BirthdayInformation: UIViewController {
 
     // MARK: Private Methods
 
-    private func setuplLabel() {
+    private func setupLabel() {
         copyLabel.text = "Brithday Reminder"
         view.addSubview(copyLabel)
 
