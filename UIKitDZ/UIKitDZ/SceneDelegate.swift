@@ -14,7 +14,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = ViewController()
         window?.makeKeyAndVisible()
+        let catalog = CatalogViewController()
+        let basket = BasketViewController()
+        let profile = ProfileViewController()
+        let tabBarController = UITabBarController()
+        tabBarController.setViewControllers([catalog, basket, profile], animated: true)
+        window?.rootViewController = tabBarController
     }
 }
