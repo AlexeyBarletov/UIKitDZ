@@ -15,6 +15,12 @@
 		73464AED2B72A97400149FBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73464AEB2B72A97400149FBF /* LaunchScreen.storyboard */; };
 		734748232B7E46C000E93297 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734748222B7E46C000E93297 /* BasketViewController.swift */; };
 		734748252B7E473000E93297 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734748242B7E473000E93297 /* ProfileViewController.swift */; };
+		73722B5F2B80DB6A0013B120 /* ImageNameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73722B5E2B80DB6A0013B120 /* ImageNameModel.swift */; };
+		73722B632B80DCC40013B120 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73722B622B80DCC40013B120 /* SetupView.swift */; };
+		73722B652B80FC280013B120 /* ShoesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73722B642B80FC280013B120 /* ShoesViewController.swift */; };
+		73B21A562B813DCA00F2C4F9 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B21A552B813DCA00F2C4F9 /* CustomLabel.swift */; };
+		73B21A582B81517000F2C4F9 /* ShoeSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B21A572B81517000F2C4F9 /* ShoeSizeViewController.swift */; };
+		73B21A5A2B815BB100F2C4F9 /* ModelInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B21A592B815BB100F2C4F9 /* ModelInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +34,12 @@
 		73464AEE2B72A97400149FBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		734748222B7E46C000E93297 /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
 		734748242B7E473000E93297 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		73722B5E2B80DB6A0013B120 /* ImageNameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNameModel.swift; sourceTree = "<group>"; };
+		73722B622B80DCC40013B120 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
+		73722B642B80FC280013B120 /* ShoesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoesViewController.swift; sourceTree = "<group>"; };
+		73B21A552B813DCA00F2C4F9 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		73B21A572B81517000F2C4F9 /* ShoeSizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeSizeViewController.swift; sourceTree = "<group>"; };
+		73B21A592B815BB100F2C4F9 /* ModelInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +56,7 @@
 		73464AD42B72A97300149FBF = {
 			isa = PBXGroup;
 			children = (
+				73722B602B80DBC00013B120 /* Model */,
 				73464ADF2B72A97300149FBF /* UIKitDZ */,
 				73464ADE2B72A97300149FBF /* Products */,
 			);
@@ -65,12 +78,25 @@
 				73464AE42B72A97300149FBF /* CatalogViewController.swift */,
 				734748222B7E46C000E93297 /* BasketViewController.swift */,
 				734748242B7E473000E93297 /* ProfileViewController.swift */,
+				73722B642B80FC280013B120 /* ShoesViewController.swift */,
+				73B21A572B81517000F2C4F9 /* ShoeSizeViewController.swift */,
 				73464AE92B72A97400149FBF /* Assets.xcassets */,
 				7328530A2B7CE9460006D044 /* Main.storyboard */,
 				73464AEB2B72A97400149FBF /* LaunchScreen.storyboard */,
 				73464AEE2B72A97400149FBF /* Info.plist */,
 			);
 			path = UIKitDZ;
+			sourceTree = "<group>";
+		};
+		73722B602B80DBC00013B120 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				73722B5E2B80DB6A0013B120 /* ImageNameModel.swift */,
+				73B21A552B813DCA00F2C4F9 /* CustomLabel.swift */,
+				73B21A592B815BB100F2C4F9 /* ModelInfo.swift */,
+				73722B622B80DCC40013B120 /* SetupView.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,9 +216,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				73464AE52B72A97300149FBF /* CatalogViewController.swift in Sources */,
+				73B21A562B813DCA00F2C4F9 /* CustomLabel.swift in Sources */,
 				73464AE12B72A97300149FBF /* AppDelegate.swift in Sources */,
+				73722B5F2B80DB6A0013B120 /* ImageNameModel.swift in Sources */,
+				73B21A582B81517000F2C4F9 /* ShoeSizeViewController.swift in Sources */,
 				734748252B7E473000E93297 /* ProfileViewController.swift in Sources */,
 				734748232B7E46C000E93297 /* BasketViewController.swift in Sources */,
+				73B21A5A2B815BB100F2C4F9 /* ModelInfo.swift in Sources */,
+				73722B652B80FC280013B120 /* ShoesViewController.swift in Sources */,
+				73722B632B80DCC40013B120 /* SetupView.swift in Sources */,
 				73464AE32B72A97300149FBF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
