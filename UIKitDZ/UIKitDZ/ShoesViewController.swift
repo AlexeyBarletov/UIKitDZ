@@ -201,7 +201,7 @@ final class ShoesViewController: UIViewController {
     }
 }
 
-/// для расширения класса ShoesViewController и выноса констрейнтов
+/// для расширения класса выноса констрейнтов из класса ShoesViewController
 extension ShoesViewController {
     // MARK: Private Method
 

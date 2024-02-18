@@ -6,7 +6,7 @@ import UIKit
 /// Класс для выбора вещей
 final class CatalogViewController: UIViewController {
     // MARK: Constant
-    
+
     private enum Constant {
         static let imageButtonLeft = "fotos"
         static let imageButtonRight = "barcode"
@@ -23,9 +23,9 @@ final class CatalogViewController: UIViewController {
         static let textShoes = "Обувь"
         static let textBags = "Сумки"
     }
-    
+
     // MARK: Private Properties
-    
+
     private var storage: [Int: NameImage] = [:]
     private var leftButtonItemPhoto = UIButton()
     private var rightButtonItemtBarcode = UIButton()
@@ -47,9 +47,9 @@ final class CatalogViewController: UIViewController {
     private let viewBags = UIView()
     private let viewShoes = UIView()
     private let tap = UITapGestureRecognizer()
-    
+
     // MARK: - Life Cycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -65,18 +65,17 @@ final class CatalogViewController: UIViewController {
         addConstrintsImage()
         setupLabelNewSale()
         setupShadowImage()
-
     }
-    
+
     // MARK: - Private methods
-    
+
     private func setupShadowImage() {
         stupImageNew.image = UIImage(named: "new")
         stupImageNew.layer.shadowColor = UIColor.gray.cgColor
         stupImageNew.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
         stupImageNew.layer.shadowOpacity = 1
     }
-    
+
     private func setupSegmentController() {
         let menuSegmentControlers = ["Женщинам", "Мужчинам", "Детям"]
         stupImageSalce.image = UIImage(named: "sales")
@@ -88,13 +87,13 @@ final class CatalogViewController: UIViewController {
         segmentController.addTarget(self, action: #selector(addThings), for: .valueChanged)
         view.addSubview(segmentController)
     }
-    
+
     private func configurationView(screen: UIView, configuration: ViewConfiguration) {
         screen.backgroundColor = configuration.backgroundColor
         screen.layer.cornerRadius = configuration.cornerRadius
         view.addSubview(screen)
     }
-    
+
     private func setupViewЕhings() {
         configurationView(
             screen: viewBrands,
@@ -118,7 +117,7 @@ final class CatalogViewController: UIViewController {
             )
         )
     }
-    
+
     private func setupLabelNewSale() {
         view.addSubview(labelBags)
         view.addSubview(labelNew)
@@ -171,7 +170,7 @@ final class CatalogViewController: UIViewController {
         labelSale.textColor = .white
         labelSale.textAlignment = .center
     }
-    
+
     private func addConstraintsButton() {
         rightButtonItemtBarcode.translatesAutoresizingMaskIntoConstraints = false
         leftButtonItemPhoto.translatesAutoresizingMaskIntoConstraints = false
@@ -188,7 +187,7 @@ final class CatalogViewController: UIViewController {
         leftButtonItemPhoto.topAnchor.constraint(equalTo: viewButtons.topAnchor).isActive = true
         leftButtonItemPhoto.bottomAnchor.constraint(equalTo: viewButtons.bottomAnchor).isActive = true
     }
-    
+
     private func addButtonNavigationBar() {
         leftButtonItemPhoto.setImage(UIImage(named: Constant.imageButtonLeft), for: .normal)
         rightButtonItemtBarcode.setImage(UIImage(named: Constant.imageButtonRight), for: .normal)
@@ -197,7 +196,7 @@ final class CatalogViewController: UIViewController {
         viewButtons.addSubview(leftButtonItemPhoto)
         viewButtons.addSubview(rightButtonItemtBarcode)
     }
-    
+
     private func setupTabBarController() {
         if let tabBarItemOne = tabBarController?.tabBar.items?[0] {
             tabBarItemOne.title = "Список"
@@ -215,17 +214,17 @@ final class CatalogViewController: UIViewController {
             tabBarThree.image = UIImage(named: Constant.imageProfileBlack)
         }
     }
-    
+
     private func setupReconizer() {
         stupImageShoes.isUserInteractionEnabled = true
         tap.addTarget(self, action: #selector(translitionNewSreenTrans))
         stupImageShoes.addGestureRecognizer(tap)
     }
-    
+
     @objc private func translitionNewSreenTrans() {
         navigationController?.pushViewController(ShoesViewController(), animated: true)
     }
-    
+
     @objc private func addThings(target: UISegmentedControl) {
         storage[0] = NameImage(
             imageNumberNew: "newThree",
@@ -258,10 +257,11 @@ final class CatalogViewController: UIViewController {
         }
     }
 }
-/// для рсширения класса CatalogViewController
+
+/// для рсширения для выноса констрейнтов из класса CatalogViewController
 extension CatalogViewController {
-    
-    //MARK: Private Method
+    // MARK: Private Method
+
     private func addConstriantsViewLabel() {
         viewBrands.translatesAutoresizingMaskIntoConstraints = false
         viewBrands.widthAnchor.constraint(equalToConstant: 335).isActive = true
@@ -279,7 +279,7 @@ extension CatalogViewController {
         viewBags.topAnchor.constraint(equalTo: view.topAnchor, constant: 526).isActive = true
         viewBags.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
     }
-    
+
     private func addConstrintsImage() {
         view.addSubview(stupImageNew)
         view.addSubview(stupImageSalce)
@@ -312,7 +312,7 @@ extension CatalogViewController {
         stupImageBrands.topAnchor.constraint(equalTo: view.topAnchor, constant: 326).isActive = true
         stupImageBrands.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 256).isActive = true
     }
-    
+
     private func addConstraintsSegmentController() {
         segmentController.translatesAutoresizingMaskIntoConstraints = false
         segmentController.widthAnchor.constraint(equalToConstant: 345).isActive = true
