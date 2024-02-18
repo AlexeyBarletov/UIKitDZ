@@ -15,13 +15,39 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(windowScene: windowScene)
 
-        let catalogVC = CatalogViewController()
+        // Catalog
+        let catalogViewController = CatalogViewController()
+        let catalogNaviagtionController = UINavigationController(rootViewController: catalogViewController)
 
-        let catalogNC = UINavigationController(rootViewController: catalogVC)
+        // Basket
+        let basketViewController = BasketViewController()
+        let basketTabBarItem = UITabBarItem(title: "Корзина", image: UIImage(named: "basketBlack"), selectedImage: nil)
+        basketTabBarItem.image = UIImage(named: "basketBlack")
+        basketTabBarItem.selectedImage = UIImage(named: "basketNorm")
+        basketViewController.tabBarItem = basketTabBarItem
 
-        let tabBarController = UITabBarController()
+        // Profile
+        let profileViewController = ProfileViewController()
+        let profileTabBarItem = UITabBarItem(
+            title: "Профиль",
+            image: UIImage(systemName: "person"),
+            selectedImage: nil
+        )
+        profileTabBarItem.image = UIImage(named: "profileBlack")
+        profileTabBarItem.selectedImage = UIImage(named: "profileNorm")
+        profileViewController.tabBarItem = profileTabBarItem
+        let profileNavigationController = UINavigationController(rootViewController: profileViewController)
+
+        // TabBar
+        let tabBarController = TabBarController()
+
+        tabBarController.tabBar.tintColor = .systemPink
         tabBarController.setViewControllers(
-            [catalogNC],
+            [
+                catalogNaviagtionController,
+                basketViewController,
+                profileNavigationController
+            ],
             animated: true
         )
 
