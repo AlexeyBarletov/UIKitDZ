@@ -3,7 +3,10 @@
 
 import UIKit
 
+/// класс для выбора обуви
 final class ShoesViewController: UIViewController {
+    // MARK: Constant
+
     private enum Constant {
         static let image = "basket"
         static let imageButton = "basketGray"
@@ -12,24 +15,23 @@ final class ShoesViewController: UIViewController {
         static let listImage = ["black", "blackTwo", "red", "orange", "white"]
     }
 
+    // MARK: Private Properties
+
     private var numberViewGrayOne = UIView()
     private var numberViewGrayTwo = UIView()
     private var numberViewGrayThree = UIView()
     private var numberViewGrayFour = UIView()
     private var numberViewGrayFive = UIView()
-
     private var oneBasketButton = UIButton()
     private var twoBasketButton = UIButton()
     private var threeBasketButton = UIButton()
     private var fourBasketButton = UIButton()
     private var fiveBasketButton = UIButton()
-
     private var onePriceLabel = UILabel()
     private var twoPriceLabel = UILabel()
     private var threePriceLabel = UILabel()
     private var fourPriceLabel = UILabel()
     private var fivePriceLabel = UILabel()
-
     private var shoeBlackOneImageView = UIImageView()
     private var shoeBlackTwoImageView = UIImageView()
     private var shoeOrangeThreeImageView = UIImageView()
@@ -43,6 +45,8 @@ final class ShoesViewController: UIViewController {
         Info(nameImage: UIImage(named: "orange"), nameShoes: "Туфли Мужские", price: "2270 ₽"),
         Info(nameImage: UIImage(named: "orange"), nameShoes: "Туфли Мужские", price: "2253 ₽")
     ]
+
+    // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +62,8 @@ final class ShoesViewController: UIViewController {
         addConstrainsImageView()
     }
 
+    // MARK: - Private methods
+
     private func setupImageView() {
         shoeBlackOneImageView.image = UIImage(named: Constant.listImage[0])
         shoeBlackTwoImageView.image = UIImage(named: Constant.listImage[1])
@@ -69,38 +75,6 @@ final class ShoesViewController: UIViewController {
         view.addSubview(shoeOrangeThreeImageView)
         view.addSubview(shoeRedThreeImageView)
         view.addSubview(shoeWhiteThreeImageView)
-    }
-
-    private func addConstrainsImageView() {
-        shoeBlackOneImageView.translatesAutoresizingMaskIntoConstraints = false
-        shoeBlackOneImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        shoeBlackOneImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        shoeBlackOneImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 157).isActive = true
-        shoeBlackOneImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 49).isActive = true
-
-        shoeBlackTwoImageView.translatesAutoresizingMaskIntoConstraints = false
-        shoeBlackTwoImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        shoeBlackTwoImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        shoeBlackTwoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 159).isActive = true
-        shoeBlackTwoImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 226).isActive = true
-
-        shoeRedThreeImageView.translatesAutoresizingMaskIntoConstraints = false
-        shoeRedThreeImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        shoeRedThreeImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        shoeRedThreeImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 334).isActive = true
-        shoeRedThreeImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 49).isActive = true
-
-        shoeOrangeThreeImageView.translatesAutoresizingMaskIntoConstraints = false
-        shoeOrangeThreeImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        shoeOrangeThreeImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        shoeOrangeThreeImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 334).isActive = true
-        shoeOrangeThreeImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 226).isActive = true
-
-        shoeWhiteThreeImageView.translatesAutoresizingMaskIntoConstraints = false
-        shoeWhiteThreeImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        shoeWhiteThreeImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        shoeWhiteThreeImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 504).isActive = true
-        shoeWhiteThreeImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 49).isActive = true
     }
 
     private func configurationLabel(label: UILabel, configuration: CustomLabel) {
@@ -149,38 +123,6 @@ final class ShoesViewController: UIViewController {
         )
     }
 
-    private func addConstrainsLabel() {
-        onePriceLabel.translatesAutoresizingMaskIntoConstraints = false
-        onePriceLabel.widthAnchor.constraint(equalToConstant: 63).isActive = true
-        onePriceLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
-        onePriceLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 263).isActive = true
-        onePriceLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 105).isActive = true
-
-        twoPriceLabel.translatesAutoresizingMaskIntoConstraints = false
-        twoPriceLabel.widthAnchor.constraint(equalToConstant: 63).isActive = true
-        twoPriceLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
-        twoPriceLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 263).isActive = true
-        twoPriceLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 276).isActive = true
-
-        threePriceLabel.translatesAutoresizingMaskIntoConstraints = false
-        threePriceLabel.widthAnchor.constraint(equalToConstant: 63).isActive = true
-        threePriceLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
-        threePriceLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 436).isActive = true
-        threePriceLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 105).isActive = true
-
-        fourPriceLabel.translatesAutoresizingMaskIntoConstraints = false
-        fourPriceLabel.widthAnchor.constraint(equalToConstant: 63).isActive = true
-        fourPriceLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
-        fourPriceLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 436).isActive = true
-        fourPriceLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 283).isActive = true
-
-        fivePriceLabel.translatesAutoresizingMaskIntoConstraints = false
-        fivePriceLabel.widthAnchor.constraint(equalToConstant: 63).isActive = true
-        fivePriceLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
-        fivePriceLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 609).isActive = true
-        fivePriceLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 105).isActive = true
-    }
-
     private func configuratioButton() {
         oneBasketButton.setImage(UIImage(named: Constant.imageButton), for: .normal)
         oneBasketButton.addTarget(self, action: #selector(putBasket), for: .touchUpInside)
@@ -201,48 +143,6 @@ final class ShoesViewController: UIViewController {
         fiveBasketButton.setImage(UIImage(named: Constant.imageButton), for: .normal)
         fiveBasketButton.addTarget(self, action: #selector(putBasket), for: .touchUpInside)
         view.addSubview(fiveBasketButton)
-    }
-
-    private func addConstrainsButton() {
-        oneBasketButton.translatesAutoresizingMaskIntoConstraints = false
-        oneBasketButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        oneBasketButton.heightAnchor.constraint(equalToConstant: 19).isActive = true
-        oneBasketButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 141).isActive = true
-        oneBasketButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 146).isActive = true
-
-        twoBasketButton.translatesAutoresizingMaskIntoConstraints = false
-        twoBasketButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        twoBasketButton.heightAnchor.constraint(equalToConstant: 19).isActive = true
-        twoBasketButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 141).isActive = true
-        twoBasketButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 327).isActive = true
-
-        threeBasketButton.translatesAutoresizingMaskIntoConstraints = false
-        threeBasketButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        threeBasketButton.heightAnchor.constraint(equalToConstant: 19).isActive = true
-        threeBasketButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 314).isActive = true
-        threeBasketButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 146).isActive = true
-
-        fourBasketButton.translatesAutoresizingMaskIntoConstraints = false
-        fourBasketButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        fourBasketButton.heightAnchor.constraint(equalToConstant: 19).isActive = true
-        fourBasketButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 314).isActive = true
-        fourBasketButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 327).isActive = true
-
-        fiveBasketButton.translatesAutoresizingMaskIntoConstraints = false
-        fiveBasketButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        fiveBasketButton.heightAnchor.constraint(equalToConstant: 19).isActive = true
-        fiveBasketButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 488).isActive = true
-        fiveBasketButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 146).isActive = true
-    }
-
-    @objc private func putBasket(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        if sender.isSelected {
-            sender.setImage(UIImage(named: Constant.imageButton), for: .normal)
-        } else {
-            sender.setImage(UIImage(named: Constant.image), for: .normal)
-        }
-        present(ShoeSizeViewController(), animated: true)
     }
 
     private func configurationView(screen: UIView, configuration: ViewConfiguration) {
@@ -290,6 +190,21 @@ final class ShoesViewController: UIViewController {
         )
     }
 
+    @objc private func putBasket(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected {
+            sender.setImage(UIImage(named: Constant.imageButton), for: .normal)
+        } else {
+            sender.setImage(UIImage(named: Constant.image), for: .normal)
+        }
+        present(ShoeSizeViewController(), animated: true)
+    }
+}
+
+/// для расширения класса ShoesViewController и выноса констрейнтов
+extension ShoesViewController {
+    // MARK: Private Method
+
     private func addConstrainsView() {
         numberViewGrayOne.translatesAutoresizingMaskIntoConstraints = false
         numberViewGrayOne.widthAnchor.constraint(equalToConstant: 157).isActive = true
@@ -320,5 +235,101 @@ final class ShoesViewController: UIViewController {
         numberViewGrayFive.heightAnchor.constraint(equalToConstant: 157).isActive = true
         numberViewGrayFive.topAnchor.constraint(equalTo: view.topAnchor, constant: 476).isActive = true
         numberViewGrayFive.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+    }
+
+    private func addConstrainsImageView() {
+        shoeBlackOneImageView.translatesAutoresizingMaskIntoConstraints = false
+        shoeBlackOneImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        shoeBlackOneImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        shoeBlackOneImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 157).isActive = true
+        shoeBlackOneImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 49).isActive = true
+
+        shoeBlackTwoImageView.translatesAutoresizingMaskIntoConstraints = false
+        shoeBlackTwoImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        shoeBlackTwoImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        shoeBlackTwoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 159).isActive = true
+        shoeBlackTwoImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 226).isActive = true
+
+        shoeRedThreeImageView.translatesAutoresizingMaskIntoConstraints = false
+        shoeRedThreeImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        shoeRedThreeImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        shoeRedThreeImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 334).isActive = true
+        shoeRedThreeImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 49).isActive = true
+
+        shoeOrangeThreeImageView.translatesAutoresizingMaskIntoConstraints = false
+        shoeOrangeThreeImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        shoeOrangeThreeImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        shoeOrangeThreeImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 334).isActive = true
+        shoeOrangeThreeImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 226).isActive = true
+
+        shoeWhiteThreeImageView.translatesAutoresizingMaskIntoConstraints = false
+        shoeWhiteThreeImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        shoeWhiteThreeImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        shoeWhiteThreeImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 504).isActive = true
+        shoeWhiteThreeImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 49).isActive = true
+    }
+
+    private func addConstrainsButton() {
+        oneBasketButton.translatesAutoresizingMaskIntoConstraints = false
+        oneBasketButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        oneBasketButton.heightAnchor.constraint(equalToConstant: 19).isActive = true
+        oneBasketButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 141).isActive = true
+        oneBasketButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 146).isActive = true
+
+        twoBasketButton.translatesAutoresizingMaskIntoConstraints = false
+        twoBasketButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        twoBasketButton.heightAnchor.constraint(equalToConstant: 19).isActive = true
+        twoBasketButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 141).isActive = true
+        twoBasketButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 327).isActive = true
+
+        threeBasketButton.translatesAutoresizingMaskIntoConstraints = false
+        threeBasketButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        threeBasketButton.heightAnchor.constraint(equalToConstant: 19).isActive = true
+        threeBasketButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 314).isActive = true
+        threeBasketButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 146).isActive = true
+
+        fourBasketButton.translatesAutoresizingMaskIntoConstraints = false
+        fourBasketButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        fourBasketButton.heightAnchor.constraint(equalToConstant: 19).isActive = true
+        fourBasketButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 314).isActive = true
+        fourBasketButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 327).isActive = true
+
+        fiveBasketButton.translatesAutoresizingMaskIntoConstraints = false
+        fiveBasketButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        fiveBasketButton.heightAnchor.constraint(equalToConstant: 19).isActive = true
+        fiveBasketButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 488).isActive = true
+        fiveBasketButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 146).isActive = true
+    }
+
+    private func addConstrainsLabel() {
+        onePriceLabel.translatesAutoresizingMaskIntoConstraints = false
+        onePriceLabel.widthAnchor.constraint(equalToConstant: 63).isActive = true
+        onePriceLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
+        onePriceLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 263).isActive = true
+        onePriceLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 105).isActive = true
+
+        twoPriceLabel.translatesAutoresizingMaskIntoConstraints = false
+        twoPriceLabel.widthAnchor.constraint(equalToConstant: 63).isActive = true
+        twoPriceLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
+        twoPriceLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 263).isActive = true
+        twoPriceLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 276).isActive = true
+
+        threePriceLabel.translatesAutoresizingMaskIntoConstraints = false
+        threePriceLabel.widthAnchor.constraint(equalToConstant: 63).isActive = true
+        threePriceLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
+        threePriceLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 436).isActive = true
+        threePriceLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 105).isActive = true
+
+        fourPriceLabel.translatesAutoresizingMaskIntoConstraints = false
+        fourPriceLabel.widthAnchor.constraint(equalToConstant: 63).isActive = true
+        fourPriceLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
+        fourPriceLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 436).isActive = true
+        fourPriceLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 283).isActive = true
+
+        fivePriceLabel.translatesAutoresizingMaskIntoConstraints = false
+        fivePriceLabel.widthAnchor.constraint(equalToConstant: 63).isActive = true
+        fivePriceLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
+        fivePriceLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 609).isActive = true
+        fivePriceLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 105).isActive = true
     }
 }

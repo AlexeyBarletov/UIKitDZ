@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let catalogVC = CatalogViewController()
         let basketVC = BasketViewController()
-        let profileVC = ProfileViewController() // без навигатион контроллер
+        let profileVC = ProfileViewController()
         let navigationControllerCatalog = UINavigationController(rootViewController: catalogVC)
         let navigationControllerBasket = UINavigationController(rootViewController: basketVC)
 
