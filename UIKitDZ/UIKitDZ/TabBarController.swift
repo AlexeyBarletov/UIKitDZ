@@ -1,11 +1,12 @@
-// ViewController.swift
+// TabBarController.swift
 // Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
-class ViewController: UIViewController {
+final class TabBarController: UITabBarController {
+    var data: BasketModel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("")
     }
 }
