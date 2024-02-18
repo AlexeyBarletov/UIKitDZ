@@ -4,7 +4,7 @@
 import UIKit
 
 protocol DataDelegate: AnyObject {
-    func translitionInfo(characteristics: Info)
+    func translitionInfo(shoeSize: String)
 }
 
 /// класс для выбора размера
@@ -13,7 +13,7 @@ class ShoeSizeViewController: UIViewController {
 
     private var listSize = ["35 EU", "36 EU", "37 EU", "38 EU", "39 EU"]
     private var closeButton = UIButton()
-    private weak var copyDelegate: DataDelegate?
+    weak var copyDelegate: DataDelegate?
 
     // MARK: - Life Cycle
 
@@ -50,6 +50,7 @@ class ShoeSizeViewController: UIViewController {
             sizeButton.setTitleColor(.black, for: .normal)
             sizeButton.setTitle(size, for: .normal)
             sizeButton.contentHorizontalAlignment = .left
+            sizeButton.addTarget(self, action: #selector(sizeButton(sender:)), for: .touchUpInside)
             sizeButton.translatesAutoresizingMaskIntoConstraints = false
             sizeButton.widthAnchor.constraint(equalToConstant: 278).isActive = true
             sizeButton.heightAnchor.constraint(equalToConstant: 19).isActive = true
@@ -73,5 +74,9 @@ class ShoeSizeViewController: UIViewController {
 
     @objc private func translitionBack() {
         dismiss(animated: true)
+    }
+
+    @objc private func sizeButton(sender: UIButton) {
+        copyDelegate?.translitionInfo(shoeSize: sender.titleLabel?.text ?? "")
     }
 }

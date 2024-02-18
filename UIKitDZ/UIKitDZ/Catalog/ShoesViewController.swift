@@ -191,13 +191,10 @@ final class ShoesViewController: UIViewController {
     }
 
     @objc private func putBasket(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        if sender.isSelected {
-            sender.setImage(UIImage(named: Constant.imageButton), for: .normal)
-        } else {
-            sender.setImage(UIImage(named: Constant.image), for: .normal)
-        }
-        present(ShoeSizeViewController(), animated: true)
+        sender.setImage(UIImage(named: Constant.image), for: .normal)
+        let shoeSizeViewController = ShoeSizeViewController()
+        shoeSizeViewController.copyDelegate = self
+        present(shoeSizeViewController, animated: true)
     }
 }
 
@@ -331,5 +328,23 @@ extension ShoesViewController {
         fivePriceLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
         fivePriceLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 609).isActive = true
         fivePriceLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 105).isActive = true
+    }
+}
+
+extension ShoesViewController: DataDelegate {
+    func translitionInfo(shoeSize: String) {
+        let view = tabBarController?.viewControllers?[1] as? BasketViewController
+        view?.basketArray.append(BasketModel(
+            image: Constant.listImage[1],
+            title: "Женские",
+            legSize: shoeSize,
+            price: "2250 руб"
+        ))
+//        view?.configure(model: BasketModel(
+//            image: Constant.listImage[1],
+//            title: "Женские",
+//            legSize: shoeSize,
+//            price: "2250 руб"
+//        ))
     }
 }

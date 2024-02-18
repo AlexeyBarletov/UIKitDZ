@@ -21,6 +21,14 @@
 		7FE562F72B8266CB002562F3 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE562F12B8266CB002562F3 /* CustomLabel.swift */; };
 		7FE562FA2B8266E7002562F3 /* ShoesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE562F82B8266E7002562F3 /* ShoesViewController.swift */; };
 		7FE562FB2B8266E7002562F3 /* ShoeSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE562F92B8266E7002562F3 /* ShoeSizeViewController.swift */; };
+		7FE563042B8268F6002562F3 /* MyInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE563012B8268F6002562F3 /* MyInfoModel.swift */; };
+		7FE563052B8268F6002562F3 /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE563022B8268F6002562F3 /* MyInfoViewController.swift */; };
+		7FE563062B8268F6002562F3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE563032B8268F6002562F3 /* ProfileViewController.swift */; };
+		7FE5630A2B826904002562F3 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE563082B826904002562F3 /* DividerView.swift */; };
+		7FE5630B2B826904002562F3 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE563092B826904002562F3 /* TextField.swift */; };
+		7FE5630D2B826909002562F3 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE5630C2B826909002562F3 /* BasketViewController.swift */; };
+		7FE5630F2B8275B7002562F3 /* BasketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE5630E2B8275B7002562F3 /* BasketModel.swift */; };
+		7FE563112B827A1D002562F3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE563102B827A1D002562F3 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +48,14 @@
 		7FE562F12B8266CB002562F3 /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		7FE562F82B8266E7002562F3 /* ShoesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoesViewController.swift; sourceTree = "<group>"; };
 		7FE562F92B8266E7002562F3 /* ShoeSizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoeSizeViewController.swift; sourceTree = "<group>"; };
+		7FE563012B8268F6002562F3 /* MyInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoModel.swift; sourceTree = "<group>"; };
+		7FE563022B8268F6002562F3 /* MyInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
+		7FE563032B8268F6002562F3 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		7FE563082B826904002562F3 /* DividerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
+		7FE563092B826904002562F3 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		7FE5630C2B826909002562F3 /* BasketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
+		7FE5630E2B8275B7002562F3 /* BasketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketModel.swift; sourceTree = "<group>"; };
+		7FE563102B827A1D002562F3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +89,12 @@
 		73464ADF2B72A97300149FBF /* UIKitDZ */ = {
 			isa = PBXGroup;
 			children = (
+				7FE563072B826904002562F3 /* Views */,
+				7FE562FF2B8268E9002562F3 /* Basket */,
+				7FE562FE2B8268DF002562F3 /* Profile */,
 				7FE562FD2B826811002562F3 /* App */,
 				7FE562FC2B8267F7002562F3 /* Catalog */,
+				7FE563102B827A1D002562F3 /* TabBarController.swift */,
 			);
 			path = UIKitDZ;
 			sourceTree = "<group>";
@@ -113,6 +133,42 @@
 				73464AE92B72A97400149FBF /* Assets.xcassets */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		7FE562FE2B8268DF002562F3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				7FE563002B8268F6002562F3 /* Model */,
+				7FE563022B8268F6002562F3 /* MyInfoViewController.swift */,
+				7FE563032B8268F6002562F3 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		7FE562FF2B8268E9002562F3 /* Basket */ = {
+			isa = PBXGroup;
+			children = (
+				7FE5630C2B826909002562F3 /* BasketViewController.swift */,
+				7FE5630E2B8275B7002562F3 /* BasketModel.swift */,
+			);
+			path = Basket;
+			sourceTree = "<group>";
+		};
+		7FE563002B8268F6002562F3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7FE563012B8268F6002562F3 /* MyInfoModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7FE563072B826904002562F3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7FE563082B826904002562F3 /* DividerView.swift */,
+				7FE563092B826904002562F3 /* TextField.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,14 +290,22 @@
 			files = (
 				7FE562FB2B8266E7002562F3 /* ShoeSizeViewController.swift in Sources */,
 				7FE562F62B8266CB002562F3 /* StructSetupView.swift in Sources */,
+				7FE5630A2B826904002562F3 /* DividerView.swift in Sources */,
+				7FE563112B827A1D002562F3 /* TabBarController.swift in Sources */,
+				7FE5630B2B826904002562F3 /* TextField.swift in Sources */,
 				7FE562F72B8266CB002562F3 /* CustomLabel.swift in Sources */,
 				73464AE52B72A97300149FBF /* CatalogViewController.swift in Sources */,
 				7FE562FA2B8266E7002562F3 /* ShoesViewController.swift in Sources */,
 				73464AE12B72A97300149FBF /* AppDelegate.swift in Sources */,
 				7FE562F32B8266CB002562F3 /* ImageNameModel.swift in Sources */,
+				7FE5630F2B8275B7002562F3 /* BasketModel.swift in Sources */,
 				7FE562F22B8266CB002562F3 /* SetupView.swift in Sources */,
 				73464AE32B72A97300149FBF /* SceneDelegate.swift in Sources */,
 				7FE562F52B8266CB002562F3 /* ModelInfo.swift in Sources */,
+				7FE563062B8268F6002562F3 /* ProfileViewController.swift in Sources */,
+				7FE563052B8268F6002562F3 /* MyInfoViewController.swift in Sources */,
+				7FE5630D2B826909002562F3 /* BasketViewController.swift in Sources */,
+				7FE563042B8268F6002562F3 /* MyInfoModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
