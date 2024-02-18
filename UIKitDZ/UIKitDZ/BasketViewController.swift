@@ -3,7 +3,8 @@
 
 import UIKit
 
-class BasketViewController: UIViewController {
+/// класс корзина
+final class BasketViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

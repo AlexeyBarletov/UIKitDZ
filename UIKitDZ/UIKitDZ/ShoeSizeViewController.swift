@@ -7,20 +7,25 @@ protocol DataDelegate: AnyObject {
     func translitionInfo(characteristics: Info)
 }
 
+/// класс для выбора размера
 class ShoeSizeViewController: UIViewController {
+    // MARK: Private Property
+
     private var listSize = ["35 EU", "36 EU", "37 EU", "38 EU", "39 EU"]
     private var closeButton = UIButton()
+    private weak var copyDelegate: DataDelegate?
 
-    weak var copyDelegate: DataDelegate?
+    // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-
         setLine()
         setSizeButton()
         setupCloseButton()
     }
+
+    // MARK: Private Methode
 
     private func setLine() {
         var startTop = 103
@@ -54,7 +59,7 @@ class ShoeSizeViewController: UIViewController {
         }
     }
 
-    func setupCloseButton() {
+    private func setupCloseButton() {
         view.addSubview(closeButton)
         closeButton.addTarget(self, action: #selector(translitionBack), for: .touchUpInside)
         closeButton.setImage(UIImage(systemName: "xmark"), for: .normal)
@@ -66,7 +71,7 @@ class ShoeSizeViewController: UIViewController {
         closeButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
     }
 
-    @objc func translitionBack() {
+    @objc private func translitionBack() {
         dismiss(animated: true)
     }
 }
