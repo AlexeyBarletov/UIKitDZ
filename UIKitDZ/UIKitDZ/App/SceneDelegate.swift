@@ -16,24 +16,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
 
         let catalogVC = CatalogViewController()
-        let basketVC = BasketViewController()
-        let profileVC = ProfileViewController()
-        let navigationControllerCatalog = UINavigationController(rootViewController: catalogVC)
-        let navigationControllerBasket = UINavigationController(rootViewController: basketVC)
+
+        let catalogNC = UINavigationController(rootViewController: catalogVC)
 
         let tabBarController = UITabBarController()
         tabBarController.setViewControllers(
-            [navigationControllerCatalog, navigationControllerBasket, profileVC],
+            [catalogNC],
             animated: true
         )
 
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
-        let catalog = CatalogViewController()
-        let basket = BasketViewController()
-        let profile = ProfileViewController()
-        let tabBarController = UITabBarController()
-        tabBarController.setViewControllers([catalog, basket, profile], animated: true)
-        window?.rootViewController = tabBarController
     }
 }

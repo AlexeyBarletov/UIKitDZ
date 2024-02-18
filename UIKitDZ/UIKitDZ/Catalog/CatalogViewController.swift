@@ -203,16 +203,6 @@ final class CatalogViewController: UIViewController {
             tabBarItemOne.image = UIImage(named: Constant.imageListBlack)
             tabBarItemOne.selectedImage = UIImage(named: Constant.imageListNorm)
         }
-        if let tabBarItemTwo = tabBarController?.tabBar.items?[1] {
-            tabBarItemTwo.title = "Корзина"
-            tabBarItemTwo.image = UIImage(named: Constant.imageBasketBlack)
-            tabBarItemTwo.selectedImage = UIImage(named: Constant.imageBasketNorm)
-        }
-        if let tabBarThree = tabBarController?.tabBar.items?[2] {
-            tabBarThree.title = "Профиль"
-            tabBarThree.image = UIImage(named: Constant.imageProfileNorm)
-            tabBarThree.image = UIImage(named: Constant.imageProfileBlack)
-        }
     }
 
     private func setupReconizer() {
