@@ -1,11 +1,12 @@
-// ViewController.swift
+// Profile.swift
 // Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
-class ViewController: UIViewController {
+class Profile: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("")
+        view.backgroundColor = .white
+        title = "Профиль"
     }
 }
