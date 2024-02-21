@@ -3,7 +3,7 @@
 
 import UIKit
 
-class Notifications: UIViewController {
+final class Notifications: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

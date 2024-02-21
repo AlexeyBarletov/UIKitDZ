@@ -3,29 +3,47 @@
 
 import UIKit
 
-class RibbonViewController: UIViewController {
+final class RibbonViewController: UIViewController {
     enum Constant {
         static let textLabel = "RMLink"
         static let customFont = "Dancing Script"
-        static let image = "Icon"
+        static let image = "sms"
         static let houseblackImageItem = "houseblack"
         static let notificationsBlackImageItem = "notificationsblack"
         static let profileBlackItem = "profileBlack"
+        static let imageTurVdagestan = "turVdagestan"
+        static let textLabelDagestan = "tur_v_dagestan"
+        static let extraButton = "extra"
+        static let suatCanyonImage = "suatCanyon"
+        static let natureImage = "nature"
+        static let myStroryPlus = "mystroryplus"
+        static let wumanTwo = "wumanTwo"
+        static let myStories = "Моя История"
+        static let posts = "lavanda123"
     }
 
     var images = [
-        LinkStorage(stories: "mystroryplus", posts: "Моя История"),
-        LinkStorage(stories: "wumanTwo", posts: "lavanda123"),
-        LinkStorage(stories: "wumanTwo", posts: "lavanda123"),
-        LinkStorage(stories: "wumanTwo", posts: "lavanda123"),
-        LinkStorage(stories: "wumanTwo", posts: "lavanda123")
+        LinkStorage(stories: Constant.myStroryPlus, posts: Constant.myStories),
+        LinkStorage(stories: Constant.wumanTwo, posts: Constant.posts),
+        LinkStorage(stories: Constant.wumanTwo, posts: Constant.posts),
+        LinkStorage(stories: Constant.wumanTwo, posts: Constant.posts),
+        LinkStorage(stories: Constant.wumanTwo, posts: Constant.posts)
     ]
+
+    var infoTwoScreen = [FirstPost(
+        avatar: Constant.imageTurVdagestan,
+        label: Constant.textLabelDagestan,
+        extraButton: Constant.extraButton,
+        suatCanyon: Constant.suatCanyonImage,
+        nature: Constant.natureImage
+
+    )]
 
     enum CountRows {
         case stories
         case firstPost
-        case reccomend
         case finalPost
+        case reccomend
     }
 
     private let rows: [CountRows] = [
@@ -40,6 +58,7 @@ class RibbonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+
         tuneCustomElementNavigationBar()
         setupTabBarController()
         setupTableView()
@@ -77,7 +96,7 @@ class RibbonViewController: UIViewController {
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(StoriesViewCell.self, forCellReuseIdentifier: StoriesViewCell.indentifireStories)
+        tableView.register(StoriesViewCell.self, forCellReuseIdentifier: StoriesViewCell.identifierStories)
         tableView.register(FirstPostViewCell.self, forCellReuseIdentifier: FirstPostViewCell.indentifireFirstPost)
         tableView.register(FinalPostViewCell.self, forCellReuseIdentifier: FinalPostViewCell.indentifireFinalPost)
         tableView.register(ReccomendViewCell.self, forCellReuseIdentifier: ReccomendViewCell.indentifireReccomend)
@@ -96,17 +115,17 @@ extension RibbonViewController: UITableViewDataSource {
         switch cells {
         case .stories:
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: StoriesViewCell.indentifireStories,
+                withIdentifier: StoriesViewCell.identifierStories,
                 for: indexPath
             ) as? StoriesViewCell else { return UITableViewCell() }
             cell.setup(param: images)
-
             return cell
         case .firstPost:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: FirstPostViewCell.indentifireFirstPost,
                 for: indexPath
             ) as? FirstPostViewCell else { return UITableViewCell() }
+            cell.setup(param: infoTwoScreen)
             return cell
         case .reccomend:
             guard let cell = tableView.dequeueReusableCell(
@@ -133,7 +152,7 @@ extension RibbonViewController: UITableViewDataSource {
         case .stories, .firstPost, .reccomend:
             return 1
         case .finalPost:
-            return rows.count
+            return 6
         }
     }
 }
@@ -143,13 +162,13 @@ extension RibbonViewController: UITableViewDelegate {
         let cellType = rows[indexPath.section]
         switch cellType {
         case .stories:
-            return 100
+            return 80
         case .finalPost:
-            return 70
+            return 80
         case .firstPost:
-            return 70
+            return 500
         case .reccomend:
-            return 70
+            return 80
         }
     }
 }
