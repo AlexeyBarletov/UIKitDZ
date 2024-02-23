@@ -3,8 +3,11 @@
 
 import UIKit
 
+/// Класс для показа ленты
 final class RibbonViewController: UIViewController {
-    enum Constant {
+    // MARK: - Constants
+
+    private enum Constant {
         static let textLabel = "RMLink"
         static let customFont = "Dancing Script"
         static let image = "sms"
@@ -17,12 +20,31 @@ final class RibbonViewController: UIViewController {
         static let suatCanyonImage = "suatCanyon"
         static let natureImage = "nature"
         static let myStroryPlus = "mystroryplus"
-        static let wumanTwo = "wumanTwo"
+        static let wumanTwo = "womanTwo"
         static let myStories = "Моя История"
         static let posts = "lavanda123"
     }
 
-    var images = [
+    /// Энам для типов ячеек
+    private enum CountRows {
+        /// кейс сторис
+        case stories
+        /// кейс постов
+        case firstPost
+        /// кейс рекомендаций
+        case reccomend
+        /// финальный пост
+        case finalPost
+    }
+
+    // MARK: - Private Properties
+
+    private let tableView = UITableView()
+    private let customLabel = UILabel()
+    private let textLabelNavigationBar = UILabel()
+    private let customLeftButtton = UIButton()
+
+    private var images = [
         LinkStorage(stories: Constant.myStroryPlus, posts: Constant.myStories),
         LinkStorage(stories: Constant.wumanTwo, posts: Constant.posts),
         LinkStorage(stories: Constant.wumanTwo, posts: Constant.posts),
@@ -30,39 +52,32 @@ final class RibbonViewController: UIViewController {
         LinkStorage(stories: Constant.wumanTwo, posts: Constant.posts)
     ]
 
-    var infoTwoScreen = [FirstPost(
+    private var infoTwoScreen = [FirstPost(
         avatar: Constant.imageTurVdagestan,
         label: Constant.textLabelDagestan,
         extraButton: Constant.extraButton,
-        suatCanyon: Constant.suatCanyonImage,
-        nature: Constant.natureImage
-
+        suatCanyonImage: Constant.suatCanyonImage,
+        natureImage: Constant.natureImage
     )]
 
-    enum CountRows {
-        case stories
-        case firstPost
-        case finalPost
-        case reccomend
-    }
-
     private let rows: [CountRows] = [
-        .stories, .firstPost, .finalPost, .reccomend
+        .stories,
+        .firstPost,
+        .reccomend,
+        .finalPost
     ]
 
-    var tableView = UITableView()
-    let customLabel = UILabel()
-    var textLabelNavigationBar = UILabel()
-    var customLeftButtton = UIButton()
+    // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-
         tuneCustomElementNavigationBar()
         setupTabBarController()
         setupTableView()
     }
+
+    // MARK: - Private Methods
 
     private func tuneCustomElementNavigationBar() {
         textLabelNavigationBar.text = Constant.textLabel
@@ -71,7 +86,6 @@ final class RibbonViewController: UIViewController {
         textLabelNavigationBar.textAlignment = .left
         let customBarButtonItem = UIBarButtonItem(customView: textLabelNavigationBar)
         navigationItem.leftBarButtonItem = customBarButtonItem
-
         let customButton = UIBarButtonItem(customView: customLeftButtton)
         customLeftButtton.setImage(UIImage(named: Constant.image), for: .normal)
         navigationItem.rightBarButtonItem = customButton
@@ -92,15 +106,14 @@ final class RibbonViewController: UIViewController {
         }
     }
 
-    func setupTableView() {
+    private func setupTableView() {
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(StoriesViewCell.self, forCellReuseIdentifier: StoriesViewCell.identifierStories)
         tableView.register(FirstPostViewCell.self, forCellReuseIdentifier: FirstPostViewCell.indentifireFirstPost)
-        tableView.register(FinalPostViewCell.self, forCellReuseIdentifier: FinalPostViewCell.indentifireFinalPost)
+        tableView.register(FinalPostViewCell.self, forCellReuseIdentifier: FinalPostViewCell.indentifireFirstPost)
         tableView.register(ReccomendViewCell.self, forCellReuseIdentifier: ReccomendViewCell.indentifireReccomend)
-
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -109,7 +122,23 @@ final class RibbonViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
+
 extension RibbonViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        rows.count
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let cellType = rows[section]
+        switch cellType {
+        case .stories, .firstPost, .reccomend:
+            return 1
+        case .finalPost:
+            return 6
+        }
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cells = rows[indexPath.section]
         switch cells {
@@ -125,37 +154,26 @@ extension RibbonViewController: UITableViewDataSource {
                 withIdentifier: FirstPostViewCell.indentifireFirstPost,
                 for: indexPath
             ) as? FirstPostViewCell else { return UITableViewCell() }
-            cell.setup(param: infoTwoScreen)
+            cell.setup(param: infoTwoScreen, isPageControllHiden: false)
             return cell
         case .reccomend:
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: FinalPostViewCell.indentifireFinalPost,
-                for: indexPath
-            ) as? FinalPostViewCell else { return UITableViewCell() }
-            return cell
-        case .finalPost:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: ReccomendViewCell.indentifireReccomend,
                 for: indexPath
             ) as? ReccomendViewCell else { return UITableViewCell() }
             return cell
-        }
-    }
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        rows.count
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let cellType = rows[section]
-        switch cellType {
-        case .stories, .firstPost, .reccomend:
-            return 1
         case .finalPost:
-            return 6
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: FirstPostViewCell.indentifireFirstPost,
+                for: indexPath
+            ) as? FinalPostViewCell else { return UITableViewCell() }
+            cell.setup(param: infoTwoScreen, isPageControllHiden: true)
+            return cell
         }
     }
 }
+
+// MARK: - UITableViewDelegate
 
 extension RibbonViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -163,12 +181,12 @@ extension RibbonViewController: UITableViewDelegate {
         switch cellType {
         case .stories:
             return 80
-        case .finalPost:
-            return 80
         case .firstPost:
-            return 500
+            return 480
         case .reccomend:
-            return 80
+            return 270
+        case .finalPost:
+            return 480
         }
     }
 }

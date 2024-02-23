@@ -3,60 +3,83 @@
 
 import UIKit
 
-final class FirstPostViewCell: UITableViewCell {
+/// Ячейка для показа поста
+class FirstPostViewCell: UITableViewCell {
+    // MARK: - Constants
+
     enum Constant {
-        static let fontVerdana = "Verdana-Bold"
+        static let verdanaFont = "Verdana-Bold"
+        static let miniImageAvatar = "miniAvatar"
+        static let favoritesButton = "favorites"
+        static let airplaneButton = "airplane"
+        static let messageButton = "message"
+        static let likeButton = "like"
+        static let likeLabel = "Нравится: 201"
+        static let turDagestanLabel =
+            "tur_v_dagestan Насладитесь красотой природы. Забронировать тур в Дагестан можно уже сейчас!"
+        static let commentLabel = "Комментировать ..."
+        static let minutesLabel = "10 минут назад"
     }
 
+    // MARK: - Public Properties
+
     static let indentifireFirstPost = "FirstPostViewCell"
-    private var avatarTurDagestanImageView = UIImageView()
-    private var textTurdagestanLabel = UILabel()
-    private var extraImage = UIImageView()
-    private var scrollView = UIScrollView()
-    private var pageControl = UIPageControl()
-    private var natureImageView = UIImageView()
-    private var suatCanyonImageView = UIImageView()
-    private var suatCanyonImageViewTwo = UIImageView()
-    private var likeButton = UIButton()
-    private var messageButton = UIButton()
-    private var airplaneButton = UIButton()
-    private var favoritesButton = UIButton()
-    private var miniAvatraImageView = UIImageView()
-    private var miniImageAvatar = UIImage(named: "miniAvatar")
-    private var likeLabel = UILabel()
-    private var turDagestanLabel = UILabel()
-    private var commentLabel = UILabel()
-    private var minutesLabel = UILabel()
+
+    // MARK: Private Property
+
+    private let avatarTurDagestanImageView = UIImageView()
+    private let textTurdagestanLabel = UILabel()
+    private let extraImage = UIImageView()
+    private let scrollView = UIScrollView()
+    private let pageControl = UIPageControl()
+    private let natureImageView = UIImageView()
+    private let suatCanyonImageView = UIImageView()
+    private let suatCanyonImageViewTwo = UIImageView()
+    private let likeButton = UIButton()
+    private let messageButton = UIButton()
+    private let airplaneButton = UIButton()
+    private let favoritesButton = UIButton()
+    private let miniAvatraImageView = UIImageView()
+    private let likeLabel = UILabel()
+    private let turDagestanLabel = UILabel()
+    private let commentLabel = UILabel()
+    private let minutesLabel = UILabel()
+
+    // MARK: - Initializers
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .white
+        addContentView()
         setupDagestanImageView()
-        setupExtraButton()
         setupScrollView()
         setupPageControl()
         setupImageViewPage()
-        // setupImageView()
         setupButton()
-
-        // setupLabel()
+        setupLabel()
+        setupNumberTwoLabel()
     }
 
     @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
 
-    // private func setupImageView() {
-//        miniAvatraImageView.image = miniImageAvatar
-//        miniAvatraImageView.translatesAutoresizingMaskIntoConstraints = false
-//        miniAvatraImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
-//        miniAvatraImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-//        miniAvatraImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12).isActive = true
-//        miniAvatraImageView.topAnchor.constraint(equalTo: turDagestanLabel.bottomAnchor, constant: 4).isActive = true
-    // }
+    // MARK: Public Method
 
-    private func setupButton() {
+    func setup(param: [FirstPost], isPageControllHiden: Bool) {
+        pageControl.isHidden = isPageControllHiden
+        avatarTurDagestanImageView.image = UIImage(named: param[0].avatar)
+        natureImageView.image = UIImage(named: param[0].natureImage)
+        suatCanyonImageView.image = UIImage(named: param[0].suatCanyonImage)
+        suatCanyonImageViewTwo.image = UIImage(named: param[0].suatCanyonImage)
+        textTurdagestanLabel.text = param[0].label
+        extraImage.image = UIImage(named: param[0].extraButton)
+    }
+
+    // MARK: - Private Methods
+
+    private func addContentView() {
         contentView.addSubview(miniAvatraImageView)
         contentView.addSubview(textTurdagestanLabel)
         contentView.addSubview(commentLabel)
@@ -67,91 +90,60 @@ final class FirstPostViewCell: UITableViewCell {
         contentView.addSubview(messageButton)
         contentView.addSubview(airplaneButton)
         contentView.addSubview(favoritesButton)
-        messageButton.setImage(UIImage(named: "message"), for: .normal)
-        likeButton.setImage(UIImage(named: "like"), for: .normal)
-        airplaneButton.setImage(UIImage(named: "airplane"), for: .normal)
-        favoritesButton.setImage(UIImage(named: "favorites"), for: .normal)
+        scrollView.addSubview(suatCanyonImageViewTwo)
+        scrollView.addSubview(suatCanyonImageView)
+        scrollView.addSubview(natureImageView)
+        contentView.addSubview(pageControl)
+        contentView.addSubview(scrollView)
+        contentView.addSubview(avatarTurDagestanImageView)
+        contentView.addSubview(extraImage)
+    }
 
-        favoritesButton.translatesAutoresizingMaskIntoConstraints = false
-        favoritesButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        favoritesButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        favoritesButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 342).isActive = true
-        favoritesButton.topAnchor.constraint(equalTo: pageControl.topAnchor, constant: 8).isActive = true
-
-        airplaneButton.translatesAutoresizingMaskIntoConstraints = false
-        airplaneButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        airplaneButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        airplaneButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 77).isActive = true
-        airplaneButton.topAnchor.constraint(equalTo: pageControl.topAnchor, constant: 8).isActive = true
-
-        messageButton.translatesAutoresizingMaskIntoConstraints = false
-        messageButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        messageButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        messageButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 42).isActive = true
-        messageButton.topAnchor.constraint(equalTo: pageControl.topAnchor, constant: 8).isActive = true
-
-        likeButton.translatesAutoresizingMaskIntoConstraints = false
-        likeButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        likeButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        likeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 13).isActive = true
-        likeButton.topAnchor.constraint(equalTo: pageControl.topAnchor, constant: 8).isActive = true
-        likeLabel.text = "Нравится: 201"
-        likeLabel.font = UIFont(name: Constant.fontVerdana, size: 10)
+    private func setupLabel() {
+        likeLabel.text = Constant.likeLabel
+        likeLabel.font = UIFont(name: Constant.verdanaFont, size: 10)
         likeLabel.textAlignment = .left
         likeLabel.textColor = UIColor(red: 46 / 255, green: 45 / 255, blue: 45 / 255, alpha: 1)
-
         likeLabel.translatesAutoresizingMaskIntoConstraints = false
         likeLabel.widthAnchor.constraint(equalToConstant: 107).isActive = true
         likeLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
         likeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12).isActive = true
         likeLabel.topAnchor.constraint(equalTo: likeButton.bottomAnchor, constant: 10).isActive = true
-
         turDagestanLabel
-            .text = "tur_v_dagestan Насладитесь красотой природы. Забронировать тур в Дагестан можно уже сейчас!"
+            .text = Constant.turDagestanLabel
         turDagestanLabel.textColor = UIColor(red: 46 / 255, green: 45 / 255, blue: 45 / 255, alpha: 1)
         turDagestanLabel.textAlignment = .left
         turDagestanLabel.numberOfLines = 2
-        turDagestanLabel.font = UIFont(name: Constant.fontVerdana, size: 10)
-
+        turDagestanLabel.font = UIFont(name: Constant.verdanaFont, size: 10)
         turDagestanLabel.translatesAutoresizingMaskIntoConstraints = false
         turDagestanLabel.widthAnchor.constraint(equalToConstant: 361).isActive = true
         turDagestanLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
         turDagestanLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12).isActive = true
         turDagestanLabel.topAnchor.constraint(equalTo: likeLabel.bottomAnchor, constant: 6).isActive = true
-
-        textTurdagestanLabel.font = UIFont(name: Constant.fontVerdana, size: 12)
+        textTurdagestanLabel.font = UIFont(name: Constant.verdanaFont, size: 12)
         textTurdagestanLabel.textColor = UIColor(red: 46 / 255, green: 45 / 255, blue: 45 / 255, alpha: 1)
-
         textTurdagestanLabel.translatesAutoresizingMaskIntoConstraints = false
         textTurdagestanLabel.widthAnchor.constraint(equalToConstant: 107).isActive = true
         textTurdagestanLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
         textTurdagestanLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
-        textTurdagestanLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 48).isActive = true
-        commentLabel.text = "Комментировать ..."
-        commentLabel.font = UIFont(name: Constant.fontVerdana, size: 10)
+        textTurdagestanLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 48)
+            .isActive = true
+    }
+
+    private func setupNumberTwoLabel() {
+        commentLabel.text = Constant.commentLabel
+        commentLabel.font = UIFont(name: Constant.verdanaFont, size: 10)
         commentLabel.textAlignment = .left
         commentLabel.textColor = UIColor(red: 144 / 255, green: 145 / 255, blue: 145 / 255, alpha: 1)
-
         commentLabel.translatesAutoresizingMaskIntoConstraints = false
         commentLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
         commentLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
         commentLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 35).isActive = true
         commentLabel.topAnchor.constraint(equalTo: turDagestanLabel.bottomAnchor, constant: 6).isActive = true
-
-        miniAvatraImageView.image = miniImageAvatar
-        miniAvatraImageView.translatesAutoresizingMaskIntoConstraints = false
-        miniAvatraImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        miniAvatraImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        miniAvatraImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12)
-            .isActive = true
-        miniAvatraImageView.topAnchor.constraint(equalTo: turDagestanLabel.bottomAnchor, constant: 4)
-            .isActive = true
-
-        minutesLabel.text = "10 минут назад"
-        minutesLabel.font = UIFont(name: Constant.fontVerdana, size: 10)
+        minutesLabel.text = Constant.minutesLabel
+        minutesLabel.font = UIFont(name: Constant.verdanaFont, size: 10)
         minutesLabel.textAlignment = .left
-        minutesLabel.textColor = UIColor(red: 46 / 255, green: 45 / 255, blue: 45 / 255, alpha: 1)
-
+        minutesLabel.textColor = UIColor(red: 144 / 255, green: 145 / 255, blue: 145 / 255, alpha: 1)
         minutesLabel.translatesAutoresizingMaskIntoConstraints = false
         minutesLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
         minutesLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
@@ -159,33 +151,69 @@ final class FirstPostViewCell: UITableViewCell {
         minutesLabel.topAnchor.constraint(equalTo: miniAvatraImageView.bottomAnchor, constant: 8).isActive = true
     }
 
+    private func setupButton() {
+        favoritesButton.setImage(UIImage(named: Constant.favoritesButton), for: .normal)
+        favoritesButton.translatesAutoresizingMaskIntoConstraints = false
+        favoritesButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        favoritesButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        favoritesButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 342).isActive = true
+        favoritesButton.topAnchor.constraint(equalTo: pageControl.topAnchor, constant: 8).isActive = true
+        airplaneButton.setImage(UIImage(named: Constant.airplaneButton), for: .normal)
+        airplaneButton.translatesAutoresizingMaskIntoConstraints = false
+        airplaneButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        airplaneButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        airplaneButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 77).isActive = true
+        airplaneButton.topAnchor.constraint(equalTo: pageControl.topAnchor, constant: 8).isActive = true
+        messageButton.setImage(UIImage(named: Constant.messageButton), for: .normal)
+        messageButton.translatesAutoresizingMaskIntoConstraints = false
+        messageButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        messageButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        messageButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 42).isActive = true
+        messageButton.topAnchor.constraint(equalTo: pageControl.topAnchor, constant: 8).isActive = true
+        likeButton.setImage(UIImage(named: Constant.likeButton), for: .normal)
+        likeButton.translatesAutoresizingMaskIntoConstraints = false
+        likeButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        likeButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        likeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 13).isActive = true
+        likeButton.topAnchor.constraint(equalTo: pageControl.topAnchor, constant: 8).isActive = true
+    }
+
     private func setupImageViewPage() {
-        scrollView.addSubview(suatCanyonImageViewTwo)
-        scrollView.addSubview(suatCanyonImageView)
-        scrollView.addSubview(natureImageView)
-
+        natureImageView.contentMode = .scaleAspectFill
         natureImageView.translatesAutoresizingMaskIntoConstraints = false
-        natureImageView.widthAnchor.constraint(equalToConstant: 375).isActive = true
-        natureImageView.heightAnchor.constraint(equalToConstant: 279).isActive = true
+        natureImageView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        natureImageView.heightAnchor.constraint(equalToConstant: 239).isActive = true
         natureImageView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        natureImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor)
-            .isActive = true
-
+        natureImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        suatCanyonImageView.contentMode = .scaleAspectFill
         suatCanyonImageView.translatesAutoresizingMaskIntoConstraints = false
-        suatCanyonImageView.widthAnchor.constraint(equalToConstant: 375).isActive = true
-        suatCanyonImageView.heightAnchor.constraint(equalToConstant: 279).isActive = true
+        suatCanyonImageView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        suatCanyonImageView.heightAnchor.constraint(equalToConstant: 239).isActive = true
         suatCanyonImageView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         suatCanyonImageView.leadingAnchor.constraint(equalTo: natureImageView.trailingAnchor).isActive = true
-
+        suatCanyonImageViewTwo.contentMode = .scaleAspectFill
         suatCanyonImageViewTwo.translatesAutoresizingMaskIntoConstraints = false
-        suatCanyonImageViewTwo.widthAnchor.constraint(equalToConstant: 375).isActive = true
-        suatCanyonImageViewTwo.heightAnchor.constraint(equalToConstant: 279).isActive = true
+        suatCanyonImageViewTwo.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        suatCanyonImageViewTwo.heightAnchor.constraint(equalToConstant: 239).isActive = true
         suatCanyonImageViewTwo.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         suatCanyonImageViewTwo.leadingAnchor.constraint(equalTo: suatCanyonImageView.trailingAnchor).isActive = true
+        suatCanyonImageViewTwo.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
+        miniAvatraImageView.image = UIImage(named: Constant.miniImageAvatar)
+        miniAvatraImageView.translatesAutoresizingMaskIntoConstraints = false
+        miniAvatraImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        miniAvatraImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        miniAvatraImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12)
+            .isActive = true
+        miniAvatraImageView.topAnchor.constraint(equalTo: turDagestanLabel.bottomAnchor, constant: 4)
+            .isActive = true
+        extraImage.translatesAutoresizingMaskIntoConstraints = false
+        extraImage.widthAnchor.constraint(equalToConstant: 14).isActive = true
+        extraImage.heightAnchor.constraint(equalToConstant: 2).isActive = true
+        extraImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 33).isActive = true
+        extraImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 347).isActive = true
     }
 
     private func setupPageControl() {
-        contentView.addSubview(pageControl)
         pageControl.pageIndicatorTintColor = .gray
         pageControl.currentPageIndicatorTintColor = .black
         pageControl.numberOfPages = 3
@@ -195,27 +223,18 @@ final class FirstPostViewCell: UITableViewCell {
         pageControl.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
     }
 
-    @objc private func processEvents(sender: UIPageControl) {
-        let offsetX = scrollView.bounds.width * CGFloat(sender.currentPage)
-        scrollView.setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
-    }
-
     private func setupScrollView() {
-        contentView.addSubview(scrollView)
         scrollView.backgroundColor = .white
-        scrollView.isPagingEnabled = true
-
+        scrollView.isPagingEnabled = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-
         scrollView.topAnchor.constraint(equalTo: avatarTurDagestanImageView.bottomAnchor, constant: 10).isActive = true
-        scrollView.heightAnchor.constraint(equalToConstant: 239).isActive = true
+        scrollView.heightAnchor.constraint(equalToConstant: 243).isActive = true
         scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
     }
 
     private func setupDagestanImageView() {
-        contentView.addSubview(avatarTurDagestanImageView)
         avatarTurDagestanImageView.translatesAutoresizingMaskIntoConstraints = false
         avatarTurDagestanImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
         avatarTurDagestanImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
@@ -224,84 +243,8 @@ final class FirstPostViewCell: UITableViewCell {
             .isActive = true
     }
 
-//    private func setupLabel() {
-//        contentView.addSubview(likeLabel)
-//        likeLabel.text = "Нравится: 201"
-//        likeLabel.font = UIFont(name: Constant.fontVerdana, size: 10)
-//        likeLabel.textAlignment = .left
-//        likeLabel.textColor = UIColor(red: 46 / 255, green: 45 / 255, blue: 45 / 255, alpha: 1)
-//
-//        likeLabel.translatesAutoresizingMaskIntoConstraints = false
-//        likeLabel.widthAnchor.constraint(equalToConstant: 107).isActive = true
-//        likeLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
-//        likeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12).isActive = true
-//        likeLabel.topAnchor.constraint(equalTo: likeButton.bottomAnchor, constant: 10).isActive = true
-//        contentView.addSubview(turDagestanLabel)
-//
-//        turDagestanLabel
-//            .text = "tur_v_dagestan Насладитесь красотой природы. Забронировать тур в Дагестан можно уже сейчас!"
-//        turDagestanLabel.textColor = UIColor(red: 46 / 255, green: 45 / 255, blue: 45 / 255, alpha: 1)
-//        turDagestanLabel.textAlignment = .left
-//        turDagestanLabel.numberOfLines = 2
-//        turDagestanLabel.font = UIFont(name: Constant.fontVerdana, size: 10)
-//
-//        turDagestanLabel.translatesAutoresizingMaskIntoConstraints = false
-//        turDagestanLabel.widthAnchor.constraint(equalToConstant: 361).isActive = true
-//        turDagestanLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-//        turDagestanLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12).isActive = true
-//        turDagestanLabel.topAnchor.constraint(equalTo: likeLabel.bottomAnchor, constant: 6).isActive = true
-//
-//        contentView.addSubview(textTurdagestanLabel)
-//        textTurdagestanLabel.font = UIFont(name: Constant.fontVerdana, size: 12)
-//        textTurdagestanLabel.textColor = UIColor(red: 46 / 255, green: 45 / 255, blue: 45 / 255, alpha: 1)
-//
-//        textTurdagestanLabel.translatesAutoresizingMaskIntoConstraints = false
-//        textTurdagestanLabel.widthAnchor.constraint(equalToConstant: 107).isActive = true
-//        textTurdagestanLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-//        textTurdagestanLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
-//        textTurdagestanLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 48).isActive = true
-//
-//        contentView.addSubview(commentLabel)
-//        commentLabel.text = "Комментировать ..."
-//        commentLabel.font = UIFont(name: Constant.fontVerdana, size: 10)
-//        commentLabel.textAlignment = .left
-//        commentLabel.textColor = UIColor(red: 144 / 255, green: 145 / 255, blue: 145 / 255, alpha: 1)
-//
-//        commentLabel.translatesAutoresizingMaskIntoConstraints = false
-//        commentLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
-//        commentLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
-//        commentLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 35).isActive = true
-//        commentLabel.topAnchor.constraint(equalTo: turDagestanLabel.bottomAnchor, constant: 6).isActive = true
-//
-//        contentView.addSubview(minutesLabel)
-//        minutesLabel.text = "10 минут назад"
-//        minutesLabel.font = UIFont(name: Constant.fontVerdana, size: 10)
-//        minutesLabel.textAlignment = .left
-//        minutesLabel.textColor = UIColor(red: 46 / 255, green: 45 / 255, blue: 45 / 255, alpha: 1)
-//
-//        minutesLabel.translatesAutoresizingMaskIntoConstraints = true
-//        minutesLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
-//        minutesLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
-//        minutesLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12).isActive = true
-//        minutesLabel.topAnchor.constraint(equalTo: commentLabel.bottomAnchor, constant: 7).isActive = true
-//    }
-
-    private func setupExtraButton() {
-        contentView.addSubview(extraImage)
-
-        extraImage.translatesAutoresizingMaskIntoConstraints = false
-        extraImage.widthAnchor.constraint(equalToConstant: 14).isActive = true
-        extraImage.heightAnchor.constraint(equalToConstant: 2).isActive = true
-        extraImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 33).isActive = true
-        extraImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 347).isActive = true
-    }
-
-    func setup(param: [FirstPost]) {
-        avatarTurDagestanImageView.image = UIImage(named: param[0].avatar)
-        natureImageView.image = UIImage(named: param[0].nature)
-        suatCanyonImageView.image = UIImage(named: param[0].suatCanyon)
-        suatCanyonImageViewTwo.image = UIImage(named: param[0].suatCanyon)
-        textTurdagestanLabel.text = param[0].label
-        extraImage.image = UIImage(named: param[0].extraButton)
+    @objc private func processEvents(sender: UIPageControl) {
+        let offsetX = scrollView.bounds.width * CGFloat(sender.currentPage)
+        scrollView.setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
     }
 }

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7335619B2B87C65F004008D9 /* NotificationsCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7335619A2B87C65F004008D9 /* NotificationsCommentCell.swift */; };
+		7335619D2B87CB38004008D9 /* NotificationsSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7335619C2B87CB38004008D9 /* NotificationsSubscription.swift */; };
+		7335619F2B87DA2B004008D9 /* InfoComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7335619E2B87DA2B004008D9 /* InfoComment.swift */; };
+		733561A12B87DA3D004008D9 /* InfoSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733561A02B87DA3D004008D9 /* InfoSubscription.swift */; };
 		73464AE12B72A97300149FBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73464AE02B72A97300149FBF /* AppDelegate.swift */; };
 		73464AE32B72A97300149FBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73464AE22B72A97300149FBF /* SceneDelegate.swift */; };
 		73464AE52B72A97300149FBF /* RibbonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73464AE42B72A97300149FBF /* RibbonViewController.swift */; };
@@ -17,19 +21,21 @@
 		73C865C22B85182900ACBA0A /* ReccomendViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C865C12B85182900ACBA0A /* ReccomendViewCell.swift */; };
 		73C865C42B85185300ACBA0A /*  StoriesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C865C32B85185300ACBA0A /*  StoriesViewCell.swift */; };
 		73C865C62B85207100ACBA0A /* InfoStories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C865C52B85207100ACBA0A /* InfoStories.swift */; };
-		73C865C92B85209A00ACBA0A /* InfoFinalPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C865C82B85209A00ACBA0A /* InfoFinalPost.swift */; };
 		73C865CB2B8520AE00ACBA0A /* InfoFirstPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C865CA2B8520AE00ACBA0A /* InfoFirstPost.swift */; };
-		73C865CD2B8520BC00ACBA0A /* InfoRecomend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C865CC2B8520BC00ACBA0A /* InfoRecomend.swift */; };
 		73C865D22B855FA700ACBA0A /* Verdana-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73C865CE2B855EEB00ACBA0A /* Verdana-Bold.ttf */; };
 		73C865D32B855FA900ACBA0A /* Verdana-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73C865CF2B855EEB00ACBA0A /* Verdana-BoldItalic.ttf */; };
 		73C865D42B855FAC00ACBA0A /* Verdana-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73C865D12B855EEB00ACBA0A /* Verdana-Italic.ttf */; };
 		73C865D52B855FAE00ACBA0A /* Verdana.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73C865D02B855EEB00ACBA0A /* Verdana.ttf */; };
-		73DC157D2B83BF5400619DCF /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DC157C2B83BF5400619DCF /* Notifications.swift */; };
-		73DC157F2B83BF6B00619DCF /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DC157E2B83BF6B00619DCF /* Profile.swift */; };
+		73DC157D2B83BF5400619DCF /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DC157C2B83BF5400619DCF /* NotificationsViewController.swift */; };
+		73DC157F2B83BF6B00619DCF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DC157E2B83BF6B00619DCF /* ProfileViewController.swift */; };
 		73DC15842B83C9E700619DCF /* DancingScript.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73DC15832B83C93A00619DCF /* DancingScript.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7335619A2B87C65F004008D9 /* NotificationsCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCommentCell.swift; sourceTree = "<group>"; };
+		7335619C2B87CB38004008D9 /* NotificationsSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSubscription.swift; sourceTree = "<group>"; };
+		7335619E2B87DA2B004008D9 /* InfoComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoComment.swift; sourceTree = "<group>"; };
+		733561A02B87DA3D004008D9 /* InfoSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSubscription.swift; sourceTree = "<group>"; };
 		73464ADD2B72A97300149FBF /* UIKitDZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitDZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73464AE02B72A97300149FBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73464AE22B72A97300149FBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,15 +48,13 @@
 		73C865C12B85182900ACBA0A /* ReccomendViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReccomendViewCell.swift; sourceTree = "<group>"; };
 		73C865C32B85185300ACBA0A /*  StoriesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " StoriesViewCell.swift"; sourceTree = "<group>"; };
 		73C865C52B85207100ACBA0A /* InfoStories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoStories.swift; sourceTree = "<group>"; };
-		73C865C82B85209A00ACBA0A /* InfoFinalPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoFinalPost.swift; sourceTree = "<group>"; };
 		73C865CA2B8520AE00ACBA0A /* InfoFirstPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoFirstPost.swift; sourceTree = "<group>"; };
-		73C865CC2B8520BC00ACBA0A /* InfoRecomend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRecomend.swift; sourceTree = "<group>"; };
 		73C865CE2B855EEB00ACBA0A /* Verdana-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Verdana-Bold.ttf"; sourceTree = "<group>"; };
 		73C865CF2B855EEB00ACBA0A /* Verdana-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Verdana-BoldItalic.ttf"; sourceTree = "<group>"; };
 		73C865D02B855EEB00ACBA0A /* Verdana.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Verdana.ttf; sourceTree = "<group>"; };
 		73C865D12B855EEB00ACBA0A /* Verdana-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Verdana-Italic.ttf"; sourceTree = "<group>"; };
-		73DC157C2B83BF5400619DCF /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
-		73DC157E2B83BF6B00619DCF /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		73DC157C2B83BF5400619DCF /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		73DC157E2B83BF6B00619DCF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		73DC15832B83C93A00619DCF /* DancingScript.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DancingScript.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,39 +89,53 @@
 		73464ADF2B72A97300149FBF /* UIKitDZ */ = {
 			isa = PBXGroup;
 			children = (
-				73464AE02B72A97300149FBF /* AppDelegate.swift */,
 				73464AE22B72A97300149FBF /* SceneDelegate.swift */,
+				73464AE02B72A97300149FBF /* AppDelegate.swift */,
 				73464AE42B72A97300149FBF /* RibbonViewController.swift */,
-				73DC157E2B83BF6B00619DCF /* Profile.swift */,
-				73DC157C2B83BF5400619DCF /* Notifications.swift */,
-				73C865C72B85207900ACBA0A /* Info */,
+				73DC157C2B83BF5400619DCF /* NotificationsViewController.swift */,
+				73DC157E2B83BF6B00619DCF /* ProfileViewController.swift */,
 				73C865BE2B8517D500ACBA0A /* Cell */,
-				73DC15822B83C8E900619DCF /*  Dancing Script Font */,
 				73464AEE2B72A97400149FBF /* Info.plist */,
 			);
 			path = UIKitDZ;
 			sourceTree = "<group>";
 		};
+		7397CFFC2B8908AA0077CA55 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				733561A02B87DA3D004008D9 /* InfoSubscription.swift */,
+				73C865C52B85207100ACBA0A /* InfoStories.swift */,
+				73C865CA2B8520AE00ACBA0A /* InfoFirstPost.swift */,
+				7335619E2B87DA2B004008D9 /* InfoComment.swift */,
+				7397CFFD2B8908E10077CA55 /* Fonts */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7397CFFD2B8908E10077CA55 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				73DC15832B83C93A00619DCF /* DancingScript.ttf */,
+				73C865D12B855EEB00ACBA0A /* Verdana-Italic.ttf */,
+				73C865CF2B855EEB00ACBA0A /* Verdana-BoldItalic.ttf */,
+				73C865CE2B855EEB00ACBA0A /* Verdana-Bold.ttf */,
+				73C865D02B855EEB00ACBA0A /* Verdana.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		73C865BE2B8517D500ACBA0A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				7335619A2B87C65F004008D9 /* NotificationsCommentCell.swift */,
+				7335619C2B87CB38004008D9 /* NotificationsSubscription.swift */,
 				73C865C32B85185300ACBA0A /*  StoriesViewCell.swift */,
+				73C865C12B85182900ACBA0A /* ReccomendViewCell.swift */,
 				73C865BF2B85180100ACBA0A /*  FirstPostViewCell.swift */,
 				73C865BC2B8517B800ACBA0A /* FinalPostViewCell.swift */,
-				73C865C12B85182900ACBA0A /* ReccomendViewCell.swift */,
+				7397CFFC2B8908AA0077CA55 /* Models */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		73C865C72B85207900ACBA0A /* Info */ = {
-			isa = PBXGroup;
-			children = (
-				73C865C52B85207100ACBA0A /* InfoStories.swift */,
-				73C865CA2B8520AE00ACBA0A /* InfoFirstPost.swift */,
-				73C865C82B85209A00ACBA0A /* InfoFinalPost.swift */,
-				73C865CC2B8520BC00ACBA0A /* InfoRecomend.swift */,
-			);
-			path = Info;
 			sourceTree = "<group>";
 		};
 		73DC15802B83BF8C00619DCF /* Rest */ = {
@@ -127,18 +145,6 @@
 				73464AE92B72A97400149FBF /* Assets.xcassets */,
 			);
 			path = Rest;
-			sourceTree = "<group>";
-		};
-		73DC15822B83C8E900619DCF /*  Dancing Script Font */ = {
-			isa = PBXGroup;
-			children = (
-				73C865CE2B855EEB00ACBA0A /* Verdana-Bold.ttf */,
-				73C865CF2B855EEB00ACBA0A /* Verdana-BoldItalic.ttf */,
-				73C865D12B855EEB00ACBA0A /* Verdana-Italic.ttf */,
-				73C865D02B855EEB00ACBA0A /* Verdana.ttf */,
-				73DC15832B83C93A00619DCF /* DancingScript.ttf */,
-			);
-			path = " Dancing Script Font";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,18 +267,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73DC157D2B83BF5400619DCF /* Notifications.swift in Sources */,
+				73DC157D2B83BF5400619DCF /* NotificationsViewController.swift in Sources */,
 				73C865BD2B8517B800ACBA0A /* FinalPostViewCell.swift in Sources */,
-				73DC157F2B83BF6B00619DCF /* Profile.swift in Sources */,
+				73DC157F2B83BF6B00619DCF /* ProfileViewController.swift in Sources */,
 				73C865C42B85185300ACBA0A /*  StoriesViewCell.swift in Sources */,
-				73C865CD2B8520BC00ACBA0A /* InfoRecomend.swift in Sources */,
+				7335619B2B87C65F004008D9 /* NotificationsCommentCell.swift in Sources */,
 				73C865C02B85180100ACBA0A /*  FirstPostViewCell.swift in Sources */,
 				73464AE52B72A97300149FBF /* RibbonViewController.swift in Sources */,
 				73C865C22B85182900ACBA0A /* ReccomendViewCell.swift in Sources */,
 				73C865CB2B8520AE00ACBA0A /* InfoFirstPost.swift in Sources */,
 				73464AE12B72A97300149FBF /* AppDelegate.swift in Sources */,
-				73C865C92B85209A00ACBA0A /* InfoFinalPost.swift in Sources */,
+				7335619F2B87DA2B004008D9 /* InfoComment.swift in Sources */,
+				7335619D2B87CB38004008D9 /* NotificationsSubscription.swift in Sources */,
 				73464AE32B72A97300149FBF /* SceneDelegate.swift in Sources */,
+				733561A12B87DA3D004008D9 /* InfoSubscription.swift in Sources */,
 				73C865C62B85207100ACBA0A /* InfoStories.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
