@@ -52,13 +52,15 @@ final class RibbonViewController: UIViewController {
         LinkStorage(stories: Constant.wumanTwo, posts: Constant.posts)
     ]
 
-    private var infoTwoScreen = [FirstPost(
-        avatar: Constant.imageTurVdagestan,
-        label: Constant.textLabelDagestan,
-        extraButton: Constant.extraButton,
-        suatCanyonImage: Constant.suatCanyonImage,
-        natureImage: Constant.natureImage
-    )]
+    private var infoTwoScreen = [
+        FirstPost(
+            avatar: Constant.imageTurVdagestan,
+            label: Constant.textLabelDagestan,
+            extraButton: Constant.extraButton,
+            suatCanyonImage: Constant.suatCanyonImage,
+            natureImage: Constant.natureImage
+        )
+    ]
 
     private let rows: [CountRows] = [
         .stories,
