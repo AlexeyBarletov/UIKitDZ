@@ -4,24 +4,24 @@
 import UIKit
 
 /// Ячейка для показа информации о пользователе
-class UserInfoCell: UITableViewCell {
+final class UserInfoCell: UITableViewCell {
     // MARK: Constant
 
     enum Constant {
-        static var pin = "pin"
-        static var titleChange = "Изменить"
-        static var verdanaBold = "Verdana-Bold"
-        static var verdana = "Verdana"
-        static var titleShare = "Поделиться"
-        static var add = "add"
-        static var publicationsLabel = "67"
-        static var subscribersLabel = "458"
-        static var subscriptionsLabel = "120"
-        static var publicationsTextLabel = "публикации"
-        static var subscribersTextLabel = "подписчики"
-        static var subscriptionsTextLabel = "подписки"
-        static var consultant = "Консультант"
-        static var link = "📎www.spacex.com"
+        static let pin = "pin"
+        static let titleChange = "Изменить"
+        static let verdanaBold = "Verdana-Bold"
+        static let verdana = "Verdana"
+        static let titleShare = "Поделиться"
+        static let add = "add"
+        static let publicationsLabel = "67"
+        static let subscribersLabel = "458"
+        static let subscriptionsLabel = "120"
+        static let publicationsTextLabel = "публикации"
+        static let subscribersTextLabel = "подписчики"
+        static let subscriptionsTextLabel = "подписки"
+        static let consultant = "Консультант"
+        static let link = "📎 www.spacex.com"
     }
 
     // MARK: - Public Properties
@@ -30,18 +30,18 @@ class UserInfoCell: UITableViewCell {
 
     // MARK: Private Properties
 
-    private var avatarImageView = UIImageView()
-    private var changeButton = UIButton()
-    private var shareButton = UIButton()
-    private var add = UIButton()
-    private var publications = UILabel()
-    private var publicationsNumberLabel = UILabel()
-    private var subscribersNumberLabel = UILabel()
-    private var subscriptionsNumberLabel = UILabel()
-    private var publicationsTextLabel = UILabel()
-    private var subscribersTextLabel = UILabel()
-    private var subscriptionsTextLabel = UILabel()
-    private var nameUser = UILabel()
+    private let avatarImageView = UIImageView()
+    private let changeButton = UIButton()
+    private let shareButton = UIButton()
+    private let addButton = UIButton()
+    private let publicationsLabel = UILabel()
+    private let publicationsNumberLabel = UILabel()
+    private let subscribersNumberLabel = UILabel()
+    private let subscriptionsNumberLabel = UILabel()
+    private let publicationsTextLabel = UILabel()
+    private let subscribersTextLabel = UILabel()
+    private let subscriptionsTextLabel = UILabel()
+    private let nameUserLabel = UILabel()
     private let consultantLabel = UILabel()
     private let linkButton = UIButton()
 
@@ -69,14 +69,14 @@ class UserInfoCell: UITableViewCell {
         contentView.addSubview(avatarImageView)
         contentView.addSubview(changeButton)
         contentView.addSubview(shareButton)
-        contentView.addSubview(add)
+        contentView.addSubview(addButton)
         contentView.addSubview(publicationsNumberLabel)
         contentView.addSubview(subscribersNumberLabel)
         contentView.addSubview(subscriptionsNumberLabel)
         contentView.addSubview(publicationsTextLabel)
         contentView.addSubview(subscribersTextLabel)
         contentView.addSubview(subscriptionsTextLabel)
-        contentView.addSubview(nameUser)
+        contentView.addSubview(nameUserLabel)
         contentView.addSubview(consultantLabel)
         contentView.addSubview(linkButton)
     }
@@ -101,7 +101,6 @@ class UserInfoCell: UITableViewCell {
         changeButton.heightAnchor.constraint(equalToConstant: 28).isActive = true
         changeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
         changeButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 184).isActive = true
-
         shareButton.setTitle(Constant.titleShare, for: .normal)
         shareButton.titleLabel?.font = UIFont(name: Constant.verdanaBold, size: 10)
         shareButton.titleLabel?.textAlignment = .center
@@ -113,16 +112,15 @@ class UserInfoCell: UITableViewCell {
         shareButton.heightAnchor.constraint(equalToConstant: 28).isActive = true
         shareButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 175).isActive = true
         shareButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 184).isActive = true
-
-        add.setImage(UIImage(named: Constant.add), for: .normal)
-        add.backgroundColor = UIColor(red: 239 / 255, green: 239 / 255, blue: 239 / 255, alpha: 1)
-        add.layer.cornerRadius = 8
-        add.setTitleColor(UIColor.black, for: .normal)
-        add.translatesAutoresizingMaskIntoConstraints = false
-        add.widthAnchor.constraint(equalToConstant: 25).isActive = true
-        add.heightAnchor.constraint(equalToConstant: 28).isActive = true
-        add.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 335).isActive = true
-        add.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 184).isActive = true
+        addButton.setImage(UIImage(named: Constant.add), for: .normal)
+        addButton.backgroundColor = UIColor(red: 239 / 255, green: 239 / 255, blue: 239 / 255, alpha: 1)
+        addButton.layer.cornerRadius = 8
+        addButton.setTitleColor(UIColor.black, for: .normal)
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        addButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        addButton.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        addButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 335).isActive = true
+        addButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 184).isActive = true
     }
 
     private func setupLabelColl() {
@@ -130,31 +128,26 @@ class UserInfoCell: UITableViewCell {
         publicationsNumberLabel.textColor = .black
         publicationsNumberLabel.textAlignment = .center
         publicationsNumberLabel.font = UIFont(name: Constant.verdanaBold, size: 14)
-
         publicationsNumberLabel.translatesAutoresizingMaskIntoConstraints = false
         publicationsNumberLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
         publicationsNumberLabel.heightAnchor.constraint(equalToConstant: 17).isActive = true
         publicationsNumberLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 151)
             .isActive = true
         publicationsNumberLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 22).isActive = true
-
         subscribersNumberLabel.text = Constant.subscribersLabel
         subscribersNumberLabel.textColor = .black
         subscribersNumberLabel.textAlignment = .center
         subscribersNumberLabel.font = UIFont(name: Constant.verdanaBold, size: 14)
-
         subscribersNumberLabel.translatesAutoresizingMaskIntoConstraints = false
         subscribersNumberLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
         subscribersNumberLabel.heightAnchor.constraint(equalToConstant: 17).isActive = true
         subscribersNumberLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 221)
             .isActive = true
         subscribersNumberLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 22).isActive = true
-
         subscriptionsNumberLabel.text = Constant.subscriptionsLabel
         subscriptionsNumberLabel.textColor = .black
         subscriptionsNumberLabel.textAlignment = .center
         subscriptionsNumberLabel.font = UIFont(name: Constant.verdanaBold, size: 14)
-
         subscriptionsNumberLabel.translatesAutoresizingMaskIntoConstraints = false
         subscriptionsNumberLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
         subscriptionsNumberLabel.heightAnchor.constraint(equalToConstant: 17).isActive = true
@@ -168,26 +161,22 @@ class UserInfoCell: UITableViewCell {
         publicationsTextLabel.textColor = .black
         publicationsTextLabel.textAlignment = .center
         publicationsTextLabel.font = UIFont(name: Constant.verdana, size: 10)
-
         publicationsTextLabel.translatesAutoresizingMaskIntoConstraints = false
         publicationsTextLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
         publicationsTextLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
         publicationsTextLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 141)
             .isActive = true
         publicationsTextLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 41).isActive = true
-
         subscribersTextLabel.text = Constant.subscriptionsTextLabel
         subscribersTextLabel.textColor = .black
         subscribersTextLabel.textAlignment = .center
         subscribersTextLabel.font = UIFont(name: Constant.verdana, size: 10)
-
         subscribersTextLabel.translatesAutoresizingMaskIntoConstraints = false
         subscribersTextLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
         subscribersTextLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
         subscribersTextLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 211)
             .isActive = true
         subscribersTextLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 41).isActive = true
-
         subscriptionsTextLabel.text = Constant.subscriptionsTextLabel
         subscriptionsTextLabel.textColor = .black
         subscriptionsTextLabel.textAlignment = .center
@@ -198,17 +187,16 @@ class UserInfoCell: UITableViewCell {
         subscriptionsTextLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 282)
             .isActive = true
         subscriptionsTextLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 41).isActive = true
-
-        nameUser.textColor = .black
-        nameUser.textAlignment = .center
-        nameUser.font = UIFont(name: Constant.verdanaBold, size: 14)
-        nameUser.textAlignment = .left
-        nameUser.translatesAutoresizingMaskIntoConstraints = false
-        nameUser.widthAnchor.constraint(equalToConstant: 170).isActive = true
-        nameUser.heightAnchor.constraint(equalToConstant: 17).isActive = true
-        nameUser.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15)
+        nameUserLabel.textColor = .black
+        nameUserLabel.textAlignment = .center
+        nameUserLabel.font = UIFont(name: Constant.verdanaBold, size: 14)
+        nameUserLabel.textAlignment = .left
+        nameUserLabel.translatesAutoresizingMaskIntoConstraints = false
+        nameUserLabel.widthAnchor.constraint(equalToConstant: 170).isActive = true
+        nameUserLabel.heightAnchor.constraint(equalToConstant: 17).isActive = true
+        nameUserLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15)
             .isActive = true
-        nameUser.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 101).isActive = true
+        nameUserLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 101).isActive = true
     }
 
     private func setupLabelConsultan() {
@@ -216,14 +204,12 @@ class UserInfoCell: UITableViewCell {
         consultantLabel.textColor = .black
         consultantLabel.textAlignment = .left
         consultantLabel.font = UIFont(name: Constant.verdana, size: 14)
-
         consultantLabel.translatesAutoresizingMaskIntoConstraints = false
         consultantLabel.widthAnchor.constraint(equalToConstant: 298).isActive = true
         consultantLabel.heightAnchor.constraint(equalToConstant: 17).isActive = true
         consultantLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15)
             .isActive = true
         consultantLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 129).isActive = true
-
         linkButton.setTitle(Constant.link, for: .normal)
         linkButton.setTitleColor(UIColor(red: 4 / 255, green: 104 / 255, blue: 181 / 255, alpha: 1), for: .normal)
         linkButton.contentHorizontalAlignment = .left
@@ -236,12 +222,14 @@ class UserInfoCell: UITableViewCell {
         linkButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 152).isActive = true
     }
 
+    // MARK: Public Methode
+
     func moveNewScreen() -> UIButton {
         linkButton
     }
 
     func setupInfo(param: [InfoUser]) {
         avatarImageView.image = UIImage(named: param[0].avatar)
-        nameUser.text = param[0].nickName
+        nameUserLabel.text = param[0].nickName
     }
 }

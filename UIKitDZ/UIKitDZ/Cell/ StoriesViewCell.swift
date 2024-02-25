@@ -4,7 +4,7 @@
 import UIKit
 
 /// Ячейка для показа историй
-class StoriesViewCell: UITableViewCell {
+final class StoriesViewCell: UITableViewCell {
     // MARK: - Constants
 
     enum Constant {

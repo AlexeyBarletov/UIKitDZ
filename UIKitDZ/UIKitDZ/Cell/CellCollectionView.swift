@@ -3,14 +3,15 @@
 
 import UIKit
 
-class CellCollectionView: UICollectionViewCell {
+/// Класс для настройки ячейки для collectionView
+final class CellCollectionView: UICollectionViewCell {
     // MARK: - Public Properties
 
     static let сellCollectionView = "CellCollectionView"
 
     // MARK: Private Property
 
-    var imageView = UIImageView()
+    private var imageView = UIImageView()
 
     // MARK: - Initializers
 
@@ -24,6 +25,8 @@ class CellCollectionView: UICollectionViewCell {
         super.init(coder: coder)
     }
 
+    // MARK: Public Methode
+
     func setupCollection(param: Source) {
         imageView.image = UIImage(named: param.imageName)
     }
@@ -35,7 +38,6 @@ class CellCollectionView: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
-
         imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         imageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true

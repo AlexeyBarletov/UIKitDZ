@@ -1,25 +1,24 @@
 // StoriesCell.swift
 // Copyright © RoadMap. All rights reserved.
 
-import Foundation
 import UIKit
 
 /// Ячейка для показа историй
-class StoriesCell: UITableViewCell {
+final class StoriesCell: UITableViewCell {
     // MARK: Constant
 
     enum Constant {
-        static var rocket = "rocket" // ракета
-        static var spacey = "spacey" // космонавт
-        static var space = "space" // косомс
-        static var moon = "moon" // луна
-        static var launchText = "Запуск" // запуск
-        static var rocketText = "Ракета" // ракета
-        static var spaceyText = "Космонавант" // космонавт
-        static var spaceText = "Космос" // косомс
-        static var moonText = "Луна" // луна
-        static var verdana = "Verdana"
-        static var randomText = "Марс"
+        static let rocket = "rocket"
+        static let spacey = "spacey"
+        static let space = "space"
+        static let moon = "moon"
+        static let launchText = "Запуск"
+        static let rocketText = "Ракета"
+        static let spaceyText = "Космонавант"
+        static let spaceText = "Космос"
+        static let moonText = "Луна"
+        static let verdana = "Verdana"
+        static let randomText = "Марс"
     }
 
     // MARK: - Public Properties
@@ -28,21 +27,19 @@ class StoriesCell: UITableViewCell {
 
     // MARK: Private Properties
 
-    var scrollView = UIScrollView()
-
-    var launchImageView = UIImageView()
-    var rocketImageView = UIImageView()
-    var spaceyImageView = UIImageView()
-    var spaceImageView = UIImageView()
-    var moonImageView = UIImageView()
-    var marsImageView = UIImageView()
-
-    var launchLabel = UILabel()
-    var rocketLabel = UILabel()
-    var spaceyLabel = UILabel()
-    var spaceLabel = UILabel()
-    var moonLabel = UILabel()
-    var randomLabel = UILabel()
+    let scrollView = UIScrollView()
+    let launchImageView = UIImageView()
+    let rocketImageView = UIImageView()
+    let spaceyImageView = UIImageView()
+    let spaceImageView = UIImageView()
+    let moonImageView = UIImageView()
+    let marsImageView = UIImageView()
+    let launchLabel = UILabel()
+    let rocketLabel = UILabel()
+    let spaceyLabel = UILabel()
+    let spaceLabel = UILabel()
+    let moonLabel = UILabel()
+    let randomLabel = UILabel()
 
     // MARK: - Initializers
 
@@ -52,6 +49,7 @@ class StoriesCell: UITableViewCell {
         addContenView()
         setupScrollView()
         setuImageView()
+        setupLabelTwo()
         setupLabel()
     }
 
@@ -86,6 +84,8 @@ class StoriesCell: UITableViewCell {
         scrollView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
 
+    // MARK: Private Method
+
     private func setuImageView() {
         launchImageView.image = UIImage(named: Constant.rocket)
         launchImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -93,35 +93,30 @@ class StoriesCell: UITableViewCell {
         launchImageView.heightAnchor.constraint(equalToConstant: 49).isActive = true
         launchImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 7).isActive = true
         launchImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 18).isActive = true
-
         moonImageView.image = UIImage(named: Constant.moon)
         moonImageView.translatesAutoresizingMaskIntoConstraints = false
         moonImageView.widthAnchor.constraint(equalToConstant: 49).isActive = true
         moonImageView.heightAnchor.constraint(equalToConstant: 49).isActive = true
         moonImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 7).isActive = true
         moonImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 89).isActive = true
-
         spaceImageView.image = UIImage(named: Constant.spacey)
         spaceImageView.translatesAutoresizingMaskIntoConstraints = false
         spaceImageView.widthAnchor.constraint(equalToConstant: 49).isActive = true
         spaceImageView.heightAnchor.constraint(equalToConstant: 49).isActive = true
         spaceImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 7).isActive = true
         spaceImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 160).isActive = true
-
         spaceyImageView.image = UIImage(named: Constant.space)
         spaceyImageView.translatesAutoresizingMaskIntoConstraints = false
         spaceyImageView.widthAnchor.constraint(equalToConstant: 49).isActive = true
         spaceyImageView.heightAnchor.constraint(equalToConstant: 49).isActive = true
         spaceyImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 7).isActive = true
         spaceyImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 231).isActive = true
-
         rocketImageView.image = UIImage(named: Constant.rocket)
         rocketImageView.translatesAutoresizingMaskIntoConstraints = false
         rocketImageView.widthAnchor.constraint(equalToConstant: 49).isActive = true
         rocketImageView.heightAnchor.constraint(equalToConstant: 49).isActive = true
         rocketImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 7).isActive = true
         rocketImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 302).isActive = true
-
         marsImageView.image = UIImage(named: Constant.moon)
         marsImageView.translatesAutoresizingMaskIntoConstraints = false
         marsImageView.widthAnchor.constraint(equalToConstant: 49).isActive = true
@@ -131,18 +126,16 @@ class StoriesCell: UITableViewCell {
         marsImageView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
     }
 
-    func setupLabel() {
+    private func setupLabelTwo() {
         launchLabel.text = Constant.launchText
         launchLabel.font = UIFont(name: Constant.verdana, size: 10)
         launchLabel.textColor = .black
         launchLabel.textAlignment = .center
-
         launchLabel.translatesAutoresizingMaskIntoConstraints = false
         launchLabel.widthAnchor.constraint(equalToConstant: 55).isActive = true
         launchLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
         launchLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15).isActive = true
         launchLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 60).isActive = true
-
         rocketLabel.text = Constant.rocketText
         rocketLabel.font = UIFont(name: Constant.verdana, size: 10)
         rocketLabel.textColor = .black
@@ -152,7 +145,6 @@ class StoriesCell: UITableViewCell {
         rocketLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
         rocketLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 86).isActive = true
         rocketLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 60).isActive = true
-
         spaceyLabel.text = Constant.spaceyText
         spaceyLabel.font = UIFont(name: Constant.verdana, size: 10)
         spaceyLabel.textColor = .black
@@ -163,7 +155,6 @@ class StoriesCell: UITableViewCell {
         spaceyLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
         spaceyLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 157).isActive = true
         spaceyLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 60).isActive = true
-
         spaceLabel.text = Constant.spaceText
         spaceLabel.font = UIFont(name: Constant.verdana, size: 10)
         spaceLabel.textColor = .black
@@ -174,7 +165,9 @@ class StoriesCell: UITableViewCell {
         spaceLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
         spaceLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 228).isActive = true
         spaceLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 60).isActive = true
+    }
 
+    private func setupLabel() {
         moonLabel.text = Constant.launchText
         moonLabel.font = UIFont(name: Constant.verdana, size: 10)
         moonLabel.textColor = .black
@@ -185,7 +178,6 @@ class StoriesCell: UITableViewCell {
         moonLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
         moonLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 299).isActive = true
         moonLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 60).isActive = true
-
         randomLabel.text = Constant.randomText
         randomLabel.font = UIFont(name: Constant.verdana, size: 10)
         randomLabel.textColor = .black

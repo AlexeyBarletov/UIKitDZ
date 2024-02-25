@@ -13,21 +13,22 @@ final class ProfileViewController: UIViewController {
         static let additionallyImageButton = "additionallyImageButtonRightOne"
         static let titleNavigationBar = "mary_rmLink"
         static let font = "Verdana-Bold"
-        static var nameUser = "Мария Иванова"
-        static var pin = "pin"
-
-        static var avatar = "mystroryplus"
+        static let nameUser = "Мария Иванова"
+        static let pin = "pin"
+        static let avatar = "mystroryplus"
     }
 
+    /// Энам для типов ячеек
     enum ConfigureCell {
+        /// кейс информации о пользователе
         case infoUser
+        /// кейс сторис
         case stories
+        /// кейс коллекция картинок
         case complex
     }
 
-    // MARK: - Statice Properties
-
-    var exampleBarButtonItem = UIBarButtonItem()
+    // MARK: - Public Properties
 
     var listCell: [ConfigureCell] = [
         .infoUser,
@@ -35,21 +36,21 @@ final class ProfileViewController: UIViewController {
         .complex
     ]
 
+    // MARK: - Private Properties
+
+    private let titleLabel = UILabel()
+    private let titleView = UIView()
+    private let rightButtonItemtPlus = UIButton()
+    private let rightButtonItemtTwo = UIButton()
+    private let viewButtons = UIView()
+    private let tableView = UITableView()
+    private var exampleBarButtonItem = UIBarButtonItem()
+    private let exampleStruct = Source.photos()
     private var infoUsers = [InfoUser(
         avatar: Constant.avatar,
         nickName: Constant.nameUser,
         pinImage: Constant.pin
     )]
-
-    // MARK: - Private Properties
-
-    private let titleLabel = UILabel()
-    private var titleView = UIView()
-    private let rightButtonItemtPlus = UIButton()
-    private let rightButtonItemtTwo = UIButton()
-    private let viewButtons = UIView()
-    private let tableView = UITableView()
-    let exampleStruct = Source.photos()
 
     // MARK: - Life Cycle
 
@@ -90,7 +91,6 @@ final class ProfileViewController: UIViewController {
     private func addConstraintsButton() {
         rightButtonItemtPlus.translatesAutoresizingMaskIntoConstraints = false
         rightButtonItemtTwo.translatesAutoresizingMaskIntoConstraints = false
-
         rightButtonItemtPlus.widthAnchor.constraint(equalToConstant: 18).isActive = true
         rightButtonItemtPlus.heightAnchor.constraint(equalToConstant: 16).isActive = true
         rightButtonItemtPlus.bottomAnchor.constraint(equalTo: viewButtons.bottomAnchor).isActive = true
@@ -98,7 +98,6 @@ final class ProfileViewController: UIViewController {
         rightButtonItemtPlus.topAnchor.constraint(equalTo: viewButtons.topAnchor).isActive = true
         rightButtonItemtPlus.leadingAnchor.constraint(equalTo: rightButtonItemtTwo.trailingAnchor, constant: 11)
             .isActive = true
-
         rightButtonItemtTwo.widthAnchor.constraint(equalToConstant: 18).isActive = true
         rightButtonItemtTwo.heightAnchor.constraint(equalToConstant: 18).isActive = true
         rightButtonItemtTwo.leadingAnchor.constraint(equalTo: viewButtons.leadingAnchor).isActive = true
@@ -138,6 +137,8 @@ final class ProfileViewController: UIViewController {
     }
 }
 
+// MARK: UITableViewDataSource
+
 extension ProfileViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         listCell.count
@@ -176,6 +177,8 @@ extension ProfileViewController: UITableViewDataSource {
         }
     }
 }
+
+// MARK: UITableViewDelegate
 
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

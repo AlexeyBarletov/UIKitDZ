@@ -3,15 +3,14 @@
 
 import UIKit
 
-class СollectionPicturesCell: UITableViewCell {
+/// Ячейка для настройки СollectionView
+final class СollectionPicturesCell: UITableViewCell {
     // MARK: - Public Properties
 
     static let сollectionPicturesCell = "СollectionPicturesCell"
-//
-//    var example = Source.photos()
     var listImage = [Source]()
 
-    // MARK: - Private Methods
+    // MARK: - Private property
 
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -19,7 +18,6 @@ class СollectionPicturesCell: UITableViewCell {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
-
         collectionView.register(
             CellCollectionView.self,
             forCellWithReuseIdentifier: CellCollectionView.сellCollectionView
@@ -43,13 +41,17 @@ class СollectionPicturesCell: UITableViewCell {
         super.init(coder: coder)
     }
 
+    // MARK: - Public Method
+
     func setupImage(param: [Source]) {
         listImage = param
         let cellHeight = (param.count / 3) * Int(UIScreen.main.bounds.width) / 3
         collectionView.heightAnchor.constraint(equalToConstant: CGFloat(cellHeight)).isActive = true
     }
 
-    func setupContenView() {
+    // MARK: - Private Method
+
+    private func setupContenView() {
         contentView.addSubview(collectionView)
         collectionView.dataSource = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -59,6 +61,8 @@ class СollectionPicturesCell: UITableViewCell {
         collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
     }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension СollectionPicturesCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
