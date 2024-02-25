@@ -11,6 +11,4 @@ struct InfoUser {
     var nickName: String
     /// картинка булавка
     var pinImage: String
-    /// ссылка
-    var link: String
 }

@@ -21,6 +21,7 @@ class UserInfoCell: UITableViewCell {
         static var subscribersTextLabel = "подписчики"
         static var subscriptionsTextLabel = "подписки"
         static var consultant = "Консультант"
+        static var link = "📎www.spacex.com"
     }
 
     // MARK: - Public Properties
@@ -30,7 +31,6 @@ class UserInfoCell: UITableViewCell {
     // MARK: Private Properties
 
     private var avatarImageView = UIImageView()
-    private var pinImageView = UIImageView()
     private var changeButton = UIButton()
     private var shareButton = UIButton()
     private var add = UIButton()
@@ -43,7 +43,7 @@ class UserInfoCell: UITableViewCell {
     private var subscriptionsTextLabel = UILabel()
     private var nameUser = UILabel()
     private let consultantLabel = UILabel()
-    private let linkLabel = UILabel()
+    private let linkButton = UIButton()
 
     // MARK: - Initializers
 
@@ -67,7 +67,6 @@ class UserInfoCell: UITableViewCell {
 
     private func addContentView() {
         contentView.addSubview(avatarImageView)
-        contentView.addSubview(pinImageView)
         contentView.addSubview(changeButton)
         contentView.addSubview(shareButton)
         contentView.addSubview(add)
@@ -79,7 +78,7 @@ class UserInfoCell: UITableViewCell {
         contentView.addSubview(subscriptionsTextLabel)
         contentView.addSubview(nameUser)
         contentView.addSubview(consultantLabel)
-        contentView.addSubview(linkLabel)
+        contentView.addSubview(linkButton)
     }
 
     private func setupImageView() {
@@ -88,12 +87,6 @@ class UserInfoCell: UITableViewCell {
         avatarImageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
         avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
-
-        pinImageView.translatesAutoresizingMaskIntoConstraints = false
-        pinImageView.widthAnchor.constraint(equalToConstant: 17).isActive = true
-        pinImageView.heightAnchor.constraint(equalToConstant: 17).isActive = true
-        pinImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
-        pinImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 152).isActive = true
     }
 
     private func setupButton() {
@@ -231,21 +224,24 @@ class UserInfoCell: UITableViewCell {
             .isActive = true
         consultantLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 129).isActive = true
 
-        linkLabel.textColor = UIColor(red: 4 / 255, green: 104 / 255, blue: 181 / 255, alpha: 1)
-        linkLabel.textAlignment = .left
-        linkLabel.font = UIFont(name: Constant.verdana, size: 14)
-        linkLabel.translatesAutoresizingMaskIntoConstraints = false
-        linkLabel.widthAnchor.constraint(equalToConstant: 298).isActive = true
-        linkLabel.heightAnchor.constraint(equalToConstant: 17).isActive = true
-        linkLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 34)
+        linkButton.setTitle(Constant.link, for: .normal)
+        linkButton.setTitleColor(UIColor(red: 4 / 255, green: 104 / 255, blue: 181 / 255, alpha: 1), for: .normal)
+        linkButton.contentHorizontalAlignment = .left
+        linkButton.titleLabel?.font = UIFont(name: Constant.verdana, size: 14)
+        linkButton.translatesAutoresizingMaskIntoConstraints = false
+        linkButton.widthAnchor.constraint(equalToConstant: 298).isActive = true
+        linkButton.heightAnchor.constraint(equalToConstant: 17).isActive = true
+        linkButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 34)
             .isActive = true
-        linkLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 152).isActive = true
+        linkButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 152).isActive = true
+    }
+
+    func moveNewScreen() -> UIButton {
+        linkButton
     }
 
     func setupInfo(param: [InfoUser]) {
         avatarImageView.image = UIImage(named: param[0].avatar)
         nameUser.text = param[0].nickName
-        pinImageView.image = UIImage(named: param[0].pinImage)
-        linkLabel.text = param[0].link
     }
 }

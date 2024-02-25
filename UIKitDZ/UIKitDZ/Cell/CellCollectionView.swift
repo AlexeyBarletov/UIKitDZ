@@ -11,7 +11,6 @@ class CellCollectionView: UICollectionViewCell {
     // MARK: Private Property
 
     var imageView = UIImageView()
-    var imageOne = UIImage(named: "menTwo")
 
     // MARK: - Initializers
 
@@ -23,6 +22,10 @@ class CellCollectionView: UICollectionViewCell {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+
+    func setupCollection(param: Source) {
+        imageView.image = UIImage(named: param.imageName)
     }
 
     // MARK: - Private Methods

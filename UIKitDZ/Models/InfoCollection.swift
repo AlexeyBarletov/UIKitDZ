@@ -4,16 +4,22 @@
 import Foundation
 
 struct Source {
-    static func photos() -> [Photo] {
+    let imageName: String
+
+    static func photos() -> [Source] {
         [
-            .init(id: 1, imageName: "start"),
-            .init(id: 2, imageName: "spaceview"),
-            .init(id: 3, imageName: "spaceship")
+            .init(imageName: "start"),
+            .init(imageName: "spaceview"),
+            .init(imageName: "spaceship"),
+            .init(imageName: "start"),
+            .init(imageName: "spaceship"),
+            .init(imageName: "spaceview"),
+            .init(imageName: "spaceship"),
+            .init(imageName: "start"),
+            .init(imageName: "spaceship"),
+            .init(imageName: "spaceview"),
+            .init(imageName: "start"),
+            .init(imageName: "spaceship")
         ]
     }
-}
-
-struct Photo {
-    let id: Int
-    let imageName: String
 }

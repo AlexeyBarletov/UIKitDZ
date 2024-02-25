@@ -7,15 +7,35 @@ class СollectionPicturesCell: UITableViewCell {
     // MARK: - Public Properties
 
     static let сollectionPicturesCell = "СollectionPicturesCell"
+//
+//    var example = Source.photos()
+    var listImage = [Source]()
 
-    var example = Source.photos()
+    // MARK: - Private Methods
+
+    private var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = .init(width: UIScreen.main.bounds.width / 3.04, height: UIScreen.main.bounds.width / 3.04)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
+
+        collectionView.register(
+            CellCollectionView.self,
+            forCellWithReuseIdentifier: CellCollectionView.сellCollectionView
+        )
+        collectionView.backgroundColor = UIColor.white
+        layout.minimumLineSpacing = 1.5
+        layout.minimumInteritemSpacing = 1.5
+        return collectionView
+    }()
 
     // MARK: - Initializers
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .white
-        setupCollectionView()
+        setupContenView()
     }
 
     @available(*, unavailable)
@@ -23,26 +43,16 @@ class СollectionPicturesCell: UITableViewCell {
         super.init(coder: coder)
     }
 
-    // MARK: - Private Methods
+    func setupImage(param: [Source]) {
+        listImage = param
+        let cellHeight = (param.count / 3) * Int(UIScreen.main.bounds.width) / 3
+        collectionView.heightAnchor.constraint(equalToConstant: CGFloat(cellHeight)).isActive = true
+    }
 
-    private func setupCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .clear
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+    func setupContenView() {
         contentView.addSubview(collectionView)
         collectionView.dataSource = self
-        collectionView.delegate = self
-        layout.itemSize = .init(width: 124, height: 124)
-
-        collectionView.register(
-            CellCollectionView.self,
-            forCellWithReuseIdentifier: CellCollectionView.сellCollectionView
-        )
-        collectionView.backgroundColor = UIColor.white
-
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
@@ -51,12 +61,8 @@ class СollectionPicturesCell: UITableViewCell {
 }
 
 extension СollectionPicturesCell: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        example.count
-    }
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        example.count
+        listImage.count
     }
 
     func collectionView(
@@ -67,34 +73,7 @@ extension СollectionPicturesCell: UICollectionViewDataSource {
             withReuseIdentifier: CellCollectionView.сellCollectionView,
             for: indexPath
         ) as? CellCollectionView else { return UICollectionViewCell() }
-        cell.imageView.image = UIImage(named: example[indexPath.item].imageName)
+        cell.setupCollection(param: listImage[indexPath.item])
         return cell
-    }
-}
-
-extension СollectionPicturesCell: UICollectionViewDelegateFlowLayout {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath
-    ) -> CGSize {
-        let itemSize = (collectionView.bounds.width) / 3
-        return CGSize(width: itemSize, height: itemSize)
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        minimumLineSpacingForSectionAt section: Int
-    ) -> CGFloat {
-        0
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        minimumInteritemSpacingForSectionAt section: Int
-    ) -> CGFloat {
-        0
     }
 }

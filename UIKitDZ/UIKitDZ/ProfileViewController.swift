@@ -15,7 +15,7 @@ final class ProfileViewController: UIViewController {
         static let font = "Verdana-Bold"
         static var nameUser = "Мария Иванова"
         static var pin = "pin"
-        static var link = "www.spacex.com"
+
         static var avatar = "mystroryplus"
     }
 
@@ -38,8 +38,7 @@ final class ProfileViewController: UIViewController {
     private var infoUsers = [InfoUser(
         avatar: Constant.avatar,
         nickName: Constant.nameUser,
-        pinImage: Constant.pin,
-        link: Constant.link
+        pinImage: Constant.pin
     )]
 
     // MARK: - Private Properties
@@ -50,6 +49,7 @@ final class ProfileViewController: UIViewController {
     private let rightButtonItemtTwo = UIButton()
     private let viewButtons = UIView()
     private let tableView = UITableView()
+    let exampleStruct = Source.photos()
 
     // MARK: - Life Cycle
 
@@ -125,11 +125,16 @@ final class ProfileViewController: UIViewController {
             СollectionPicturesCell.self,
             forCellReuseIdentifier: СollectionPicturesCell.сollectionPicturesCell
         )
+        tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+    }
+
+    @objc func tapSpaceViewController() {
+        present(SpaceViewController(), animated: true)
     }
 }
 
@@ -139,15 +144,7 @@ extension ProfileViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let cellType = listCell[section]
-        switch cellType {
-        case .infoUser:
-            return 1
-        case .stories:
-            return 1
-        case .complex:
-            return 1
-        }
+        1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -158,6 +155,8 @@ extension ProfileViewController: UITableViewDataSource {
                 withIdentifier: UserInfoCell.userInfoCell,
                 for: indexPath
             ) as? UserInfoCell else { return UITableViewCell() }
+            let button = cell.moveNewScreen()
+            button.addTarget(self, action: #selector(tapSpaceViewController), for: .touchUpInside)
             cell.setupInfo(param: infoUsers)
             return cell
         case .stories:
@@ -171,6 +170,8 @@ extension ProfileViewController: UITableViewDataSource {
                 withIdentifier: СollectionPicturesCell.сollectionPicturesCell,
                 for: indexPath
             ) as? СollectionPicturesCell else { return UITableViewCell() }
+            cell.setupImage(param: exampleStruct)
+
             return cell
         }
     }
@@ -185,7 +186,7 @@ extension ProfileViewController: UITableViewDelegate {
         case .stories:
             return 80
         case .complex:
-            return 500
+            return 400
         }
     }
 }
