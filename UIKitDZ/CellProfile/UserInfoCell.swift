@@ -1,0 +1,235 @@
+// UserInfoCell.swift
+// Copyright © RoadMap. All rights reserved.
+
+import UIKit
+
+/// Ячейка для показа информации о пользователе
+final class UserInfoCell: UITableViewCell {
+    // MARK: Constant
+
+    enum Constant {
+        static let pin = "pin"
+        static let titleChange = "Изменить"
+        static let verdanaBold = "Verdana-Bold"
+        static let verdana = "Verdana"
+        static let titleShare = "Поделиться"
+        static let add = "add"
+        static let publicationsLabel = "67"
+        static let subscribersLabel = "458"
+        static let subscriptionsLabel = "120"
+        static let publicationsTextLabel = "публикации"
+        static let subscribersTextLabel = "подписчики"
+        static let subscriptionsTextLabel = "подписки"
+        static let consultant = "Консультант"
+        static let link = "📎 www.spacex.com"
+    }
+
+    // MARK: - Public Properties
+
+    static let userInfoCell = "UserInfoCell"
+
+    // MARK: Private Properties
+
+    private let avatarImageView = UIImageView()
+    private let changeButton = UIButton()
+    private let shareButton = UIButton()
+    private let addButton = UIButton()
+    private let publicationsLabel = UILabel()
+    private let publicationsNumberLabel = UILabel()
+    private let subscribersNumberLabel = UILabel()
+    private let subscriptionsNumberLabel = UILabel()
+    private let publicationsTextLabel = UILabel()
+    private let subscribersTextLabel = UILabel()
+    private let subscriptionsTextLabel = UILabel()
+    private let nameUserLabel = UILabel()
+    private let consultantLabel = UILabel()
+    private let linkButton = UIButton()
+
+    // MARK: - Initializers
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.backgroundColor = .white
+        addContentView()
+        setupImageView()
+        setupButton()
+        setupLabelColl()
+        setupTitleLabel()
+        setupLabelConsultan()
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+
+    // MARK: Private Methode
+
+    private func addContentView() {
+        contentView.addSubview(avatarImageView)
+        contentView.addSubview(changeButton)
+        contentView.addSubview(shareButton)
+        contentView.addSubview(addButton)
+        contentView.addSubview(publicationsNumberLabel)
+        contentView.addSubview(subscribersNumberLabel)
+        contentView.addSubview(subscriptionsNumberLabel)
+        contentView.addSubview(publicationsTextLabel)
+        contentView.addSubview(subscribersTextLabel)
+        contentView.addSubview(subscriptionsTextLabel)
+        contentView.addSubview(nameUserLabel)
+        contentView.addSubview(consultantLabel)
+        contentView.addSubview(linkButton)
+    }
+
+    private func setupImageView() {
+        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
+        avatarImageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        avatarImageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
+        avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
+    }
+
+    private func setupButton() {
+        changeButton.setTitle(Constant.titleChange, for: .normal)
+        changeButton.titleLabel?.font = UIFont(name: Constant.verdanaBold, size: 10)
+        changeButton.titleLabel?.textAlignment = .center
+        changeButton.backgroundColor = UIColor(red: 239 / 255, green: 239 / 255, blue: 239 / 255, alpha: 1)
+        changeButton.layer.cornerRadius = 8
+        changeButton.setTitleColor(UIColor.black, for: .normal)
+        changeButton.translatesAutoresizingMaskIntoConstraints = false
+        changeButton.widthAnchor.constraint(equalToConstant: 155).isActive = true
+        changeButton.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        changeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
+        changeButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 184).isActive = true
+        shareButton.setTitle(Constant.titleShare, for: .normal)
+        shareButton.titleLabel?.font = UIFont(name: Constant.verdanaBold, size: 10)
+        shareButton.titleLabel?.textAlignment = .center
+        shareButton.backgroundColor = UIColor(red: 239 / 255, green: 239 / 255, blue: 239 / 255, alpha: 1)
+        shareButton.layer.cornerRadius = 8
+        shareButton.setTitleColor(UIColor.black, for: .normal)
+        shareButton.translatesAutoresizingMaskIntoConstraints = false
+        shareButton.widthAnchor.constraint(equalToConstant: 155).isActive = true
+        shareButton.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        shareButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 175).isActive = true
+        shareButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 184).isActive = true
+        addButton.setImage(UIImage(named: Constant.add), for: .normal)
+        addButton.backgroundColor = UIColor(red: 239 / 255, green: 239 / 255, blue: 239 / 255, alpha: 1)
+        addButton.layer.cornerRadius = 8
+        addButton.setTitleColor(UIColor.black, for: .normal)
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        addButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        addButton.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        addButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 335).isActive = true
+        addButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 184).isActive = true
+    }
+
+    private func setupLabelColl() {
+        publicationsNumberLabel.text = Constant.publicationsLabel
+        publicationsNumberLabel.textColor = .black
+        publicationsNumberLabel.textAlignment = .center
+        publicationsNumberLabel.font = UIFont(name: Constant.verdanaBold, size: 14)
+        publicationsNumberLabel.translatesAutoresizingMaskIntoConstraints = false
+        publicationsNumberLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        publicationsNumberLabel.heightAnchor.constraint(equalToConstant: 17).isActive = true
+        publicationsNumberLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 151)
+            .isActive = true
+        publicationsNumberLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 22).isActive = true
+        subscribersNumberLabel.text = Constant.subscribersLabel
+        subscribersNumberLabel.textColor = .black
+        subscribersNumberLabel.textAlignment = .center
+        subscribersNumberLabel.font = UIFont(name: Constant.verdanaBold, size: 14)
+        subscribersNumberLabel.translatesAutoresizingMaskIntoConstraints = false
+        subscribersNumberLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        subscribersNumberLabel.heightAnchor.constraint(equalToConstant: 17).isActive = true
+        subscribersNumberLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 221)
+            .isActive = true
+        subscribersNumberLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 22).isActive = true
+        subscriptionsNumberLabel.text = Constant.subscriptionsLabel
+        subscriptionsNumberLabel.textColor = .black
+        subscriptionsNumberLabel.textAlignment = .center
+        subscriptionsNumberLabel.font = UIFont(name: Constant.verdanaBold, size: 14)
+        subscriptionsNumberLabel.translatesAutoresizingMaskIntoConstraints = false
+        subscriptionsNumberLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        subscriptionsNumberLabel.heightAnchor.constraint(equalToConstant: 17).isActive = true
+        subscriptionsNumberLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 292)
+            .isActive = true
+        subscriptionsNumberLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 22).isActive = true
+    }
+
+    private func setupTitleLabel() {
+        publicationsTextLabel.text = Constant.subscriptionsTextLabel
+        publicationsTextLabel.textColor = .black
+        publicationsTextLabel.textAlignment = .center
+        publicationsTextLabel.font = UIFont(name: Constant.verdana, size: 10)
+        publicationsTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        publicationsTextLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        publicationsTextLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
+        publicationsTextLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 141)
+            .isActive = true
+        publicationsTextLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 41).isActive = true
+        subscribersTextLabel.text = Constant.subscriptionsTextLabel
+        subscribersTextLabel.textColor = .black
+        subscribersTextLabel.textAlignment = .center
+        subscribersTextLabel.font = UIFont(name: Constant.verdana, size: 10)
+        subscribersTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        subscribersTextLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        subscribersTextLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
+        subscribersTextLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 211)
+            .isActive = true
+        subscribersTextLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 41).isActive = true
+        subscriptionsTextLabel.text = Constant.subscriptionsTextLabel
+        subscriptionsTextLabel.textColor = .black
+        subscriptionsTextLabel.textAlignment = .center
+        subscriptionsTextLabel.font = UIFont(name: Constant.verdana, size: 10)
+        subscriptionsTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        subscriptionsTextLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        subscriptionsTextLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
+        subscriptionsTextLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 282)
+            .isActive = true
+        subscriptionsTextLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 41).isActive = true
+        nameUserLabel.textColor = .black
+        nameUserLabel.textAlignment = .center
+        nameUserLabel.font = UIFont(name: Constant.verdanaBold, size: 14)
+        nameUserLabel.textAlignment = .left
+        nameUserLabel.translatesAutoresizingMaskIntoConstraints = false
+        nameUserLabel.widthAnchor.constraint(equalToConstant: 170).isActive = true
+        nameUserLabel.heightAnchor.constraint(equalToConstant: 17).isActive = true
+        nameUserLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15)
+            .isActive = true
+        nameUserLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 101).isActive = true
+    }
+
+    private func setupLabelConsultan() {
+        consultantLabel.text = Constant.consultant
+        consultantLabel.textColor = .black
+        consultantLabel.textAlignment = .left
+        consultantLabel.font = UIFont(name: Constant.verdana, size: 14)
+        consultantLabel.translatesAutoresizingMaskIntoConstraints = false
+        consultantLabel.widthAnchor.constraint(equalToConstant: 298).isActive = true
+        consultantLabel.heightAnchor.constraint(equalToConstant: 17).isActive = true
+        consultantLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15)
+            .isActive = true
+        consultantLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 129).isActive = true
+        linkButton.setTitle(Constant.link, for: .normal)
+        linkButton.setTitleColor(UIColor(red: 4 / 255, green: 104 / 255, blue: 181 / 255, alpha: 1), for: .normal)
+        linkButton.contentHorizontalAlignment = .left
+        linkButton.titleLabel?.font = UIFont(name: Constant.verdana, size: 14)
+        linkButton.translatesAutoresizingMaskIntoConstraints = false
+        linkButton.widthAnchor.constraint(equalToConstant: 298).isActive = true
+        linkButton.heightAnchor.constraint(equalToConstant: 17).isActive = true
+        linkButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 34)
+            .isActive = true
+        linkButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 152).isActive = true
+    }
+
+    // MARK: Public Methode
+
+    func moveNewScreen() -> UIButton {
+        linkButton
+    }
+
+    func setupInfo(param: [InfoUser]) {
+        avatarImageView.image = UIImage(named: param[0].avatar)
+        nameUserLabel.text = param[0].nickName
+    }
+}

@@ -4,7 +4,7 @@
 import UIKit
 
 /// Ячейка для показа историй
-class StoriesViewCell: UITableViewCell {
+final class StoriesViewCell: UITableViewCell {
     // MARK: - Constants
 
     enum Constant {
@@ -84,6 +84,7 @@ class StoriesViewCell: UITableViewCell {
         avatarOneImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 12).isActive = true
         avatarOneImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
         avatarOneImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+
         avatarTwoImageView.translatesAutoresizingMaskIntoConstraints = false
         avatarTwoImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 7).isActive = true
         avatarTwoImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 94).isActive = true
