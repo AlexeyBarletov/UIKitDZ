@@ -7,19 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		73423ECD2BAEB1820068B1BC /* TaskFourPartyThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73423ECC2BAEB1820068B1BC /* TaskFourPartyThreeViewController.swift */; };
+		73423ECF2BAEB3410068B1BC /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73423ECE2BAEB3410068B1BC /* RecipeViewController.swift */; };
+		73423ED12BAEB4FE0068B1BC /* TaskFourPartTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73423ED02BAEB4FE0068B1BC /* TaskFourPartTwoViewController.swift */; };
 		73464AE12B72A97300149FBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73464AE02B72A97300149FBF /* AppDelegate.swift */; };
 		73464AE32B72A97300149FBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73464AE22B72A97300149FBF /* SceneDelegate.swift */; };
-		73464AE52B72A97300149FBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73464AE42B72A97300149FBF /* ViewController.swift */; };
+		73464AE52B72A97300149FBF /* TaskFourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73464AE42B72A97300149FBF /* TaskFourViewController.swift */; };
 		73464AE82B72A97300149FBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73464AE62B72A97300149FBF /* Main.storyboard */; };
 		73464AEA2B72A97400149FBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73464AE92B72A97400149FBF /* Assets.xcassets */; };
 		73464AED2B72A97400149FBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73464AEB2B72A97400149FBF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		73423ECC2BAEB1820068B1BC /* TaskFourPartyThreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFourPartyThreeViewController.swift; sourceTree = "<group>"; };
+		73423ECE2BAEB3410068B1BC /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		73423ED02BAEB4FE0068B1BC /* TaskFourPartTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFourPartTwoViewController.swift; sourceTree = "<group>"; };
 		73464ADD2B72A97300149FBF /* UIKitDZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitDZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73464AE02B72A97300149FBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73464AE22B72A97300149FBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		73464AE42B72A97300149FBF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		73464AE42B72A97300149FBF /* TaskFourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFourViewController.swift; sourceTree = "<group>"; };
 		73464AE72B72A97300149FBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		73464AE92B72A97400149FBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73464AEC2B72A97400149FBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,7 +64,10 @@
 			children = (
 				73464AE02B72A97300149FBF /* AppDelegate.swift */,
 				73464AE22B72A97300149FBF /* SceneDelegate.swift */,
-				73464AE42B72A97300149FBF /* ViewController.swift */,
+				73464AE42B72A97300149FBF /* TaskFourViewController.swift */,
+				73423ECC2BAEB1820068B1BC /* TaskFourPartyThreeViewController.swift */,
+				73423ECE2BAEB3410068B1BC /* RecipeViewController.swift */,
+				73423ED02BAEB4FE0068B1BC /* TaskFourPartTwoViewController.swift */,
 				73464AE62B72A97300149FBF /* Main.storyboard */,
 				73464AE92B72A97400149FBF /* Assets.xcassets */,
 				73464AEB2B72A97400149FBF /* LaunchScreen.storyboard */,
@@ -74,8 +83,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 73464AF12B72A97400149FBF /* Build configuration list for PBXNativeTarget "UIKitDZ" */;
 			buildPhases = (
-				73464AF52B72AD6300149FBF /* Swiftformat */,
-				73464AF42B72ACBD00149FBF /* Swiftlint */,
 				73464AD92B72A97300149FBF /* Sources */,
 				73464ADA2B72A97300149FBF /* Frameworks */,
 				73464ADB2B72A97300149FBF /* Resources */,
@@ -135,57 +142,17 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		73464AF42B72ACBD00149FBF /* Swiftlint */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Swiftlint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		73464AF52B72AD6300149FBF /* Swiftformat */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Swiftformat;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftformat > /dev/null; then\n  swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		73464AD92B72A97300149FBF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73464AE52B72A97300149FBF /* ViewController.swift in Sources */,
+				73423ECD2BAEB1820068B1BC /* TaskFourPartyThreeViewController.swift in Sources */,
+				73464AE52B72A97300149FBF /* TaskFourViewController.swift in Sources */,
 				73464AE12B72A97300149FBF /* AppDelegate.swift in Sources */,
+				73423ED12BAEB4FE0068B1BC /* TaskFourPartTwoViewController.swift in Sources */,
 				73464AE32B72A97300149FBF /* SceneDelegate.swift in Sources */,
+				73423ECF2BAEB3410068B1BC /* RecipeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,7 +304,6 @@
 				INFOPLIST_FILE = UIKitDZ/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -365,7 +331,6 @@
 				INFOPLIST_FILE = UIKitDZ/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
