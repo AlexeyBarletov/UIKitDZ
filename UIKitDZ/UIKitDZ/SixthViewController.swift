@@ -13,7 +13,7 @@ class SixthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .orange
+        view.backgroundColor = .white
         
         let service = ArrayAdditionService()
         for i in 1...10 {
