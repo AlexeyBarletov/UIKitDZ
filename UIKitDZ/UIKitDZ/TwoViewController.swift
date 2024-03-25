@@ -8,8 +8,10 @@
 //  Created by Алексей Барлетов on 24.03.2024.
 //
 import UIKit
+final class TwoViewController: UIViewController {
+    
+    // MARK: Life Cycle
 
-class TwoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

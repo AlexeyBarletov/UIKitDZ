@@ -2,10 +2,10 @@
 // Copyright © RoadMap. All rights reserved.
 
 import UIKit
+final class ThreeViewController: UIViewController {
+    
+    // MARK: Life Cycle
 
-class ThreeViewController: UIViewController {
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

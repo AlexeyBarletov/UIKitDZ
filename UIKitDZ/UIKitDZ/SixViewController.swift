@@ -7,9 +7,10 @@
 
 import UIKit
 
-class SixViewController: UIViewController {
+final class SixViewController: UIViewController {
     
-    
+// MARK: Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

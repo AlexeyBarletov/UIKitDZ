@@ -6,8 +6,9 @@
 //
 
 import UIKit
-
-class FourViewController: UIViewController {
+final class FourViewController: UIViewController {
+    
+    // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()

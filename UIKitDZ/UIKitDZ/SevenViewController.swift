@@ -7,7 +7,9 @@
 
 import UIKit
 
-class SevenViewController: UIViewController {
+final class SevenViewController: UIViewController {
+    
+    // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()

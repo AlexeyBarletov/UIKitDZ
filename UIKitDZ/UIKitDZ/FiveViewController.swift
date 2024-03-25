@@ -7,16 +7,20 @@
 
 import UIKit
 
-class FiveViewController: UIViewController {
+final class FiveViewController: UIViewController {
+    
+    // MARK: Constant
     
     enum MessageError: Error {
         case emptyMessages
     }
     
+    // MARK: Private Property
     
+  private  var networkService = NetworkService()
     
-    var networkService = NetworkService()
-    
+    // MARK: Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

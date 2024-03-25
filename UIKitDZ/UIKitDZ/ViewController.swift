@@ -2,8 +2,10 @@
 // Copyright © RoadMap. All rights reserved.
 
 import UIKit
-
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
+    
+    // MARK: Life Cycle 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Сперва 1
